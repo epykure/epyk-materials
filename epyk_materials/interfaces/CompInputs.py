@@ -50,6 +50,7 @@ class Inputs(object):
 
   def outlined(self, value="", label=""):
     """
+    const textField = new MDCTextField(document.querySelector('.mdc-text-field'))
 
     https://material.io/develop/web/components/input-controls/text-field/
 
@@ -72,7 +73,7 @@ class Inputs(object):
                options=None, profile=None):
     """
     const lineRipple = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
-    
+
     :param text:
     :param width:
     :param rows:
