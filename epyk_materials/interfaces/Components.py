@@ -3,12 +3,22 @@ from epyk_materials.interfaces import CompButtons
 from epyk_materials.interfaces import CompInputs
 from epyk_materials.interfaces import CompIcons
 from epyk_materials.interfaces import CompSliders
+from epyk_materials.interfaces import CompNavigation
 
 
 class Materials(object):
 
   def __init__(self, rptObj):
     self.rptObj = rptObj
+    self.navbar = self.navigation.bar #: shortcut for bar :func:`epyk.interfaces.components.CompNavigation.Navigation.bar`
+
+  @property
+  def navigation(self):
+    """
+    Description:
+    ------------
+    """
+    return CompNavigation.Navigation(self)
 
   @property
   def buttons(self):
