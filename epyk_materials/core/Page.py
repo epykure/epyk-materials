@@ -6,6 +6,13 @@ from epyk_materials.interfaces import Components
 
 # Modules extension required
 MODULES_EXTS = {
+  'material-icons': {
+    'website': 'https://material.io/resources/icons/?style=baseline',
+    'services': [
+      {'type': 'css', 'url': 'https://fonts.googleapis.com/icon', 'values': {'family': 'Material+Icons'}},
+    ]
+  },
+
   'material-components-web': {
     'version': '5.1.0',
     'website': 'https://material.io/components',

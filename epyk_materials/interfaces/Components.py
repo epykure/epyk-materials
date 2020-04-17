@@ -1,5 +1,7 @@
 
 from epyk_materials.interfaces import CompButtons
+from epyk_materials.interfaces import CompInputs
+from epyk_materials.interfaces import CompIcons
 
 
 class Materials(object):
@@ -14,6 +16,22 @@ class Materials(object):
     ------------
     """
     return CompButtons.Buttons(self)
+
+  @property
+  def inputs(self):
+    """
+    Description:
+    ------------
+    """
+    return CompInputs.Inputs(self)
+
+  @property
+  def icons(self):
+    """
+    Description:
+    ------------
+    """
+    return CompIcons.Icon(self)
 
   def register(self, html_comp):
     """
