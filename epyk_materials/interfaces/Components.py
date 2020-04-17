@@ -2,6 +2,7 @@
 from epyk_materials.interfaces import CompButtons
 from epyk_materials.interfaces import CompInputs
 from epyk_materials.interfaces import CompIcons
+from epyk_materials.interfaces import CompSliders
 
 
 class Materials(object):
@@ -32,6 +33,14 @@ class Materials(object):
     ------------
     """
     return CompIcons.Icon(self)
+
+  @property
+  def sliders(self):
+    """
+    Description:
+    ------------
+    """
+    return CompSliders.Slider(self)
 
   def register(self, html_comp):
     """

@@ -29,10 +29,11 @@ class Button(HtmlButton.Button):
     """ Add items to a container """
     htmlObj.inReport = False # Has to be defined here otherwise it is set to late
     if not isinstance(self.val, list):
-      self.val = [self.val]
+      self._vals = [self.val]
     self.val.append(htmlObj)
     return self
 
   def __str__(self):
     str_div = "".join([v.html() if hasattr(v, 'html') else str(v) for v in self.val])
-    return '<button %s>%s</button>' % (self.get_attrs(pyClassNames=self.style.get_classes()), self.val)
+    print(self.val)
+    return '<button %s>%s</button>' % (self.get_attrs(pyClassNames=self.style.get_classes()), str_div)
