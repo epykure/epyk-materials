@@ -15,8 +15,35 @@ class LineRipple(object):
     return 'alert("%s")' % self._selector
 
 
+class Slider(object):
+
+  varName = 'slider'
+  expr = "new mdc.slider.MDCSlider(document.querySelector('%s'))"
+
+  def __init__(self, htmlObj, varName):
+    self.htmlObj = htmlObj
+    self._selector = varName
+
+  def setValue(self, num):
+    """
+    Description:
+    ------------
+    Sets the current value of the slider
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/sliders/
+
+    Attributes:
+    ----------
+    :param num: String.
+    """
+    num = JsUtils.jsConvertData(num, None)
+    return "%s.foundation_.setValue(%s)" % (self._selector, num)
+
+
 class LinearProgress(object):
-  
+
   varName = 'linearProgress'
   expr = "new mdc.linearProgress.MDCLinearProgress(document.querySelector('%s'))"
 
@@ -39,4 +66,5 @@ class LinearProgress(object):
     :param num: String.
     """
     num = JsUtils.jsConvertData(num, None)
-    return "%s.foundation.setProgress(%s)" % (self._selector, num)
+    #return "console.log(%s)" % self._selector
+    return "%s.foundation_.progress_ = %s" % (self._selector, num)

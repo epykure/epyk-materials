@@ -26,19 +26,47 @@ class Slider(object):
     https://material.io/develop/web/components/linear-progress/
 
     """
-    schema = {"type": 'div',
-      'arias': {'role': 'progressbar', 'valuemin': 0, 'valuemax': total, 'valuenow': number, 'label': label},
+    schema = {"type": 'div', 'css': None,
+      'arias': {'role': 'progressbar', 'valuemin': 0, 'valuemax': 1, 'valuenow': number/total, 'label': label},
       'children': [
-        {"type": 'div', 'class': 'mdc-linear-progress__buffering-dots'},
-        {"type": 'div', 'class': 'mdc-linear-progress__buffer'},
-        {"type": 'div', 'class': 'mdc-linear-progress__bar mdc-linear-progress__primary-bar', 'children': [
-          {"type": 'span', 'class': 'mdc-linear-progress__bar-inner'}
+        {"type": 'div', 'class': 'mdc-linear-progress__buffering-dots', 'css': None},
+        {"type": 'div', 'class': 'mdc-linear-progress__buffer', 'css': None},
+        {"type": 'div', 'css': None, 'class': 'mdc-linear-progress__bar mdc-linear-progress__primary-bar', 'children': [
+          {"type": 'span', 'class': 'mdc-linear-progress__bar-inner', 'css': None}
         ]},
-        {"type": 'div', 'class': 'mdc-linear-progress__bar mdc-linear-progress__secondary-bar', 'children': [
-          {"type": 'span', 'class': 'mdc-linear-progress__bar-inner'}
+        {"type": 'div', 'css': None, 'class': 'mdc-linear-progress__bar mdc-linear-progress__secondary-bar', 'children': [
+          {"type": 'span', 'class': 'mdc-linear-progress__bar-inner', 'css': None}
         ]},
     ]}
     html_pr = self.context.rptObj.materials.composite(schema)
     self.context.add_cls(html_pr)
     html_pr.style.mdc.linear_progress()
+    return html_pr
+
+  def slider(self, value, total=100, label=""):
+    """
+    MDC Slider provides an implementation of the Material Design slider component.
+
+    https://material.io/develop/web/components/input-controls/sliders/
+
+    :param value:
+    :param total:
+    :param label:
+    """
+    schema = {"type": 'div', 'css': None, 'attrs': {"tabindex": 0},
+              'arias': {"role": 'slider', 'label': label, 'valuenow': value, 'valuemax': total, 'valuemin': 0}, 'children': [
+        {"type": 'div', 'class': 'mdc-slider__track-container', 'css': None, 'children': [
+          {"type": 'div', 'class': 'mdc-slider__track', 'css': None}
+        ]},
+        {"type": 'div', 'class': 'mdc-slider__thumb-container', 'css': None, 'children': [
+          {"type": 'circle', 'class': 'mdc-slider__thumb', 'css': None,
+           'args': {"x": 10.5, "y": 10.5, 'r': 7.875, "width": (21, "px"), "height": (21, "px")}}
+        ]},
+        #{"type": 'div', 'class': 'mdc-slider__focus-ring', 'css': None}
+      ]
+
+    }
+    html_pr = self.context.rptObj.materials.composite(schema)
+    self.context.add_cls(html_pr)
+    html_pr.style.mdc.slider()
     return html_pr

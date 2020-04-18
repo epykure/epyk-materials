@@ -10,6 +10,7 @@ from epyk_materials.interfaces import CompLists
 from epyk_materials.core.html import MdcHtml
 from epyk_materials.core.css import Classes
 
+
 class Materials(object):
 
   def __init__(self, rptObj):

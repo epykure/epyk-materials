@@ -114,3 +114,15 @@ class Catalog(object):
     self.htmlObj.attr['class'].add(cls)
     self.htmlObj.style.builder(css_id, Ripple.LinearProgress.expr % "#%s" % self.htmlObj.htmlId)
     self.htmlObj.js.icon = Ripple.LinearProgress(self.htmlObj, css_id)
+
+  def slider(self):
+    """
+
+    :return:
+    """
+    cls = "mdc-slider"
+    css_id = "%s_%s" % (Ripple.Slider.varName, self.htmlObj.htmlId)
+
+    self.htmlObj.attr['class'].add(cls)
+    self.htmlObj.style.builder(css_id, Ripple.Slider.expr % "#%s" % self.htmlObj.htmlId)
+    self.htmlObj.js.slider = Ripple.Slider(self.htmlObj, css_id)

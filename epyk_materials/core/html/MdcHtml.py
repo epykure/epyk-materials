@@ -21,6 +21,7 @@ class MdcComposite(HtmlTextComp.Composite):
       'input': self._report.ui.inputs.d_text,
       'icon': self._report.materials.icon,
       'span': self._report.ui.texts.span,
+      'circle': self._report.ui.charts.svg.circle,
       'checkbox': self._report.ui.inputs.checkbox,
       'ripple': self._report.materials.texts.ripple,
     }
