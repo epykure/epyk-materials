@@ -24,8 +24,13 @@ class Catalog(object):
 
   def text_icon(self):
     """
+    Description:
+    ------------
+    Icons describe the type of input a text field requires. They can also be interaction targets.
 
-    :return:
+    Related Pages:
+
+			https://material.io/develop/web/components/input-controls/text-field/icon/
     """
     cls = "mdc-text-field-icon"
     css_id = "%s_%s" % (Text.Icon.varName, self.htmlObj.htmlId)
