@@ -20,7 +20,10 @@ class Toggle(object):
 
   def __init__(self, htmlObj, varName):
     self.htmlObj = htmlObj
-    self._selector = self.expr % varName
+    self._selector = varName# "(function(){return new mdc.iconButton.MDCTextFieldIconFoundation(document.querySelector('%s'))})()" % varName
+
+  def setAttr(self):
+    return "console.log(%s.foundation_)" % self._selector #.setContent('RRRRR')" % self._selector
 
 
 class Switch(object):

@@ -85,6 +85,8 @@ class Inputs(object):
   def textarea(self, value="", label="", width=(100, '%'), rows=5, placeholder=None, background_color=None, htmlCode=None,
                options=None, profile=None):
     """
+    Description:
+    ------------
     const lineRipple = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
 
     :param text:

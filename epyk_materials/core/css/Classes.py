@@ -28,11 +28,11 @@ class Catalog(object):
     :return:
     """
     cls = "mdc-text-field-icon"
+    css_id = "%s_%s" % (Text.Icon.varName, self.htmlObj.htmlId)
+
     self.htmlObj.attr['class'].add(cls)
-    self.htmlObj.style.builder(Text.Icon.varName, Text.Icon.expr % ".%s" % cls)
-    # attach to the object the Javascript shortcurs to be able to use the API
-    self.htmlObj.js.icon = Text.Icon(self.htmlObj, self.htmlObj.htmlId)
-    self.htmlObj.js.grp_icon = Text.Icon(self.htmlObj, ".%s" % cls)
+    self.htmlObj.style.builder(css_id, Text.Icon.expr % ".%s" % cls)
+    self.htmlObj.js.icon = Text.Icon(self.htmlObj, css_id)
 
   def button(self):
     """
@@ -80,10 +80,9 @@ class Catalog(object):
     """
     cls = "mdc-icon-button"
     self.htmlObj.attr['class'].add(cls)
-    self.htmlObj.style.builder(Button.Toggle.varName, Button.Toggle.expr % ".%s" % cls)
+    self.htmlObj.style.builder("%s_%s" % (Button.Switch.varName, self.htmlObj.htmlId), Button.Toggle.expr % ".%s" % cls)
     # attach to the object the Javascript shortcurs to be able to use the API
-    self.htmlObj.js.toggle = Button.Toggle(self.htmlObj, self.htmlObj.htmlId)
-    self.htmlObj.js.grp_toggle = Button.Toggle(self.htmlObj, ".%s" % cls)
+    self.htmlObj.js.toggle = Button.Toggle(self.htmlObj, "%s_%s" % (Button.Switch.varName, self.htmlObj.htmlId))
 
   def floating(self):
     """
