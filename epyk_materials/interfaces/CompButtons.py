@@ -79,6 +79,5 @@ class Buttons(object):
     }
     html_b = self.context.rptObj.materials.composite(schema)
     self.context.add_cls(html_b)
-    print(html_b.htmlId)
     html_b.style.mdc.switch()
     return html_b
