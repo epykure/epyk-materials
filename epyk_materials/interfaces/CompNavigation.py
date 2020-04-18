@@ -6,4 +6,4 @@ class Navigation(object):
 
   def bar(self, icon=None, title=None, width=(100, '%'), height=(40, 'px'), options=None, profile=False):
 
-    return 
+    return

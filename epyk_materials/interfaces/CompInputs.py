@@ -42,15 +42,16 @@ class Inputs(object):
 
     :param text:
     """
-    schema = {"type": 'label', 'class': "mdc-text-field", 'css': False,
-              'builder': "const lineRipple = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));",
+    schema = {"type": 'ripple',
               'children': [
                   {"type": 'div', "class": "mdc-text-field__ripple", 'css': False},
                   {"type": 'input', "class": "mdc-text-field__input", 'css': False, 'args': {'text': value}},
                   {"type": 'div', "class": "mdc-line-ripple", 'css': False},
       ]
     }
-    return self.context.rptObj.ui.composite(schema)
+    html_b = self.context.rptObj.materials.composite(schema)
+    self.context.add_cls(html_b)
+    return html_b
 
   def outlined(self, value="", label=""):
     """
