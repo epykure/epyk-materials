@@ -143,3 +143,11 @@ class Catalog(object):
     self.htmlObj.attr['class'].add(cls)
     self.htmlObj.style.builder(css_id, Ripple.Slider.expr % "#%s" % self.htmlObj.htmlId)
     self.htmlObj.js.slider = Ripple.Slider(self.htmlObj, css_id)
+
+  def elevation(self):
+    """
+    Elevation is often already included within the baseline styles of other components (e.g. raised buttons, elevated cards).
+
+    https://material.io/develop/web/components/elevation/
+    """
+    self.htmlObj.attr['class'].add("mdc-elevation--z1")
