@@ -39,6 +39,23 @@ class Catalog(object):
     self.htmlObj.style.builder(css_id, Text.Icon.expr % "#%s" % self.htmlObj.htmlId)
     self.htmlObj.js.icon = Text.Icon(self.htmlObj, css_id)
 
+  def text_floating(self):
+    """
+    Description:
+    ------------
+    Icons describe the type of input a text field requires. They can also be interaction targets.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    cls = "mdc-floating-label"
+    css_id = "%s_%s" % (Text.Floating.varName, self.htmlObj.htmlId)
+
+    self.htmlObj.attr['class'].add(cls)
+    self.htmlObj.style.builder(css_id, Text.Floating.expr % "#%s" % self.htmlObj.htmlId)
+    self.htmlObj.js.floating = Text.Floating(self.htmlObj, css_id)
+
   def button(self):
     """
 
