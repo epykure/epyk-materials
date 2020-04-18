@@ -14,6 +14,7 @@ class Materials(object):
   def __init__(self, rptObj):
     self.rptObj = rptObj
     self.navbar = self.navigation.bar #: shortcut for bar :func:`epyk.interfaces.components.CompNavigation.Navigation.bar`
+    self.icon = self.icons.icon
 
   @property
   def texts(self):

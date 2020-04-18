@@ -27,6 +27,14 @@ class Inputs(object):
 
     :param text:
     """
+    schema = {"type": 'ripple',
+              'children': [
+                  {"type": 'div', "class": "mdc-text-field__ripple", 'css': False},
+                  {"type": 'input', "class": "mdc-text-field__input", 'css': False, 'args': {'text': value}},
+                  {"type": 'div', "class": "mdc-line-ripple", 'css': False},
+      ]
+    }
+
     ripple = self.context.rptObj.ui.div().set_attrs({"class": "mdc-text-field__ripple", 'css': None})
     text = self.context.rptObj.ui.inputs.d_text(value).set_attrs({"class": "mdc-text-field__input", 'css': None, "aria-labelledby": "my-label-id"})
     val = self.context.rptObj.ui.texts.label(label).set_attrs({"class": "mdc-floating-label", 'css': None, 'for': text.htmlId})

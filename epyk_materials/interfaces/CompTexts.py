@@ -17,3 +17,14 @@ class Text(object):
     self.context.add_cls(label)
     label.style.mdc.line_ripple()
     return label
+
+  def icon(self):
+    """
+
+    https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    label = self.context.rptObj.ui.texts.label()
+    label.set_attrs({"class": None, 'css': None})
+    self.context.add_cls(label)
+    label.style.mdc.line_ripple()
+    return label
