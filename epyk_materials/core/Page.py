@@ -1,7 +1,7 @@
 
 from epyk.core import Page
 
-from epyk_materials.interfaces import Components
+from epyk_materials.interfaces import Comp
 
 
 # Modules extension required
@@ -47,5 +47,5 @@ class Report(Page.Report):
     :return: Python HTML object
     """
     if self._mt is None:
-      self._mt = Components.Materials(self)
+      self._mt = Comp.Materials(self)
     return self._mt
