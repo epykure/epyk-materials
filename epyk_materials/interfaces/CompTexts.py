@@ -23,9 +23,6 @@ class Text(object):
 
     https://material.io/develop/web/components/input-controls/text-field/icon/
     """
-    label = self.context.rptObj.ui.texts.label()
-    label.set_attrs({"class": None, 'css': None})
-
     schema = {"type": 'label', 'class': 'mdc-text-field mdc-text-field--with-leading-icon',
               'children': [
                 {"type": 'icon', "class": "material-icons mdc-text-field__icon mdc-text-field__icon--leading",

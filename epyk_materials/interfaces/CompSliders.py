@@ -18,44 +18,27 @@ class Slider(object):
     context.rptObj.cssImport.add("material-components-web")
     self.context = context
 
-  def progressbar(self, number=0, total=100, width=(100, '%'), height=(20, 'px'), htmlCode=None, attrs=None,
+  def progressbar(self, number=0, total=100, width=(100, '%'), label="", height=(20, 'px'), htmlCode=None, attrs=None,
                   helper=None, options=None, profile=None):
     """
-    Description:
-    ------------
-    Add a progress bar component to the page
+    The MDC Linear Progress component is a spec-aligned linear progress indicator component adhering to the Material Design progress & activity requirements.
 
-    Usage::
+    https://material.io/develop/web/components/linear-progress/
 
-      rptObj.ui.sliders.progressbar(300)
-
-    Underlying HTML Objects:
-
-      - :class:`epyk.core.html.HtmlEvent.ProgressBar`
-
-    Related Pages:
-
-      https://jqueryui.com/progressbar/
-
-    Attributes:
-    ----------
-    :param number: A number (by default between 0 and 100)
-    :param total: A number
-    :param width: Optional. Integer for the component width
-    :param height: Optional. Integer for the component height
-    :param htmlCode:
-    :param attrs:
-    :param helper:
-    :param profile:
     """
-    buff = self.context.rptObj.ui.div().set_attrs({"class": "mdc-linear-progress__buffe", 'css': None})
-    buff += self.context.rptObj.ui.div().set_attrs({"class": "mdc-linear-progress__buffer-bar", 'css': None})
-    buff += self.context.rptObj.ui.div().set_attrs({"class": "mdc-linear-progress__buffering-dots", 'css': None})
-    bar = self.context.rptObj.ui.div().set_attrs({"class": "mdc-linear-progress__bar mdc-linear-progress__primary-bar", 'css': None})
-    bar += self.context.rptObj.ui.texts.span().set_attrs({"class": "mdc-linear-progress__bar-inner", 'css': None})
-    bar_sec = self.context.rptObj.ui.div().set_attrs({"class": "mdc-linear-progress__bar mdc-linear-progress__secondary-bar", 'css': None})
-    bar_sec += self.context.rptObj.ui.texts.span().set_attrs({"class": "mdc-linear-progress__bar-inner", 'css': None})
-    html_pr = self.context.rptObj.ui.div([buff, bar, bar_sec], width=width, height=height, options=options, profile=profile)
-    html_pr.set_attrs({"role": "progressbar", "class": "mdc-linear-progress", "aria-valuemin": 0, "aria-valuemax": total,
-                       "aria-valuenow": number})
+    schema = {"type": 'div',
+      'arias': {'role': 'progressbar', 'valuemin': 0, 'valuemax': total, 'valuenow': number, 'label': label},
+      'children': [
+        {"type": 'div', 'class': 'mdc-linear-progress__buffering-dots'},
+        {"type": 'div', 'class': 'mdc-linear-progress__buffer'},
+        {"type": 'div', 'class': 'mdc-linear-progress__bar mdc-linear-progress__primary-bar', 'children': [
+          {"type": 'span', 'class': 'mdc-linear-progress__bar-inner'}
+        ]},
+        {"type": 'div', 'class': 'mdc-linear-progress__bar mdc-linear-progress__secondary-bar', 'children': [
+          {"type": 'span', 'class': 'mdc-linear-progress__bar-inner'}
+        ]},
+    ]}
+    html_pr = self.context.rptObj.materials.composite(schema)
+    self.context.add_cls(html_pr)
+    html_pr.style.mdc.linear_progress()
     return html_pr

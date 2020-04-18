@@ -36,7 +36,7 @@ class Catalog(object):
     css_id = "%s_%s" % (Text.Icon.varName, self.htmlObj.htmlId)
 
     self.htmlObj.attr['class'].add(cls)
-    self.htmlObj.style.builder(css_id, Text.Icon.expr % ".%s" % cls)
+    self.htmlObj.style.builder(css_id, Text.Icon.expr % "#%s" % self.htmlObj.htmlId)
     self.htmlObj.js.icon = Text.Icon(self.htmlObj, css_id)
 
   def button(self):
@@ -102,3 +102,15 @@ class Catalog(object):
     # attach to the object the Javascript shortcurs to be able to use the API
     self.htmlObj.js.floating = Button.Floating(self.htmlObj, self.htmlObj.htmlId)
     self.htmlObj.js.grp_floating = Button.Floating(self.htmlObj, ".%s" % cls)
+
+  def linear_progress(self):
+    """
+
+    :return:
+    """
+    cls = "mdc-linear-progress"
+    css_id = "%s_%s" % (Ripple.LinearProgress.varName, self.htmlObj.htmlId)
+
+    self.htmlObj.attr['class'].add(cls)
+    self.htmlObj.style.builder(css_id, Ripple.LinearProgress.expr % "#%s" % self.htmlObj.htmlId)
+    self.htmlObj.js.icon = Ripple.LinearProgress(self.htmlObj, css_id)

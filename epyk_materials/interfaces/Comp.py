@@ -5,6 +5,7 @@ from epyk_materials.interfaces import CompIcons
 from epyk_materials.interfaces import CompSliders
 from epyk_materials.interfaces import CompNavigation
 from epyk_materials.interfaces import CompTexts
+from epyk_materials.interfaces import CompLists
 
 from epyk_materials.core.html import MdcHtml
 from epyk_materials.core.css import Classes
@@ -15,6 +16,14 @@ class Materials(object):
     self.rptObj = rptObj
     self.navbar = self.navigation.bar #: shortcut for bar :func:`epyk.interfaces.components.CompNavigation.Navigation.bar`
     self.icon = self.icons.icon
+
+  @property
+  def lists(self):
+    """
+    Description:
+    ------------
+    """
+    return CompLists.List(self)
 
   @property
   def texts(self):
