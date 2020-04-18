@@ -19,3 +19,14 @@ class Catalog(object):
     # attach to the object the Javascript shortcurs to be able to use the API
     self.htmlObj.js.line_ripple = Ripple.LineRipple(self.htmlObj, self.htmlObj.htmlId)
     self.htmlObj.js.grp_line_ripple = Ripple.LineRipple(self.htmlObj, ".%s" % cls)
+
+  def button(self):
+    """
+
+    https://material.io/develop/web/components/buttons/
+    
+    :return:
+    """
+    cls = "mdc-button"
+    self.htmlObj.attr['class'].add(cls)
+
