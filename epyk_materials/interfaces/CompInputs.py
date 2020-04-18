@@ -42,11 +42,15 @@ class Inputs(object):
 
     :param text:
     """
-    field = self.context.rptObj.ui.div().set_attrs({"class": "mdc-text-field__ripple", 'css': None})
-    text = self.context.rptObj.ui.inputs.d_text(value).set_attrs({"class": "mdc-text-field__input", 'css': None})
-    ripple = self.context.rptObj.ui.div().set_attrs({"class": "mdc-line-ripple", 'css': None})
-    cont = self.context.rptObj.ui.texts.label([field, text, ripple]).set_attrs({"class": "mdc-text-field", 'css': None})
-    return cont
+    schema = {"type": 'label', 'class': "mdc-text-field", 'css': False,
+              'builder': "const lineRipple = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));",
+              'children': [
+                  {"type": 'div', "class": "mdc-text-field__ripple", 'css': False},
+                  {"type": 'input', "class": "mdc-text-field__input", 'css': False, 'args': {'text': value}},
+                  {"type": 'div', "class": "mdc-line-ripple", 'css': False},
+      ]
+    }
+    return self.context.rptObj.ui.composite(schema)
 
   def outlined(self, value="", label=""):
     """
