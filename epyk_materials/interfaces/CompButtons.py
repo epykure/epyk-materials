@@ -51,7 +51,7 @@ class Buttons(object):
     html_button.style.mdc.button_icon_toggle()
     return html_button
 
-  def toggle(self, flag, label=None, color=None, width=(150, '%'), height=(20, 'px'), htmlCode=None, profile=None):
+  def toggle(self, flag, htmlCode=None, profile=None):
     """
 
 
@@ -60,21 +60,16 @@ class Buttons(object):
     switchControl = new mdc.switchControl.MDCSwitch(document.querySelector('.mdc-switch'));
 
     :param flag:
-    :param label:
-    :param color:
-    :param width:
-    :param height:
     :param htmlCode:
     :param profile:
     """
-    schema = {"type": 'div',
+    schema = {"type": 'div', 'css': False,
               'children': [
                   {"type": 'div', "class": "mdc-switch__track", 'css': False},
                   {"type": 'div', "class": "mdc-switch__thumb-underlay", 'css': False, 'children': [
                     {"type": 'div', "class": "mdc-switch__thumb", 'css': False},
                     {"type": 'checkbox', "class": "mdc-switch__native-control", 'args': {'flag': flag}, 'aria': {'role': 'switch', 'checked': flag}}
                   ]},
-
       ]
     }
     html_b = self.context.rptObj.materials.composite(schema)
