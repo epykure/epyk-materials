@@ -1,6 +1,7 @@
 
 
 from epyk.core.js import JsUtils
+from epyk.core.js.primitives import JsObjects
 
 
 class Icon(object):
@@ -106,3 +107,30 @@ class Floating(object):
     """
     bool = JsUtils.jsConvertData(bool, None)
     return "%s.foundation_.shake(%s)" % (self._selector, bool)
+
+  def getWidth(self):
+    """
+    Description:
+    ------------
+    Returns the width of the label element.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/floating-label/
+
+    Attributes:
+    ----------
+    :param bool: Boolean.
+    """
+    bool = JsUtils.jsConvertData(bool, None)
+    return JsObjects.JsNumber.JsNumber("%s.foundation_.getWidth()" % self._selector)
+
+
+class NothedOutline(object):
+
+  varName = 'notchedOutline'
+  expr = "new mdc.notchedOutline.MDCNotchedOutline(document.querySelector('%s'))"
+
+  def __init__(self, htmlObj, varName):
+    self.htmlObj = htmlObj
+    self._selector = varName

@@ -9,10 +9,10 @@ class Text(object):
     context.rptObj.cssImport.add("material-components-web")
     self.context = context
 
-  def ripple(self):
+  def ripple(self, htmlCode=None):
     """
     """
-    label = self.context.rptObj.ui.texts.label()
+    label = self.context.rptObj.ui.texts.label(htmlCode=htmlCode)
     label.set_attrs({"class": None, 'css': None})
     self.context.add_cls(label)
     label.style.mdc.line_ripple()

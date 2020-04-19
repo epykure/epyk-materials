@@ -9,10 +9,17 @@ class LineRipple(object):
 
   def __init__(self, htmlObj, varName):
     self.htmlObj = htmlObj
-    self._selector = self.expr % varName
+    self._selector = varName
 
-  def test(self):
-    return 'alert("%s")' % self._selector
+
+class Radio(object):
+
+  varName = 'radio'
+  expr = "new mdc.radio.MDCRadio(document.querySelector('%s'))"
+
+  def __init__(self, htmlObj, varName):
+    self.htmlObj = htmlObj
+    self._selector = varName
 
 
 class Slider(object):

@@ -16,11 +16,12 @@ class Catalog(object):
     :return:
     """
     cls = "mdc-text-field"
+    css_id = "%s_%s" % (Ripple.LineRipple.varName, self.htmlObj.htmlId)
+
     self.htmlObj.attr['class'].add(cls)
-    self.htmlObj.style.builder(Ripple.LineRipple.varName, Ripple.LineRipple.expr % ".%s" % cls)
+    self.htmlObj.style.builder(css_id, Ripple.LineRipple.expr % "#%s" % self.htmlObj.htmlId)
     # attach to the object the Javascript shortcurs to be able to use the API
-    self.htmlObj.js.line_ripple = Ripple.LineRipple(self.htmlObj, self.htmlObj.htmlId)
-    self.htmlObj.js.grp_line_ripple = Ripple.LineRipple(self.htmlObj, ".%s" % cls)
+    self.htmlObj.js.line_ripple = Ripple.LineRipple(self.htmlObj, css_id)
 
   def text_icon(self):
     """
@@ -55,6 +56,24 @@ class Catalog(object):
     self.htmlObj.attr['class'].add(cls)
     self.htmlObj.style.builder(css_id, Text.Floating.expr % "#%s" % self.htmlObj.htmlId)
     self.htmlObj.js.floating = Text.Floating(self.htmlObj, css_id)
+
+  def text_notched_outline(self):
+    """
+    Description:
+    ------------
+    The notched outline is a border around all sides of either a Text Field or Select component.
+    This is used for the Outlined variant of either a Text Field or Select.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/notched-outline/
+    """
+    cls = "mdc-text-field--outlined"
+    css_id = "%s_%s" % (Text.Floating.varName, self.htmlObj.htmlId)
+
+    self.htmlObj.attr['class'].add(cls)
+    self.htmlObj.style.builder(css_id, Text.NothedOutline.expr % "#%s" % self.htmlObj.htmlId)
+    self.htmlObj.js.outline = Text.NothedOutline(self.htmlObj, css_id)
 
   def button(self):
     """
@@ -143,6 +162,20 @@ class Catalog(object):
     self.htmlObj.attr['class'].add(cls)
     self.htmlObj.style.builder(css_id, Ripple.Slider.expr % "#%s" % self.htmlObj.htmlId)
     self.htmlObj.js.slider = Ripple.Slider(self.htmlObj, css_id)
+
+  def radio(self):
+    """
+
+    https://material.io/develop/web/components/input-controls/radio-buttons/
+
+    :return:
+    """
+    cls = "mdc-radio"
+    css_id = "%s_%s" % (Ripple.Radio.varName, self.htmlObj.htmlId)
+
+    self.htmlObj.attr['class'].add(cls)
+    self.htmlObj.style.builder(css_id, Ripple.Radio.expr % "#%s" % self.htmlObj.htmlId)
+    self.htmlObj.js.radio = Ripple.Radio(self.htmlObj, css_id)
 
   def elevation(self):
     """

@@ -1,8 +1,11 @@
 
 from epyk.core import Page
+from epyk.core.css import Defaults
 
 from epyk_materials.interfaces import Comp
 
+# Remove the default layout in all the component done by Epyk Core
+Defaults.DEFAULT_STYLE = None
 
 # Modules extension required
 MODULES_EXTS = {
