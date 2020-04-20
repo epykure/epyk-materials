@@ -78,7 +78,9 @@ class Catalog(object):
   def button(self):
     """
 
-    https://material.io/develop/web/components/buttons/
+    Related Pages:
+
+      https://material.io/develop/web/components/buttons/
 
     :return:
     """
@@ -88,7 +90,9 @@ class Catalog(object):
   def switch(self):
     """
 
-    https://material.io/develop/web/components/buttons/icon-buttons/
+    Related Pages:
+
+      https://material.io/develop/web/components/buttons/icon-buttons/
 
     :return:
     """
@@ -101,7 +105,9 @@ class Catalog(object):
   def button_icon(self):
     """
 
-    https://material.io/develop/web/components/buttons/icon-buttons/
+    Related Pages:
+
+      https://material.io/develop/web/components/buttons/icon-buttons/
 
     :return:
     """
@@ -115,7 +121,9 @@ class Catalog(object):
   def button_icon_toggle(self):
     """
 
-    https://material.io/develop/web/components/buttons/icon-buttons/
+    Related Pages:
+
+      https://material.io/develop/web/components/buttons/icon-buttons/
 
     :return:
     """
@@ -128,7 +136,9 @@ class Catalog(object):
   def floating(self):
     """
 
-    https://material.io/develop/web/components/buttons/floating-action-buttons/
+    Related Pages:
+
+      https://material.io/develop/web/components/buttons/floating-action-buttons/
 
     :return:
     """
@@ -166,7 +176,9 @@ class Catalog(object):
   def radio(self):
     """
 
-    https://material.io/develop/web/components/input-controls/radio-buttons/
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/radio-buttons/
 
     :return:
     """
@@ -181,6 +193,8 @@ class Catalog(object):
     """
     Elevation is often already included within the baseline styles of other components (e.g. raised buttons, elevated cards).
 
-    https://material.io/develop/web/components/elevation/
+    Related Pages:
+
+      https://material.io/develop/web/components/elevation/
     """
     self.htmlObj.attr['class'].add("mdc-elevation--z1")
