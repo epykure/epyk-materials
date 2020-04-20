@@ -152,7 +152,7 @@ class Inputs(object):
     cont = self.context.rptObj.ui.texts.label([text, div]).set_attrs({"class": "mdc-text-field mdc-text-field--outlined", 'css': None})
     return cont
 
-  def radio(self, flag=False):
+  def radio(self, flag=False, group_name=None):
     """
     Usage::
 
@@ -163,7 +163,7 @@ class Inputs(object):
       https://material.io/develop/web/components/input-controls/radio-buttons/
     """
     schema = {"type": 'div', 'css': False, 'children': [
-      {"type": 'radio', "class": "mdc-radio__native-control", 'css': False, 'args': {'flag': flag}},
+      {"type": 'radio', "class": "mdc-radio__native-control", 'css': False, 'args': {'flag': flag, 'group_name': group_name}},
       {"type": 'div', "class": "mdc-radio__background", 'css': False, 'children': [
         {"type": 'div', "class": "mdc-radio__outer-circle", 'css': False},
         {"type": 'div', "class": "mdc-radio__inner-circle", 'css': False},
