@@ -89,14 +89,15 @@ class Materials(object):
     ------------
     Composite bespoke object.
 
-    This obhect will be built based on its schema. No specific CSS Style and class will be added to this object.
+    This object will be built based on its schema. No specific CSS Style and class will be added to this object.
     The full definition will be done in the nested dictionary schema.
 
-    Example
-    schema = {'type': 'div', 'css': {}, 'class': , 'attrs': {} 'arias': {},  'children': [
-        {'type': : {...}}
-        ...
-    ]}
+    Usage::
+
+      schema = {'type': 'div', 'css': {}, 'class': , 'attrs': {} 'arias': {},  'children': [
+          {'type': : {...}}
+          ...
+      ]}
 
     Attributes:
     ----------

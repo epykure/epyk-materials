@@ -21,7 +21,9 @@ class Text(object):
   def icon(self, value):
     """
 
-    https://material.io/develop/web/components/input-controls/text-field/icon/
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
     """
     schema = {"type": 'label', 'class': 'mdc-text-field mdc-text-field--with-leading-icon',
               'children': [
@@ -42,7 +44,9 @@ class Text(object):
     Floating labels display the type of input a field requires.
     Every Text Field and Select should have a label, except for full-width text fields, which use the input’s placeholder attribute instead.
 
-    https://material.io/develop/web/components/input-controls/floating-label/
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/floating-label/
 
     :param label:
     """

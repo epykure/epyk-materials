@@ -55,9 +55,14 @@ class Buttons(object):
     """
 
 
-    https://material-components.github.io/material-components-web-catalog/#/component/switch
+    Usage::
 
-    switchControl = new mdc.switchControl.MDCSwitch(document.querySelector('.mdc-switch'));
+      switchControl = new mdc.switchControl.MDCSwitch(document.querySelector('.mdc-switch'));
+
+    Related Pages:
+
+      https://material-components.github.io/material-components-web-catalog/#/component/switch
+
 
     :param flag:
     :param htmlCode:

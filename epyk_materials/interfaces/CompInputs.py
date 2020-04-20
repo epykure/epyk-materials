@@ -10,7 +10,9 @@ class Inputs(object):
   def chips(self, text):
     """
 
-    https://material.io/resources/icons/?style=baseline
+    Related Pages:
+
+      https://material.io/resources/icons/?style=baseline
 
     :param text:
     """
@@ -23,7 +25,9 @@ class Inputs(object):
   def input(self, value="", label=""):
     """
 
-    https://material-components.github.io/material-components-web-catalog/#/component/text-field?icons=leadingIcon&type=outlined
+    Related Pages:
+
+      https://material-components.github.io/material-components-web-catalog/#/component/text-field?icons=leadingIcon&type=outlined
 
     :param text:
     """
@@ -45,11 +49,14 @@ class Inputs(object):
 
   def filled(self, value="", label="", leading_icon=None, trailing_icon=None):
     """
+    Usage::
 
-    text_1 = rptObj.materials.inputs.filled("Test", "Title", leading_icon="favorite")
-    text_2 = rptObj.materials.inputs.filled("Test", "Title", trailing_icon="visibility")
+      text_1 = rptObj.materials.inputs.filled("Test", "Title", leading_icon="favorite")
+      text_2 = rptObj.materials.inputs.filled("Test", "Title", trailing_icon="visibility")
 
-    https://material-components.github.io/material-components-web-catalog/#/component/text-field
+    Related Pages:
+
+      https://material-components.github.io/material-components-web-catalog/#/component/text-field
 
     :param text:
     """
@@ -74,11 +81,14 @@ class Inputs(object):
 
   def outlined(self, value="", label="", leading_icon=None, trailing_icon=None):
     """
+    Usage::
 
-    text_1 = rptObj.materials.inputs.outlined("Test", "Title", leading_icon="favorite")
-    text_2 = rptObj.materials.inputs.outlined("Test", "Title", trailing_icon="visibility")
+      text_1 = rptObj.materials.inputs.outlined("Test", "Title", leading_icon="favorite")
+      text_2 = rptObj.materials.inputs.outlined("Test", "Title", trailing_icon="visibility")
 
-    https://material.io/develop/web/components/input-controls/text-field/
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/
 
     :param text:
     """
@@ -115,7 +125,10 @@ class Inputs(object):
     """
     Description:
     ------------
-    const lineRipple = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
+
+    Usage::
+
+      const lineRipple = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
 
     :param text:
     :param width:
@@ -141,9 +154,13 @@ class Inputs(object):
 
   def radio(self, flag=False):
     """
-    rptObj.materials.inputs.radio()
+    Usage::
 
-    https://material.io/develop/web/components/input-controls/radio-buttons/
+      rptObj.materials.inputs.radio()
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/radio-buttons/
     """
     schema = {"type": 'div', 'css': False, 'children': [
       {"type": 'radio', "class": "mdc-radio__native-control", 'css': False, 'args': {'flag': flag}},

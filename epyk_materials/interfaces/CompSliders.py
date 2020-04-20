@@ -8,8 +8,10 @@ class Slider(object):
 
   The slider and progress bar components can be fully described on the corresponding website
 
-    - https://jqueryui.com/progressbar/
-    - https://jqueryui.com/slider/
+  Related Pages:
+
+    https://jqueryui.com/progressbar/
+    https://jqueryui.com/slider/
 
   As this module will return those object, all the properties and changes defined in the documentation can be done.
   """
@@ -23,7 +25,9 @@ class Slider(object):
     """
     The MDC Linear Progress component is a spec-aligned linear progress indicator component adhering to the Material Design progress & activity requirements.
 
-    https://material.io/develop/web/components/linear-progress/
+    Related Pages:
+
+      https://material.io/develop/web/components/linear-progress/
 
     """
     schema = {"type": 'div', 'css': None,
@@ -47,7 +51,9 @@ class Slider(object):
     """
     MDC Slider provides an implementation of the Material Design slider component.
 
-    https://material.io/develop/web/components/input-controls/sliders/
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/sliders/
 
     :param value:
     :param total:

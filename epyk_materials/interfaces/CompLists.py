@@ -7,14 +7,18 @@ class List(object):
   def images(self):
     """
 
-    https://material.io/develop/web/components/image-lists/
+    Related Pages:
+
+      https://material.io/develop/web/components/image-lists/
 
     """
     pass
 
   def list(self):
     """
-    https://material.io/develop/web/components/lists/
+    Related Pages:
+
+      https://material.io/develop/web/components/lists/
 
     :return:
     """
