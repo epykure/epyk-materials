@@ -9,6 +9,8 @@ class Inputs(object):
 
   def chips(self, text):
     """
+    Description:
+    ------------
 
     Related Pages:
 
@@ -24,6 +26,8 @@ class Inputs(object):
 
   def input(self, value="", label=""):
     """
+    Description:
+    ------------
 
     Related Pages:
 
@@ -49,6 +53,9 @@ class Inputs(object):
 
   def filled(self, value="", label="", leading_icon=None, trailing_icon=None):
     """
+    Description:
+    ------------
+
     Usage::
 
       text_1 = rptObj.materials.inputs.filled("Test", "Title", leading_icon="favorite")
@@ -81,6 +88,9 @@ class Inputs(object):
 
   def outlined(self, value="", label="", leading_icon=None, trailing_icon=None):
     """
+    Description:
+    ------------
+
     Usage::
 
       text_1 = rptObj.materials.inputs.outlined("Test", "Title", leading_icon="favorite")
@@ -154,9 +164,13 @@ class Inputs(object):
 
   def radio(self, flag=False, group_name=None):
     """
+    Description:
+    ------------
+
     Usage::
 
-      rptObj.materials.inputs.radio()
+      rptObj.materials.inputs.radio(True, group_name="group_1")
+      rptObj.materials.inputs.radio(False, group_name="group_1")
 
     Related Pages:
 

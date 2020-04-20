@@ -6,6 +6,8 @@ class List(object):
 
   def images(self):
     """
+    Description:
+    ------------
 
     Related Pages:
 
@@ -16,6 +18,9 @@ class List(object):
 
   def list(self):
     """
+    Description:
+    ------------
+
     Related Pages:
 
       https://material.io/develop/web/components/lists/

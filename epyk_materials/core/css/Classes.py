@@ -2,6 +2,7 @@
 from epyk_materials.core.js.css import Ripple
 from epyk_materials.core.js.css import Button
 from epyk_materials.core.js.css import Text
+from epyk_materials.core.js.css import Menu
 
 
 class Catalog(object):
@@ -9,6 +10,18 @@ class Catalog(object):
   def __init__(self, report, htmlObj):
     self.__rptObj, self.htmlObj = report, htmlObj
     self.__ctx = {}
+
+  def surface(self):
+    """
+
+    """
+    cls = "mdc-menu-surface"
+    css_id = "%s_%s" % (Menu.Surface.varName, self.htmlObj.htmlId)
+
+    self.htmlObj.attr['class'].add(cls)
+    self.htmlObj.style.builder(css_id, Menu.Surface.expr % "#%s" % self.htmlObj.htmlId)
+    # attach to the object the Javascript shortcurs to be able to use the API
+    self.htmlObj.js.surface = Menu.Surface(self.htmlObj, css_id)
 
   def line_ripple(self):
     """

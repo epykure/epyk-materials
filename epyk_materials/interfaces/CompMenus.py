@@ -12,4 +12,8 @@ class Menu(object):
 
       https://material.io/develop/web/components/menu-surface/
     """
-    pass
+    menu = self.context.rptObj.ui.div()
+    menu.set_attrs({"class": None, 'css': None})
+    self.context.add_cls(menu)
+    menu.style.mdc.surface()
+    return menu
