@@ -173,11 +173,12 @@ class Catalog(object):
     :return:
     """
     cls = "mdc-icon-button"
+    css_id = "%s_%s" % (Button.Floating.varName, self.htmlObj.htmlId)
+
     self.htmlObj.attr['class'].add(cls)
-    self.htmlObj.style.builder(Button.Floating.varName, Button.Floating.expr % ".%s" % cls)
+    self.htmlObj.style.builder(css_id, Button.Floating.expr % "#%s" % self.htmlObj.htmlId)
     # attach to the object the Javascript shortcurs to be able to use the API
-    self.htmlObj.js.icon = Button.Floating(self.htmlObj, self.htmlObj.htmlId)
-    self.htmlObj.js.grp_icon = Button.Floating(self.htmlObj, ".%s" % cls)
+    self.htmlObj.js.button = Button.Floating(self.htmlObj, css_id)
 
   def button_icon_toggle(self):
     """

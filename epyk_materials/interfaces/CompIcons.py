@@ -11,6 +11,8 @@ class Icon(object):
   def icon(self, text="", in_text_field=False):
     """
 
+    https://material.io/develop/web/components/buttons/icon-buttons/
+
     Attributes:
     ----------
     """
@@ -20,6 +22,47 @@ class Icon(object):
     if in_text_field:
       span.attr["class"].add("mdc-text-field__icon")
     return span
+
+  def button(self, text=""):
+    """
+    Description:
+    ------------
+    The icon button will work without JavaScript, but you can enhance it to have a ripple effect by instantiating MDCRipple on the root element. See MDC Ripple for details.
+
+    https://material.io/develop/web/components/buttons/icon-buttons/
+
+    Attributes:
+    ----------
+    """
+    button = self.context.rptObj.ui.button(text)
+    button.style.clear_all()
+    button.attr["class"].add("material-icons")
+    self.context.add_cls(button)
+    button.style.mdc.button_icon()
+    button.onReady([button.js.button.unbounded(True)])
+    return button
+
+  def toggle(self, text="", label=""):
+    """
+    Description:
+    ------------
+    The icon button can be used to toggle between an on and off icon.
+    To style an icon button as an icon button toggle, add both icons as child elements and place the mdc-icon-button__icon--on class on the icon that represents the on element.
+
+    https://material.io/develop/web/components/buttons/icon-buttons/
+
+    Attributes:
+    ----------
+    """
+    schema = {"type": 'button', 'class': None, 'css': None, 'arias': {"pressed": False, 'label': label}, 'children': [
+      {"type": 'icon', 'css': None, 'class': 'material-icons mdc-icon-button__icon mdc-icon-button__icon--on', 'args': {"text": text}},
+      {"type": 'icon', 'css': None, 'class': 'material-icons mdc-icon-button__icon"', 'args': {"text": "%s_border" % text}},
+    ]}
+    button = self.context.rptObj.materials.composite(schema)
+    self.context.add_cls(button)
+    button.style.mdc.button_icon()
+    button.onReady([button.js.button.unbounded(True)])
+    return button
 
   def clock(self, position=None, tooltip="Last Updated Time", width=(None, 'px'), height=(None, 'px'),
             htmlCode=None, profile=None):

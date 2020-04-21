@@ -1,4 +1,6 @@
 
+from epyk.core.js import JsUtils
+
 
 class Floating(object):
 
@@ -7,10 +9,17 @@ class Floating(object):
 
   def __init__(self, htmlObj, varName):
     self.htmlObj = htmlObj
-    self._selector = self.expr % varName
+    self._selector = varName
 
-  def test(self):
-    return 'alert("%s")' % self._selector
+  def unbounded(self, bool):
+    """
+
+    https://material.io/develop/web/components/buttons/icon-buttons/
+
+    :param bool:
+    """
+    bool = JsUtils.jsConvertData(bool, None)
+    return "%s.unbounded = %s" % (self._selector, bool)
 
 
 class Toggle(object):
@@ -20,7 +29,7 @@ class Toggle(object):
 
   def __init__(self, htmlObj, varName):
     self.htmlObj = htmlObj
-    self._selector = varName# "(function(){return new mdc.iconButton.MDCTextFieldIconFoundation(document.querySelector('%s'))})()" % varName
+    self._selector = varName
 
   def setAttr(self):
     return "console.log(%s.foundation_)" % self._selector #.setContent('RRRRR')" % self._selector
