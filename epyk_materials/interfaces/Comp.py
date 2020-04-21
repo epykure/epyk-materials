@@ -20,6 +20,7 @@ class Materials(object):
     self.navbar = self.navigation.bar #: shortcut for bar :func:`epyk.interfaces.components.CompNavigation.Navigation.bar`
     self.icon = self.icons.icon
     self.select = self.selects.filled
+    self.list = self.lists.list
 
   @property
   def selects(self):

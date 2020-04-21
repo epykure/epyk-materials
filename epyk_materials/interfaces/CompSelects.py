@@ -61,7 +61,7 @@ class Select(object):
                    ]},
                  ]}]}
     html_b = self.context.rptObj.materials.composite(schema)
-    html_b.style.css.margin = 10
+    html_b.style.css.margin = 2
     self.context.add_cls(html_b)
     html_b.style.mdc.select()
     return html_b

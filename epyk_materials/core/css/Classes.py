@@ -37,6 +37,19 @@ class Catalog(object):
     # attach to the object the Javascript shortcurs to be able to use the API
     self.htmlObj.js.select = Select.Select(self.htmlObj, css_id)
 
+  def list(self):
+    """
+
+    """
+    cls = "mdc-list"
+    css_id = "%s_%s" % (Select.List.varName, self.htmlObj.htmlId)
+
+    self.htmlObj.attr['class'].add(cls)
+    self.htmlObj.style.builder(css_id, Select.List.expr % "#%s" % self.htmlObj.htmlId)
+    #self.htmlObj._report._props['js']["builders_css"].add("%s.listen('MDCSelect:change', () => {});" % css_id)
+    # attach to the object the Javascript shortcurs to be able to use the API
+    self.htmlObj.js.list = Select.List(self.htmlObj, css_id)
+
   def line_ripple(self):
     """
 

@@ -16,7 +16,7 @@ class List(object):
     """
     pass
 
-  def list(self):
+  def list(self, data):
     """
     Description:
     ------------
@@ -27,4 +27,95 @@ class List(object):
 
     :return:
     """
-    pass
+    schema = {"type": 'div', 'css': False, 'children': []}
+    for i, d in enumerate(data):
+      schema[ 'children'].append({'type': 'item', 'class': "mdc-list-item", 'css': False, 'attrs': {"tabindex": i}, 'children': [
+        {"type": 'span', 'class': "mdc-list-item__text", 'css': False, 'args': {"text": d}}
+      ]})
+    html_l = self.context.rptObj.materials.composite(schema)
+    self.context.add_cls(html_l)
+    html_l.style.mdc.list()
+    return html_l
+
+  def selections(self, data):
+    """
+    Description:
+    ------------
+
+    Related Pages:
+
+      https://material.io/develop/web/components/lists/
+
+    :return:
+    """
+    schema = {"type": 'div', 'css': False, 'attrs': {'role': 'listbox'}, 'children': []}
+    for i, d in enumerate(data):
+      schema[ 'children'].append({'type': 'item', 'class': "mdc-list-item", 'css': False, 'attrs': {"tabindex": i, 'role': 'option'}, 'children': [
+        {"type": 'span', 'class': "mdc-list-item__text", 'css': False, 'args': {"text": d}}
+      ]})
+    html_l = self.context.rptObj.materials.composite(schema)
+    self.context.add_cls(html_l)
+    html_l.style.mdc.list()
+    html_l.onReady([html_l.js.list.singleSelection(True)])
+    return html_l
+
+  def radios(self, data, group_name=None):
+    """
+    Description:
+    ------------
+
+    Related Pages:
+
+      https://material.io/develop/web/components/lists/
+
+    :return:
+    """
+    if group_name is None:
+      group_name = "radios_%s" % id(data)
+    schema = {"type": 'list', 'css': False, 'attrs': {'role': 'radiogroup'}, 'children': []}
+    for i, d in enumerate(data):
+      schema[ 'children'].append({'type': 'item', 'class': "mdc-list-item", 'css': False, 'attrs': {"tabindex": i, 'role': 'radio'}, 'arias': {'checked': False}, 'children': [
+        {"type": 'div', 'class': "mdc-list-item__graphic", 'css': False, 'children': [
+          {"type": 'div', "class": "mdc-radio", 'css': False, 'children': [
+            {"type": 'radio', "class": "mdc-radio__native-control", 'css': False, 'attrs': {"value": d}, 'args': {'group_name': group_name}},
+            {"type": 'div', "class": "mdc-radio__background", 'css': False, 'children': [
+              {"type": 'div', "class": "mdc-radio__outer-circle", 'css': False},
+              {"type": 'div', "class": "mdc-radio__inner-circle", 'css': False},
+            ]}
+          ]},
+        ]},
+        {"type": 'label', "class": "mdc-list-item__text", 'css': False, 'args': {"text": d}},
+      ]})
+    html_l = self.context.rptObj.materials.composite(schema)
+    self.context.add_cls(html_l)
+    html_l.style.mdc.list()
+    return html_l
+
+  def checkbox(self, data, group_name=None):
+    """
+    Description:
+    ------------
+
+    Related Pages:
+
+      https://material.io/develop/web/components/lists/
+
+    :return:
+    """
+    if group_name is None:
+      group_name = "radios_%s" % id(data)
+    schema = {"type": 'list', 'css': False, 'arias': {'label': 'List with checkbox items'}, 'attrs': {'role': 'group'}, 'children': []}
+    for i, d in enumerate(data):
+      schema[ 'children'].append({'type': 'item', 'class': "mdc-list-item", 'css': False, 'attrs': {"tabindex": i, 'role': 'checkbox'}, 'arias': {'checked': False}, 'children': [
+        {"type": 'div', 'class': "mdc-list-item__graphic", 'css': False, 'children': [
+          {"type": 'div', "class": "mdc-checkbox", 'css': False, 'children': [
+            {"type": 'checkbox', "class": "mdc-checkbox__native-control", 'css': False, 'attrs': {"value": d}, 'args': {'flag': False}},
+            {"type": 'div', "class": "mdc-checkbox__background", 'css': False}
+          ]},
+        ]},
+        {"type": 'label', "class": "mdc-list-item__text", 'css': False, 'args': {"text": d}},
+      ]})
+    html_l = self.context.rptObj.materials.composite(schema)
+    self.context.add_cls(html_l)
+    html_l.style.mdc.list()
+    return html_l
