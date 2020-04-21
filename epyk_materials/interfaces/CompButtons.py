@@ -9,9 +9,15 @@ class Buttons(object):
 
   def button(self, icon, label=None):
     """
+    Description:
+    ------------
 
-    https://material.io/develop/web/components/buttons/floating-action-buttons/
+    Related Pages:
 
+      https://material.io/develop/web/components/buttons/floating-action-buttons/
+
+    Attributes:
+    ----------
     :param icon:
     :param label:
     """
@@ -45,7 +51,12 @@ class Buttons(object):
   def toggle_icon(self, icon, width=(None, "%"), height=(None, "px"), htmlCode=None, tooltip=None,
                   profile=None, options=None):
     """
+    Description:
+    ------------
     The icon button can be used to toggle between an on and off icon.
+
+    Attributes:
+    ----------
     :param icon:
     :param width:
     :param height:
@@ -69,17 +80,17 @@ class Buttons(object):
 
   def toggle(self, flag, htmlCode=None, profile=None):
     """
-
-
-    Usage::
-
-      switchControl = new mdc.switchControl.MDCSwitch(document.querySelector('.mdc-switch'));
+    Description:
+    ------------
+    Switches communicate an action a user can take. They are typically placed throughout your UI, in places like dialogs, forms, cards, and toolbars.
 
     Related Pages:
 
       https://material-components.github.io/material-components-web-catalog/#/component/switch
+      https://material-components.github.io/material-components-web-catalog/#/component/switch
 
-
+    Attributes:
+    ----------
     :param flag:
     :param htmlCode:
     :param profile:

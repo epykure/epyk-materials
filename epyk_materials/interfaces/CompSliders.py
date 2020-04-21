@@ -60,6 +60,8 @@ class Slider(object):
 
       https://material.io/develop/web/components/input-controls/sliders/
 
+    Attributes:
+    ----------
     :param value:
     :param total:
     :param label:
@@ -91,6 +93,8 @@ class Slider(object):
 
       https://material.io/develop/web/components/input-controls/sliders/
 
+    Attributes:
+    ----------
     :param value:
     :param total:
     :param label:
@@ -128,6 +132,8 @@ class Slider(object):
 
       https://material.io/develop/web/components/input-controls/sliders/
 
+    Attributes:
+    ----------
     :param value:
     :param total:
     :param label:
