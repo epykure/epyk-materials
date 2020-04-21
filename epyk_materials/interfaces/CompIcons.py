@@ -3,6 +3,9 @@
 class Icon(object):
 
   def __init__(self, context):
+    context.rptObj.jsImports.add("material-components-web")
+    context.rptObj.cssImport.add("material-components-web")
+    context.rptObj.cssImport.add("material-icons")
     self.context = context
 
   def icon(self, text="", in_text_field=False):
@@ -11,7 +14,6 @@ class Icon(object):
     Attributes:
     ----------
     """
-    self.context.rptObj.cssImport.add("material-icons")
     span = self.context.rptObj.ui.texts.span(text)
     span.style.clear_all()
     span.attr["class"].add("material-icons")

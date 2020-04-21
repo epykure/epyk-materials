@@ -2,6 +2,8 @@
 
 class List(object):
   def __init__(self, context):
+    context.rptObj.jsImports.add("material-components-web")
+    context.rptObj.cssImport.add("material-components-web")
     self.context = context
 
   def images(self):
