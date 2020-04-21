@@ -24,6 +24,7 @@ class Materials(object):
     self.select = self.selects.filled
     self.list = self.lists.list
     self.menu = self.menus.anchor
+    self.switch = self.buttons.toggle
 
   @property
   def selects(self):

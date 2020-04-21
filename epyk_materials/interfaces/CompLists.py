@@ -41,6 +41,8 @@ class List(object):
     """
     Description:
     ------------
+    MDC List can handle selecting/deselecting list elements based on click or keyboard actions.
+    When enabled, the space and enter keys (or click event) will trigger a single list item to become selected and any other previously selected element to become deselected.
 
     Related Pages:
 
@@ -63,6 +65,7 @@ class List(object):
     """
     Description:
     ------------
+    When rendering list radio group with pre-selected radio button the selected list item should contain aria-checked set to true and the native radio input element contains checked attribute, all other list items should have aria-checked set to false. The list root contains role="radiogroup" whereas each list item within radio group contains role="radio".
 
     Related Pages:
 
@@ -95,6 +98,8 @@ class List(object):
     """
     Description:
     ------------
+    When rendering list with checkbox items all pre-selected list items should contain aria-checked set to true and the native checkbox input element should contain checked attribute, all other list items should have aria-checked set to false.
+    Each list item in checkbox list contains role="checkbox" attribute and the list root should contain role="group" and aria-label attributes.
 
     Related Pages:
 
