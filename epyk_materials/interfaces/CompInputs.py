@@ -219,7 +219,7 @@ class Inputs(object):
       {"type": 'div', "class": "mdc-checkbox", 'children': [
         {'type': 'checkbox', 'class': 'mdc-checkbox__native-control'},
         {'type': 'div', 'class': 'mdc-checkbox__background', 'children': [
-          ''
+          {'type': 'svg', 'class': 'mdc-checkbox__checkmark', 'attrs': {'viewBox': '0 0 24 24'}}
         ]},
       ]},
       {"type": 'div', "class": "mdc-radio__background", 'css': False, 'children': [
