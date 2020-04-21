@@ -6,6 +6,17 @@ class Navigation(object):
     context.rptObj.cssImport.add("material-components-web")
     self.context = context
 
-  def bar(self, icon=None, title=None, width=(100, '%'), height=(40, 'px'), options=None, profile=False):
+  def bar(self):
+    """
 
+    https://material.io/develop/web/components/top-app-bar/
+
+    """
     return
+
+  def tabs(self):
+    """
+
+    https://material.io/develop/web/components/tabs/tab-bar/
+    """
+    pass

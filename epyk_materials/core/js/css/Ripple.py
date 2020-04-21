@@ -70,8 +70,58 @@ class LinearProgress(object):
 
     Attributes:
     ----------
-    :param num: String.
+    :param num: Number.
     """
     num = JsUtils.jsConvertData(num, None)
-    #return "console.log(%s)" % self._selector
-    return "%s.foundation_.progress_ = %s" % (self._selector, num)
+    return "%s.progress = %s" % (self._selector, num)
+
+  def setDeterminate(self, bool):
+    """
+    Description:
+    ------------
+    Toggles the component between the determinate and indeterminate state.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/linear-progress/
+
+    Attributes:
+    ----------
+    :param bool: Boolean.
+    """
+    bool = JsUtils.jsConvertData(bool, None)
+    return "%s.determinate = %s" % (self._selector, bool)
+
+  def setBuffer(self, num):
+    """
+    Description:
+    ------------
+    Sets the buffer bar to this value. Value should be between [0, 1].
+
+    Related Pages:
+
+      https://material.io/develop/web/components/linear-progress/
+
+    Attributes:
+    ----------
+    :param num: Number.
+    """
+    num = JsUtils.jsConvertData(num, None)
+    return "%s.buffer = %s" % (self._selector, num)
+
+  def setReverse(self, bool):
+    """
+    Description:
+    ------------
+    Reverses the direction of the linear progress indicator.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/linear-progress/
+
+    Attributes:
+    ----------
+    :param bool: Boolean.
+    """
+    bool = JsUtils.jsConvertData(bool, None)
+    return "%s.reverse = %s" % (self._selector, bool)

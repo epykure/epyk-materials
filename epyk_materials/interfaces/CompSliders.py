@@ -20,8 +20,7 @@ class Slider(object):
     context.rptObj.cssImport.add("material-components-web")
     self.context = context
 
-  def progressbar(self, number=0, total=100, width=(100, '%'), label="", height=(20, 'px'), htmlCode=None, attrs=None,
-                  helper=None, options=None, profile=None):
+  def progressbar(self, number=0, total=100, label=""):
     """
     The MDC Linear Progress component is a spec-aligned linear progress indicator component adhering to the Material Design progress & activity requirements.
 
@@ -45,6 +44,9 @@ class Slider(object):
     html_pr = self.context.rptObj.materials.composite(schema)
     self.context.add_cls(html_pr)
     html_pr.style.mdc.linear_progress()
+    html_pr.onReady([
+      html_pr.js.progress.setProgress(number)
+    ])
     return html_pr
 
   def slider(self, value, total=100, label=""):
