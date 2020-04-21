@@ -204,3 +204,32 @@ class Inputs(object):
     self.context.add_cls(html_c)
     html_c.style.mdc.chip()
     return html_c
+
+  def checkbox(self, text):
+    """
+    Checkboxes allow the user to select one or more items from a set.
+    Related Pages:
+
+        https://material.io/develop/web/components/input-controls/checkboxes/
+
+      :param text:
+    """
+
+    schema = {"type": 'div', 'css': 'mdc-form-field', 'children': [
+      {"type": 'div', "class": "mdc-checkbox", 'children': [
+        {'type': 'checkbox', 'class': 'mdc-checkbox__native-control'},
+        {'type': 'div', 'class': 'mdc-checkbox__background', 'children': [
+          {'type': 'svg', 'class': 'mdc-checkbox__checkmark', 'attrs': {'viewBox': '0 0 24 24'}}
+        ]},
+      ]},
+      {"type": 'div', "class": "mdc-radio__background", 'css': False, 'children': [
+        {"type": 'div', "class": "mdc-radio__outer-circle", 'css': False},
+        {"type": 'div', "class": "mdc-radio__inner-circle", 'css': False},
+      ]},
+      {"type": 'div', "class": "mdc-radio__ripple", 'css': False},
+    ]}
+    html_chk = self.context.rptObj.materials.composite(schema)
+    self.context.add_cls(html_chk)
+    html_chk.style.mdc.radio()
+    html_chk.css({"margin": '5px'})
+    return html_chk
