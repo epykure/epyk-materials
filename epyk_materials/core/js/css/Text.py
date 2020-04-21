@@ -24,6 +24,24 @@ class Chip(object):
     self._selector = varName
 
 
+class Field(object):
+
+  varName = 'formField'
+  expr = "new mdc.formField.MDCFormField(document.querySelector('%s'))"
+
+  def __init__(self, htmlObj, varName):
+    self.htmlObj = htmlObj
+    self._selector = varName
+
+  def input(self, value):
+    """
+
+    :param value:
+    """
+    value = JsUtils.jsConvertData(value, None)
+    return "%s.input = %s" % (self._selector, value)
+
+
 class Icon(object):
 
   varName = 'icon'

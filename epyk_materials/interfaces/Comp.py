@@ -21,10 +21,12 @@ class Materials(object):
 
     # Shortcut for the main components
     self.icon = self.icons.icon
+    self.button = self.buttons.button
     self.select = self.selects.filled
     self.list = self.lists.list
     self.menu = self.menus.anchor
     self.switch = self.buttons.toggle
+    self.radio = self.inputs.radio
 
   @property
   def selects(self):

@@ -145,10 +145,11 @@ class Inputs(object):
     cont = self.context.rptObj.ui.texts.label([text, div]).set_attrs({"class": "mdc-text-field mdc-text-field--outlined", 'css': None})
     return cont
 
-  def radio(self, flag=False, group_name=None):
+  def mdc_radio(self, flag=False, group_name=None):
     """
     Description:
     ------------
+    Radio buttons allow the user to select one option from a set while seeing all available options.
 
     Usage::
 
@@ -172,6 +173,28 @@ class Inputs(object):
     html_r.style.mdc.radio()
     html_r.css({"margin": '5px'})
     return html_r
+
+  def radio(self, flag=False, label="", group_name=None):
+    """
+    Description:
+    ------------
+    Radio buttons allow the user to select one option from a set while seeing all available options.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/radio-buttons/
+
+    :param flag:
+    :param label:
+    :param group_name:
+    """
+    div = self.context.rptObj.ui.div()
+    div.set_attrs({"class": None, 'css': None})
+    self.context.add_cls(div)
+    div += self.mdc_radio(flag=flag, group_name=group_name)
+    div.style.mdc.text_field()
+    div.onReady([div.js.field.input("radio")])
+    return div
 
   def chip(self, text):
     """

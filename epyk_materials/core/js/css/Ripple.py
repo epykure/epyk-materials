@@ -21,6 +21,66 @@ class Radio(object):
     self.htmlObj = htmlObj
     self._selector = varName
 
+  def disabled(self, bool=None):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s disabled state. Setter proxies to foundation’s setDisabled method
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/radio-buttons/
+
+    Attributes:
+    ----------
+    :param bool: Boolean.
+    """
+    if bool is None:
+      return "%s.disabled" % self._selector
+
+    bool = JsUtils.jsConvertData(bool, None)
+    return "%s.disabled = %s" % (self._selector, bool)
+
+  def checked(self, bool=None):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s checked state
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/radio-buttons/
+
+    Attributes:
+    ----------
+    :param bool: Boolean.
+    """
+    if bool is None:
+      return "%s.checked" % self._selector
+
+    bool = JsUtils.jsConvertData(bool, None)
+    return "%s.checked = %s" % (self._selector, bool)
+
+  def value(self, val=None):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s value
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/radio-buttons/
+
+    Attributes:
+    ----------
+    :param val: String.
+    """
+    if val is None:
+      return "%s.value" % self._selector
+
+    val = JsUtils.jsConvertData(val, None)
+    return "%s.value = %s" % (self._selector, val)
+
 
 class Slider(object):
 

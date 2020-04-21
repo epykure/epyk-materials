@@ -84,6 +84,18 @@ class Catalog(object):
     self.htmlObj.style.builder(css_id, Text.Line.expr % "#%s" % self.htmlObj.htmlId)
     self.htmlObj.js.line = Text.Line(self.htmlObj, css_id)
 
+  def text_field(self):
+    """
+
+    :return:
+    """
+    cls = "mdc-form-field"
+    css_id = "%s_%s" % (Text.Field.varName, self.htmlObj.htmlId)
+
+    self.htmlObj.attr['class'].add(cls)
+    self.htmlObj.style.builder(css_id, Text.Field.expr % "#%s" % self.htmlObj.htmlId)
+    self.htmlObj.js.field = Text.Field(self.htmlObj, css_id)
+
   def text_icon(self):
     """
     Description:
@@ -195,7 +207,7 @@ class Catalog(object):
     # attach to the object the Javascript shortcurs to be able to use the API
     self.htmlObj.js.toggle = Button.Toggle(self.htmlObj, "%s_%s" % (Button.Switch.varName, self.htmlObj.htmlId))
 
-  def floating(self):
+  def button_floating(self):
     """
 
     Related Pages:
@@ -205,11 +217,13 @@ class Catalog(object):
     :return:
     """
     cls = "mdc-fab"
+    css_id = "%s_%s" % (Ripple.LinearProgress.varName, self.htmlObj.htmlId)
+
     self.htmlObj.attr['class'].add(cls)
-    self.htmlObj.style.builder(Button.Floating.varName, Button.Floating.expr % ".%s" % cls)
+
+    self.htmlObj.style.builder(css_id, Button.Floating.expr % "#%s" % self.htmlObj.htmlId)
     # attach to the object the Javascript shortcurs to be able to use the API
-    self.htmlObj.js.floating = Button.Floating(self.htmlObj, self.htmlObj.htmlId)
-    self.htmlObj.js.grp_floating = Button.Floating(self.htmlObj, ".%s" % cls)
+    self.htmlObj.js.floating = Button.Floating(self.htmlObj, css_id)
 
   def linear_progress(self):
     """

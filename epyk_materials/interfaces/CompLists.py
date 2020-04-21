@@ -79,7 +79,7 @@ class List(object):
       group_name = "radios_%s" % id(data)
     schema = {"type": 'list', 'css': False, 'attrs': {'role': 'radiogroup'}, 'children': []}
     for i, d in enumerate(data):
-      schema[ 'children'].append({'type': 'item', 'class': "mdc-list-item", 'css': False, 'attrs': {"tabindex": i, 'role': 'radio'}, 'arias': {'checked': False}, 'children': [
+      schema['children'].append({'type': 'item', 'class': "mdc-list-item", 'css': False, 'attrs': {"tabindex": i, 'role': 'radio'}, 'arias': {'checked': False}, 'children': [
         {"type": 'div', 'class': "mdc-list-item__graphic", 'css': False, 'children': [
           {"type": 'div', "class": "mdc-radio", 'css': False, 'children': [
             {"type": 'radio', "class": "mdc-radio__native-control", 'css': False, 'attrs': {"value": d}, 'args': {'group_name': group_name}},

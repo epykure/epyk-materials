@@ -7,13 +7,29 @@ class Buttons(object):
     context.rptObj.cssImport.add("material-components-web")
     self.context = context
 
-  def button(self, text=None, icon=None, width=(None, "%"), height=(None, "px"), htmlCode=None, tooltip=None,
-             profile=None, options=None):
-    html_button = self.context.rptObj.ui.button(text, icon, width, height, htmlCode=htmlCode,
-                                         tooltip=tooltip, profile=profile, options=options)
-    html_button.style.clear_all()
-    html_button.attr['class'].add('mdc-fab')
-    return html_button
+  def button(self, icon, label=None):
+    """
+
+    https://material.io/develop/web/components/buttons/floating-action-buttons/
+
+    :param icon:
+    :param label:
+    """
+    if label is not None:
+      schema = {"type": 'button', 'class': "mdc-fab--extended", 'css': None, 'arias': {"pressed": False}, 'children': [
+        {"type": 'div', 'class': 'mdc-fab__ripple', 'css': None},
+        {"type": 'span', 'class': 'mdc-fab__icon material-icons', 'css': None, 'args': {"text": icon}},
+        {"type": 'div', 'class': 'mdc-fab__label', 'css': None, 'args': {"htmlObjs": label}}
+      ]}
+    else:
+      schema = {"type": 'button', 'class': None, 'css': None, 'arias': {"pressed": False}, 'children': [
+        {"type": 'div', 'class': 'mdc-fab__ripple', 'css': None},
+        {"type": 'span', 'class': 'mdc-fab__icon material-icons', 'css': None, 'args': {"text": icon}}
+      ]}
+    button = self.context.rptObj.materials.composite(schema)
+    self.context.add_cls(button)
+    button.style.mdc.button_floating()
+    return button
 
   def icon(self, icon, width=(None, "%"), height=(None, "px"), htmlCode=None, tooltip=None,
              profile=None, options=None):
