@@ -27,6 +27,7 @@ class Materials(object):
     self.menu = self.menus.anchor
     self.switch = self.buttons.toggle
     self.radio = self.inputs.radio
+    self.slider = self.sliders.slider
 
   @property
   def selects(self):
