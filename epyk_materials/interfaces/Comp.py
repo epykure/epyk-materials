@@ -18,23 +18,36 @@ class Materials(object):
   def __init__(self, rptObj):
     self.rptObj = rptObj
     self.navbar = self.navigation.bar #: shortcut for bar :func:`epyk.interfaces.components.CompNavigation.Navigation.bar`
+
+    # Shortcut for the main components
     self.icon = self.icons.icon
     self.select = self.selects.filled
     self.list = self.lists.list
+    self.menu = self.menus.anchor
 
   @property
   def selects(self):
     """
     Description:
     ------------
+    MDC Select provides Material Design single-option select menus, using the MDC menu. The Select component is fully accessible, and supports RTL rendering.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/select-menus/
     """
     return CompSelects.Select(self)
 
   @property
-  def menu(self):
+  def menus(self):
     """
     Description:
     ------------
+    A menu displays a list of choices on a temporary surface. They appear when users interact with a button, action, or other control.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/menus/
     """
     return CompMenus.Menu(self)
 
@@ -43,6 +56,11 @@ class Materials(object):
     """
     Description:
     ------------
+    Lists are continuous, vertical indexes of text or images.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/lists/
     """
     return CompLists.List(self)
 
@@ -51,6 +69,12 @@ class Materials(object):
     """
     Description:
     ------------
+    MDC Form Field aligns an MDC Web form field (for example, a checkbox) with its label and makes it RTL-aware.
+    It also activates a ripple effect upon interacting with the label.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/form-fields/
     """
     return CompTexts.Text(self)
 
@@ -59,6 +83,11 @@ class Materials(object):
     """
     Description:
     ------------
+    The MDC Linear Progress component is a spec-aligned linear progress indicator component adhering to the Material Design progress & activity requirements.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/linear-progress/
     """
     return CompNavigation.Navigation(self)
 
@@ -67,6 +96,11 @@ class Materials(object):
     """
     Description:
     ------------
+    Buttons allow users to take actions, and make choices, with a single tap.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/buttons/
     """
     return CompButtons.Buttons(self)
 
@@ -83,6 +117,12 @@ class Materials(object):
     """
     Description:
     ------------
+    MDC Form Field aligns an MDC Web form field (for example, a checkbox) with its label and makes it RTL-aware.
+    It also activates a ripple effect upon interacting with the label.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/form-fields/
     """
     return CompIcons.Icon(self)
 
@@ -91,6 +131,12 @@ class Materials(object):
     """
     Description:
     ------------
+    MDC Slider provides an implementation of the Material Design slider component.
+    It is modeled after the browser’s <input type="range"> element. Sliders are fully RTL-aware, and conform to the WAI-ARIA slider authoring practices.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/sliders/
     """
     return CompSliders.Slider(self)
 

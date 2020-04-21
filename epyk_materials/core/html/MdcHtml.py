@@ -9,7 +9,11 @@ class MdcComposite(HtmlTextComp.Composite):
     """
     Description:
     ------------
+    This list is specific for the Material components.
 
+    Span are replaced by div as I did not want to use the span as a container object.
+    I believe this component should remain a base one.
+    
     """
     return {
       'div': self._report.ui.div,
