@@ -24,6 +24,18 @@ class Catalog(object):
     # attach to the object the Javascript shortcurs to be able to use the API
     self.htmlObj.js.surface = Menu.Surface(self.htmlObj, css_id)
 
+  def chip(self):
+    """
+
+    """
+    cls = "mdc-chip-set"
+    css_id = "%s_%s" % (Text.Chip.varName, self.htmlObj.htmlId)
+
+    self.htmlObj.attr['class'].add(cls)
+    self.htmlObj.style.builder(css_id, Text.Chip.expr % "#%s" % self.htmlObj.htmlId)
+    # attach to the object the Javascript shortcurs to be able to use the API
+    self.htmlObj.js.chip = Text.Chip(self.htmlObj, css_id)
+
   def select(self):
     """
 

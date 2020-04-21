@@ -72,3 +72,38 @@ class Text(object):
     self.context.add_cls(span)
     span.style.mdc.text_floating()
     return span
+
+  def chip(self, text, choice=False):
+    """
+    Description:
+    ------------
+    Chips are compact elements that allow users to enter information, select a choice, filter content, or trigger an action.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/chips/
+
+    :param text:
+    """
+    if choice:
+      schema = {"type": 'div', 'class': 'mdc-chip-set--choice', 'attrs': {'role': 'grid'}, 'children': []}
+    else:
+      schema = {"type": 'div', 'attrs': {'role': 'grid'}, 'children': []}
+    if not isinstance(text, list):
+      text = [text]
+
+    for t in text:
+      schema['children'].append({"type": 'div', "class": "mdc-chip", 'css': False, 'attrs': {'role': 'row'}, 'children': [
+        {"type": 'div', "class": "mdc-chip__ripple", 'css': False},
+        {"type": 'icon', "class": "material-icons mdc-chip__icon mdc-chip__icon--leading", 'css': False, 'args': {'text': 'event'}},
+        {"type": 'div',  'attrs': {'role': 'gridcell'}, 'css': False, 'children': [
+          {"type": 'div', "class": "mdc-chip__primary-action", 'attrs': {'role': 'button'}, 'css': False, 'children': [
+            {"type": 'span', "class": "mdc-chip__text", 'css': False, 'args': {'text': t}},
+          ]},
+        ]},
+      ]})
+
+    html_c = self.context.rptObj.materials.composite(schema)
+    self.context.add_cls(html_c)
+    html_c.style.mdc.chip()
+    return html_c

@@ -14,6 +14,16 @@ class Line(object):
     self._selector = varName
 
 
+class Chip(object):
+
+  varName = 'chipSet'
+  expr = "new mdc.chips.MDCChipSet(document.querySelector('%s'))"
+
+  def __init__(self, htmlObj, varName):
+    self.htmlObj = htmlObj
+    self._selector = varName
+
+
 class Icon(object):
 
   varName = 'icon'
