@@ -5,7 +5,7 @@ class Icon(object):
   def __init__(self, context):
     self.context = context
 
-  def icon(self, text=None, in_text_field=False):
+  def icon(self, text="", in_text_field=False):
     """
 
     Attributes:

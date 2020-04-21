@@ -4,6 +4,16 @@ from epyk.core.js import JsUtils
 from epyk.core.js.primitives import JsObjects
 
 
+class Line(object):
+
+  varName = 'lineRipple'
+  expr = "new mdc.lineRipple.MDCLineRipple(document.querySelector('%s'))"
+
+  def __init__(self, htmlObj, varName):
+    self.htmlObj = htmlObj
+    self._selector = varName
+
+
 class Icon(object):
 
   varName = 'icon'

@@ -39,6 +39,23 @@ class Text(object):
     html_t.style.mdc.text_icon()
     return html_t
 
+  def line(self, label=""):
+    """
+    Floating labels display the type of input a field requires.
+    Every Text Field and Select should have a label, except for full-width text fields, which use the input’s placeholder attribute instead.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/floating-label/
+
+    :param label:
+    """
+    span = self.context.rptObj.ui.div(label)
+    span.set_attrs({"class": None, 'css': None})
+    self.context.add_cls(span)
+    span.style.mdc.text_line()
+    return span
+
   def floating(self, label):
     """
     Floating labels display the type of input a field requires.

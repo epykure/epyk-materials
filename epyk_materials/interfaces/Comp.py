@@ -7,6 +7,7 @@ from epyk_materials.interfaces import CompNavigation
 from epyk_materials.interfaces import CompTexts
 from epyk_materials.interfaces import CompLists
 from epyk_materials.interfaces import CompMenus
+from epyk_materials.interfaces import CompSelects
 
 from epyk_materials.core.html import MdcHtml
 from epyk_materials.core.css import Classes
@@ -18,6 +19,15 @@ class Materials(object):
     self.rptObj = rptObj
     self.navbar = self.navigation.bar #: shortcut for bar :func:`epyk.interfaces.components.CompNavigation.Navigation.bar`
     self.icon = self.icons.icon
+    self.select = self.selects.filled
+
+  @property
+  def selects(self):
+    """
+    Description:
+    ------------
+    """
+    return CompSelects.Select(self)
 
   @property
   def menu(self):

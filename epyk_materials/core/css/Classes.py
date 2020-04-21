@@ -3,6 +3,7 @@ from epyk_materials.core.js.css import Ripple
 from epyk_materials.core.js.css import Button
 from epyk_materials.core.js.css import Text
 from epyk_materials.core.js.css import Menu
+from epyk_materials.core.js.css import Select
 
 
 class Catalog(object):
@@ -23,6 +24,19 @@ class Catalog(object):
     # attach to the object the Javascript shortcurs to be able to use the API
     self.htmlObj.js.surface = Menu.Surface(self.htmlObj, css_id)
 
+  def select(self):
+    """
+
+    """
+    cls = "mdc-select"
+    css_id = "%s_%s" % (Select.Select.varName, self.htmlObj.htmlId)
+
+    self.htmlObj.attr['class'].add(cls)
+    self.htmlObj.style.builder(css_id, Select.Select.expr % "#%s" % self.htmlObj.htmlId)
+    #self.htmlObj._report._props['js']["builders_css"].add("%s.listen('MDCSelect:change', () => {});" % css_id)
+    # attach to the object the Javascript shortcurs to be able to use the API
+    self.htmlObj.js.select = Select.Select(self.htmlObj, css_id)
+
   def line_ripple(self):
     """
 
@@ -35,6 +49,15 @@ class Catalog(object):
     self.htmlObj.style.builder(css_id, Ripple.LineRipple.expr % "#%s" % self.htmlObj.htmlId)
     # attach to the object the Javascript shortcurs to be able to use the API
     self.htmlObj.js.line_ripple = Ripple.LineRipple(self.htmlObj, css_id)
+
+  def text_line(self):
+
+    cls = "mdc-line-ripple"
+    css_id = "%s_%s" % (Text.Line.varName, self.htmlObj.htmlId)
+
+    self.htmlObj.attr['class'].add(cls)
+    self.htmlObj.style.builder(css_id, Text.Line.expr % "#%s" % self.htmlObj.htmlId)
+    self.htmlObj.js.line = Text.Line(self.htmlObj, css_id)
 
   def text_icon(self):
     """
