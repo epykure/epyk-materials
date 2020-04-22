@@ -82,6 +82,16 @@ class Radio(object):
     return "%s.value = %s" % (self._selector, val)
 
 
+class TabBar(object):
+
+  varName = 'tabBar'
+  expr = "new mdc.tabBar.MDCTabBar(document.querySelector('%s'))"
+
+  def __init__(self, htmlObj, varName):
+    self.htmlObj = htmlObj
+    self._selector = varName
+
+
 class Slider(object):
 
   varName = 'slider'

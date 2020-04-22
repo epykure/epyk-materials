@@ -265,6 +265,22 @@ class Catalog(object):
     self.htmlObj.style.builder(css_id, Ripple.Radio.expr % "#%s" % self.htmlObj.htmlId)
     self.htmlObj.js.radio = Ripple.Radio(self.htmlObj, css_id)
 
+  def tab_bar(self):
+    """
+
+    Related Pages:
+
+      https://material.io/develop/web/components/tabs/tab-bar/
+
+    :return:
+    """
+    cls = "mdc-tab-bar"
+    css_id = "%s_%s" % (Ripple.TabBar.varName, self.htmlObj.htmlId)
+
+    self.htmlObj.attr['class'].add(cls)
+    self.htmlObj.style.builder(css_id, Ripple.TabBar.expr % "#%s" % self.htmlObj.htmlId)
+    self.htmlObj.js.tab = Ripple.TabBar(self.htmlObj, css_id)
+
   def elevation(self):
     """
     Elevation is often already included within the baseline styles of other components (e.g. raised buttons, elevated cards).
