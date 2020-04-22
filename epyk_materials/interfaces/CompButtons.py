@@ -8,7 +8,7 @@ class Buttons(object):
     context.rptObj.cssImport.add("material-components-web")
     self.context = context
 
-  def button(self, icon, label=None):
+  def button(self, icon, label=""):
     """
     Description:
     ------------
@@ -22,11 +22,11 @@ class Buttons(object):
     :param icon:
     :param label:
     """
-    if label is not None:
-      schema = {"type": 'button', 'class': "mdc-fab--extended", 'css': None, 'arias': {"pressed": False}, 'children': [
-        {"type": 'div', 'class': 'mdc-fab__ripple', 'css': None},
-        {"type": 'span', 'class': 'mdc-fab__icon material-icons', 'css': None, 'args': {"text": icon}},
-        {"type": 'div', 'class': 'mdc-fab__label', 'css': None, 'args': {"htmlObjs": label}}
+    if not label:
+      schema = {"type": 'button', 'class': None, 'css': None, 'arias': {"pressed": False}, 'children': [
+        {"type": 'div', 'class': 'mdc-button__ripple', 'css': None},
+        {"type": 'span', 'class': 'mdc-button__label', 'css': None, 'args': {"text": label}},
+        {"type": 'div', 'class': 'material-icons mdc-button__icon', 'css': None, 'args': {"htmlObjs": icon}}
       ]}
     else:
       schema = {"type": 'button', 'class': None, 'css': None, 'arias': {"pressed": False}, 'children': [
@@ -36,15 +36,14 @@ class Buttons(object):
     button = self.context.rptObj.materials.composite(schema)
 
     #
-    dom_obj = JsMdcComponents.ButtonFloating(button)
+    dom_obj = JsMdcComponents.Button(button)
     button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
     # Add the specific dom features
     button.dom = dom_obj
     return button
 
-  def icon(self, icon, width=(None, "%"), height=(None, "px"), htmlCode=None, tooltip=None,
-             profile=None, options=None):
-    html_button = self.button(None, None, width, height, htmlCode=htmlCode, tooltip=tooltip, profile=profile, options=options)
+  def icon(self, icon, label=""):
+    html_button = self.button(icon, label)
     self.context.rptObj.cssImport.add("material-icons")
     ripple = self.context.rptObj.ui.div()
     ripple.style.clear_all()
@@ -103,15 +102,13 @@ class Buttons(object):
     :param htmlCode:
     :param profile:
     """
-    schema = {"type": 'div', 'css': False,
-              'children': [
-                  {"type": 'div', "class": "mdc-switch__track", 'css': False},
-                  {"type": 'div', "class": "mdc-switch__thumb-underlay", 'css': False, 'children': [
-                    {"type": 'div', "class": "mdc-switch__thumb", 'css': False},
-                    {"type": 'checkbox', "class": "mdc-switch__native-control", 'args': {'flag': flag}, 'aria': {'role': 'switch', 'checked': flag}}
-                  ]},
-      ]
-    }
+    schema = {"type": 'div', 'css': False, 'children': [
+        {"type": 'div', "class": "mdc-switch__track", 'css': False},
+        {"type": 'div', "class": "mdc-switch__thumb-underlay", 'css': False, 'children': [
+          {"type": 'div', "class": "mdc-switch__thumb", 'css': False},
+          {"type": 'checkbox', "class": "mdc-switch__native-control", 'args': {'flag': flag}, 'aria': {'role': 'switch', 'checked': flag}}
+    ]}]}
+
     html_b = self.context.rptObj.materials.composite(schema)
     dom_obj = JsMdcComponents.Icon(html_b)
     html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))

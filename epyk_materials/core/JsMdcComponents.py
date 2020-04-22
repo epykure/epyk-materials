@@ -26,6 +26,13 @@ class FAB(JsMdcHtml):
     return "new mdc.ripple.MDCRipple(document.querySelector('%s'))" % html_id
 
 
+class Button(JsMdcHtml):
+  css_class = "mdc-button"
+
+  def instantiate(self, html_id=None):
+    return "new mdc.ripple.MDCRipple(document.querySelector('%s'))" % html_id
+
+
 class ButtonFloating(JsMdcHtml):
   css_class = "mdc-icon-button"
 
@@ -220,6 +227,50 @@ class Chip(JsMdcHtml):
 
   def instantiate(self, html_id=None):
     return "new mdc.chips.MDCChipSet(document.querySelector('%s'))" % html_id
+
+  def getSelectChip(self):
+    """
+    Description:
+    ------------
+    Proxies to the foundation’s
+
+    Related Pages:
+
+      https://material.io/develop/web/components/chips/
+    """
+    return JsObjects.JsArray.JsArray("%s.selectedChipIds" % self.varName) # % (self.varName, num)
+
+  def selectChipAtIndex(self, index):
+    """
+    Description:
+    ------------
+    Calls MDCChip#setSelectedFromChipSet(selected) on the chip at the given index.
+    Will emit a selection event if called with shouldNotifyClients set to true.
+    The emitted selection event will be ignored by the MDCChipSetFoundation.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/chips/
+
+    Attributes:
+    ----------
+    :param num: index.
+    """
+    index = JsUtils.jsConvertData(index, None)
+    return JsObjects.JsObjects.get("%s.foundation_.adapter_.selectChipAtIndex(%s)" % (self.varName, index))
+
+  def getChipListCount(self):
+    """
+    Description:
+    ------------
+    Proxies to the foundation’s
+
+    Related Pages:
+
+      https://material.io/develop/web/components/chips/
+
+    """
+    return JsObjects.JsArray.JsArray("%s.foundation_.adapter_.getChipListCount()" % self.varName)
 
 
 class Field(JsMdcHtml):
