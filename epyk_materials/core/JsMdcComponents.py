@@ -419,7 +419,79 @@ class Radio(JsMdcHtml):
   def instantiate(self, html_id=None):
     return "new mdc.radio.MDCRadio(document.querySelector('%s'))" % html_id
 
-  def setDisabled(self, bool):
+  @property
+  def val(self):
+    """
+    Description:
+    -----------
+
+    :return:
+    """
+    return JsObjects.JsObjects.get(
+      "{%s: {value: %s, name: %s, timestamp: Date.now(), offset: new Date().getTimezoneOffset()}}" % (
+      self.htmlId, self.content.toStr(), self.value))
+
+  @property
+  def content(self):
+    return JsHtml.ContentFormatters(self.htmlObj._report, "%s.checked" % self.varName)
+
+  @property
+  def checked(self):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s checked state
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.checked" % self.varName, isPyData=False)
+
+  @property
+  def disabled(self):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s checked state
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.disabled" % self.varName, isPyData=False)
+
+  @property
+  def value(self):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s value
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    return JsObjects.JsObjects.get("%s.value" % self.varName)
+
+  def check(self, bool=True):
+    """
+    Description:
+    ------------
+    Updates the icon’s disabled state.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+
+    Attributes:
+    ----------
+    :param bool: String.
+    """
+    bool = JsUtils.jsConvertData(bool, None)
+    return "%s.checked = %s" % (self.varName, bool)
+
+  def setDisabled(self, bool=True):
     """
     Description:
     ------------
@@ -436,6 +508,39 @@ class Radio(JsMdcHtml):
     bool = JsUtils.jsConvertData(bool, None)
     return "%s.disabled = %s" % (self.varName, bool)
 
+  def addClass(self, className):
+    """
+    Description:
+    ------------
+    Adds a class to the root element
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+
+    Attributes:
+    ----------
+    :param label: String.
+    """
+    className = JsUtils.jsConvertData(className, None)
+    return "%s.foundation_.adapter_.addClass(%s)" % (self.varName, className)
+
+  def removeClass(self, className):
+    """
+    Description:
+    ------------
+    Removes a class from the root element
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+
+    Attributes:
+    ----------
+    :param label: String.
+    """
+    className = JsUtils.jsConvertData(className, None)
+    return "%s.foundation_.adapter_.removeClass(%s)" % (self.varName, className)
 
 class Slider(JsMdcHtml):
   css_class = "mdc-slider"
@@ -571,7 +676,7 @@ class Slider(JsMdcHtml):
 
       https://material.io/develop/web/components/input-controls/sliders/
     """
-    return JsObjects.JsBoolean.JsBoolean("%s.foundation_.isDisabled()" % self.varName)
+    return JsObjects.JsBoolean.JsBoolean("%s.foundation_.isDisabled()" % self.varName, isPyData=False)
 
   def setDisabled(self, bool):
     """

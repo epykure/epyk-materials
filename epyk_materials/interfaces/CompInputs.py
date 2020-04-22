@@ -56,7 +56,7 @@ class Inputs(object):
               'children': [
                   {"type": 'input', "class": "mdc-text-field__input", 'css': False, 'args': {'text': value}},
                   {"type": 'div', "class": "mdc-line-ripple", 'css': False},
-                  {"type": 'floating', 'css': False, 'args': {'label': label}},
+                  {"type": 'mdc_floating', 'class-keep': True, 'css': False, 'args': {'label': label}},
       ]
     }
     if leading_icon is not None:
@@ -91,7 +91,7 @@ class Inputs(object):
         {"type": 'div', "class": "mdc-notched-outline", 'css': False, 'children': [
           {"type": 'div', "class": "mdc-notched-outline__leading", 'css': False},
           {"type": 'div', "class": "mdc-notched-outline__notch", 'css': False, 'children': [
-            {"type": 'floating', 'args': {'label': label}}
+            {"type": 'mdc_floating', 'class-keep': True, 'args': {'label': label}}
           ]},
           {"type": 'div', "class": "mdc-notched-outline__trailing", 'css': False},
         ]},
@@ -99,9 +99,9 @@ class Inputs(object):
     ]}
 
     if leading_icon is not None:
-      schema['children'] = [{"type": 'icon', 'args': {'text': leading_icon, 'in_text_field': True}}] + schema['children']
+      schema['children'] = [{"type": 'icon', 'class-keep': True, 'args': {'text': leading_icon, 'in_text_field': True}}] + schema['children']
     if trailing_icon is not None:
-      schema['children'] = [{"type": 'icon', 'args': {'text': trailing_icon, 'in_text_field': True}}] + schema['children']
+      schema['children'] = [{"type": 'icon', 'class-keep': True, 'args': {'text': trailing_icon, 'in_text_field': True}}] + schema['children']
 
     html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     html_b.style.mdc.line_ripple()
@@ -145,7 +145,7 @@ class Inputs(object):
     cont = self.context.rptObj.ui.texts.label([text, div]).set_attrs({"class": "mdc-text-field mdc-text-field--outlined", 'css': None})
     return cont
 
-  def mdc_radio(self, flag=False, group_name=None):
+  def mdc_radio(self, flag=False, value="", group_name=None):
     """
     Description:
     ------------
@@ -161,7 +161,7 @@ class Inputs(object):
       https://material.io/develop/web/components/input-controls/radio-buttons/
     """
     schema = {"type": 'div', 'css': False, 'children': [
-      {"type": 'radio', "class": "mdc-radio__native-control", 'css': False, 'args': {'flag': flag, 'group_name': group_name}},
+      {"type": 'radio', "class": "mdc-radio__native-control", 'attrs': {"value": value}, 'css': False, 'args': {'flag': flag, 'group_name': group_name}},
       {"type": 'div', "class": "mdc-radio__background", 'css': False, 'children': [
         {"type": 'div', "class": "mdc-radio__outer-circle", 'css': False},
         {"type": 'div', "class": "mdc-radio__inner-circle", 'css': False},
@@ -178,7 +178,7 @@ class Inputs(object):
     html_r.css({"margin": '5px'})
     return html_r
 
-  def radio(self, flag=False, label="", group_name=None):
+  def radio(self, flag=False, value="", group_name=None):
     """
     Description:
     ------------
@@ -189,11 +189,10 @@ class Inputs(object):
       https://material.io/develop/web/components/input-controls/radio-buttons/
 
     :param flag:
-    :param label:
     :param group_name:
     """
     schema = {"type": 'div', 'class': None, 'css': None, 'children': [
-      {"type": 'mdc_radio', 'class': None, 'css': None}]}
+      {"type": 'mdc_radio', 'class-keep': True, 'css': None, 'args': {"value": value, 'flag': flag, 'group_name': group_name}}]}
 
     div = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     div.set_attrs({"class": None, 'css': None})
