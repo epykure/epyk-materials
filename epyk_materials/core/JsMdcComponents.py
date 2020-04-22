@@ -1,5 +1,7 @@
 
 from epyk.core.js import JsUtils
+from epyk.core.js.html import JsHtml
+
 from epyk.core.js.primitives import JsObjects
 
 from epyk.core.js.objects import JsNodeDom
@@ -75,7 +77,7 @@ class MenuSurface(JsNodeDom.JsDoms):
     self.htmlObj.attr["class"].add("mdc-menu-surface")
 
   def instantiate(self, html_id=None):
-    return "new mdc.menuSurface.MDCMenuSurface(document.querySelector('%s')" % html_id
+    return "new mdc.menuSurface.MDCMenuSurface(document.querySelector('%s'))" % html_id
 
 
 class TabBar(JsNodeDom.JsDoms):
@@ -171,8 +173,46 @@ class Select(JsNodeDom.JsDoms):
     self.htmlObj, self.varName = htmlObj, varName
     self.htmlObj.attr["class"].add("mdc-select")
 
+  @property
+  def content(self):
+    return JsHtml.ContentFormatters(self.htmlObj._report, "%s.value" % self.htmlObj.style.varName)
+
   def instantiate(self, html_id=None):
     return "new mdc.select.MDCSelect(document.querySelector('%s'))" % html_id
+
+  def setDisabled(self, bool):
+    """
+    Updates the disabled state.
+
+    https://material.io/develop/web/components/input-controls/select-menus/
+    """
+    bool = JsUtils.jsConvertData(bool, None)
+    return "%s.disabled = %s" % (self.htmlObj.style.varName, bool)
+
+  def setValue(self, value):
+    """
+
+    https://material.io/develop/web/components/input-controls/select-menus/
+
+    :param value:
+    """
+    value = JsUtils.jsConvertData(value, None)
+    return "%s.value = %s" % (self.htmlObj.style.varName, value)
+
+  def getValue(self):
+    """
+
+    https://material.io/develop/web/components/input-controls/select-menus/
+    """
+    return self.content
+
+  def getSelectedIndex(self):
+    """
+    Returns the index of the currently selected menu item.
+
+    https://material.io/develop/web/components/input-controls/select-menus/
+    """
+    return JsObjects.JsNumber.JsNumber("%s.selectedIndex" % self.htmlObj.style.varName)
 
 
 class List(JsNodeDom.JsDoms):

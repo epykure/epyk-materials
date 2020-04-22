@@ -10,17 +10,20 @@ class Select(object):
 
   def filled(self, placeholder=""):
     """
+    Description:
+    ------------
     The select uses an MDCMenu component instance to contain the list of options, but uses the data-value attribute instead of value to represent the options’ values.
 
-    https://material.io/develop/web/components/input-controls/select-menus/
-    """
+    Related Pages:
 
-    schema = {"type": 'div',
+      https://material.io/develop/web/components/input-controls/select-menus/
+    """
+    schema = {"type": 'div', 'css': False,
       'children': [
           {"type": 'div', "class": "mdc-select__anchor demo-width-class", 'css': False, 'children': [
             {"type": 'icon', "class": "mdc-select__dropdown-icon", 'css': False},
             {"type": 'div', "class": "mdc-select__selected-text", 'css': False},
-            {"type": 'floating', 'css': False, 'args': {"label": placeholder}},
+            {"type": 'mdc_floating', 'css': False, 'args': {"label": placeholder}},
             {"type": 'mdc_line'}]},
           {"type": 'div', "class": "mdc-select__menu mdc-menu mdc-menu-surface demo-width-class", 'css': False, 'children': [
             {"type": 'list', "class": "mdc-list", 'css': False, 'children': [
@@ -37,10 +40,15 @@ class Select(object):
 
   def outlined(self, placeholder=""):
     """
+    Description:
+    ------------
+    MDC Select provides Material Design single-option select menus, using the MDC menu. The Select component is fully accessible, and supports RTL rendering.
 
-    :return:
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/select-menus/
     """
-    schema = {"type": 'div', 'class': 'mdc-select--outlined',
+    schema = {"type": 'div', 'class': 'mdc-select--outlined', 'css': False,
               'children': [
                 {"type": 'div', "class": "mdc-select__anchor demo-width-class", 'css': False, 'children': [
                   {"type": 'icon', "class": "mdc-select__dropdown-icon", 'css': False},
@@ -48,7 +56,7 @@ class Select(object):
                   {"type": 'div', "class": "mdc-notched-outline", 'css': False, 'children': [
                     {"type": 'div', "class": "mdc-notched-outline__leading", 'css': False},
                     {"type": 'div', "class": "mdc-notched-outline__notch", 'css': False, 'children': [
-                      {"type": 'floating', 'args': {"label": placeholder}}
+                      {"type": 'mdc_floating', 'args': {"label": placeholder}}
                     ]},
                     {"type": 'div', "class": "mdc-notched-outline__trailing", 'css': False},
                   ]},
@@ -71,14 +79,3 @@ class Select(object):
     html_b.dom = dom_obj
     return html_b
 
-  def shaped_filled(self):
-    """
-
-    :return:
-    """
-
-  def shaped_outlined(self):
-    """
-
-    :return:
-    """

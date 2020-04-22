@@ -10,12 +10,12 @@ class Text(object):
     context.rptObj.cssImport.add("material-components-web")
     self.context = context
 
-  def ripple(self, htmlCode=None):
+  def field(self, htmlCode=None):
     """
     """
     label = self.context.rptObj.ui.texts.label(htmlCode=htmlCode)
     label.set_attrs({"class": None, 'css': None})
-    dom_obj = JsMdcComponents.Line(label, label.style.varName)
+    dom_obj = JsMdcComponents.TextRipple(label, label.style.varName)
     label.style.builder(label.style.varName, dom_obj.instantiate("#%s" % label.htmlId))
     # Add the specific dom features
     label.dom = dom_obj
@@ -56,10 +56,10 @@ class Text(object):
 
     :param label:
     """
-    schema = {"type": 'div', 'class': None, 'css': None}
+    schema = {"type": 'div', 'class': None, 'css': None, 'args': {"htmlObjs": label}}
     span = self.context.rptObj.materials.composite(schema)
 
-    dom_obj = JsMdcComponents.TextRipple(span, span.style.varName)
+    dom_obj = JsMdcComponents.Line(span, span.style.varName)
     span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
     # Add the specific dom features
     span.dom = dom_obj
@@ -76,7 +76,7 @@ class Text(object):
 
     :param label:
     """
-    schema = {"type": 'span', "class": "mdc-checkbox__background", 'css': False}
+    schema = {"type": 'span', 'class': None, 'css': False, 'args': {"text": label}}
     span = self.context.rptObj.materials.composite(schema)
 
     dom_obj = JsMdcComponents.TextFloating(span, span.style.varName)

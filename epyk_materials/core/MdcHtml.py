@@ -32,8 +32,8 @@ class MdcComposite(HtmlTextComp.Composite):
       'item': self._report.ui.lists.item,
 
       'icon': self._report.materials.icon,
-      'floating': self._report.materials.texts.floating,
-      'ripple': self._report.materials.texts.ripple,
+      'mdc_floating': self._report.materials.texts.floating,
+      'mdc_field': self._report.materials.texts.field,
       'mdc_line': self._report.materials.texts.line,
       'mdc_radio': self._report.materials.inputs.mdc_radio,
     }
