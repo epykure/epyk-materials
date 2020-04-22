@@ -1,4 +1,6 @@
 
+from epyk_materials.core.js.html import JsMdcComponents
+
 
 class Icon(object):
 
@@ -34,12 +36,13 @@ class Icon(object):
     Attributes:
     ----------
     """
-    button = self.context.rptObj.ui.button(text)
-    button.style.clear_all()
-    button.attr["class"].add("material-icons")
-    self.context.add_cls(button)
-    button.style.mdc.button_icon()
-    button.onReady([button.js.button.unbounded(True)])
+    schema = {"type": 'button', 'class': "material-icons", 'css': None}
+    button = self.context.rptObj.materials.composite(schema)
+    dom_obj = JsMdcComponents.ButtonFloating(button, button.style.varName)
+    button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
+    # Add the specific dom features
+    button.dom = dom_obj
+    button.onReady([button.dom.unbounded(True)])
     return button
 
   def toggle(self, text="", label=""):

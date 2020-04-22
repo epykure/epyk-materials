@@ -1,4 +1,6 @@
 
+from epyk_materials.core.js.html import JsMdcComponents
+
 
 class Inputs(object):
 

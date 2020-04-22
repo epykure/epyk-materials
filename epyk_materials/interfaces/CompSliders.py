@@ -1,4 +1,6 @@
 
+from epyk_materials.core.js.html import JsMdcComponents
+
 
 class Slider(object):
   """
@@ -42,11 +44,12 @@ class Slider(object):
         ]},
     ]}
     html_pr = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_pr)
-    html_pr.style.mdc.linear_progress()
-    html_pr.onReady([
-      html_pr.js.progress.setProgress(number)
-    ])
+
+    dom_obj = JsMdcComponents.LinearProgress(html_pr, html_pr.style.varName)
+    html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
+    # Add the specific dom features
+    html_pr.dom = dom_obj
+    html_pr.onReady([html_pr.dom.setProgress(number)])
     return html_pr
 
   def slider(self, value=0, total=100, label=""):
@@ -80,8 +83,10 @@ class Slider(object):
 
     }
     html_pr = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_pr)
-    html_pr.style.mdc.slider()
+    dom_obj = JsMdcComponents.Slider(html_pr, html_pr.style.varName)
+    html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
+    # Add the specific dom features
+    html_pr.dom = dom_obj
     return html_pr
 
   def discrete(self, value=0, total=100, label=""):
@@ -118,8 +123,10 @@ class Slider(object):
 
               }
     html_pr = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_pr)
-    html_pr.style.mdc.slider()
+    dom_obj = JsMdcComponents.Slider(html_pr, html_pr.style.varName)
+    html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
+    # Add the specific dom features
+    html_pr.dom = dom_obj
     return html_pr
 
   def tracker(self, value=0, total=100, label=""):
@@ -158,6 +165,8 @@ class Slider(object):
 
               }
     html_pr = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_pr)
-    html_pr.style.mdc.slider()
+    dom_obj = JsMdcComponents.Slider(html_pr, html_pr.style.varName)
+    html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
+    # Add the specific dom features
+    html_pr.dom = dom_obj
     return html_pr

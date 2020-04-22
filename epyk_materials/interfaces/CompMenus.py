@@ -1,4 +1,6 @@
 
+from epyk_materials.core.js.html import JsMdcComponents
+
 
 class Menu(object):
 
@@ -14,10 +16,13 @@ class Menu(object):
 
       https://material.io/develop/web/components/menu-surface/
     """
-    menu = self.context.rptObj.ui.div()
-    menu.set_attrs({"class": None, 'css': None})
-    self.context.add_cls(menu)
-    menu.style.mdc.surface()
+    schema = {"type": 'div', 'class': None, 'css': None}
+    menu = self.context.rptObj.materials.composite(schema)
+
+    dom_obj = JsMdcComponents.MenuSurface(menu, menu.style.varName)
+    menu.style.builder(menu.style.varName, dom_obj.instantiate("#%s" % menu.htmlId))
+    # Add the specific dom features
+    menu.dom = dom_obj
     return menu
 
   def anchor(self, text, surface):

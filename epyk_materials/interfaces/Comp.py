@@ -10,7 +10,6 @@ from epyk_materials.interfaces import CompMenus
 from epyk_materials.interfaces import CompSelects
 
 from epyk_materials.core.html import MdcHtml
-from epyk_materials.core.css import Classes
 
 
 class Materials(object):
@@ -174,9 +173,6 @@ class Materials(object):
     html_help = MdcHtml.MdcComposite(self.rptObj, schema, width=width, height=height, htmlCode=htmlCode, profile=profile, options=options or {}, helper=helper)
     self.register(html_help)
     return html_help
-
-  def add_cls(self, html_comp):
-    html_comp.style.mdc = Classes.Catalog(self.rptObj, html_comp)
 
   def register(self, html_comp):
     """

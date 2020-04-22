@@ -1,4 +1,6 @@
 
+from epyk_materials.core.js.html import JsMdcComponents
+
 
 class List(object):
   def __init__(self, context):
@@ -35,8 +37,10 @@ class List(object):
         {"type": 'span', 'class': "mdc-list-item__text", 'css': False, 'args': {"text": d}}
       ]})
     html_l = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_l)
-    html_l.style.mdc.list()
+    dom_obj = JsMdcComponents.List(html_l, html_l.style.varName)
+    html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
+    # Add the specific dom features
+    html_l.dom = dom_obj
     return html_l
 
   def selections(self, data):
@@ -58,9 +62,12 @@ class List(object):
         {"type": 'span', 'class': "mdc-list-item__text", 'css': False, 'args': {"text": d}}
       ]})
     html_l = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_l)
-    html_l.style.mdc.list()
-    html_l.onReady([html_l.js.list.singleSelection(True)])
+
+    dom_obj = JsMdcComponents.List(html_l, html_l.style.varName)
+    html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
+    # Add the specific dom features
+    html_l.dom = dom_obj
+    html_l.onReady([html_l.dom.singleSelection(True)])
     return html_l
 
   def radios(self, data, group_name=None):
@@ -92,8 +99,10 @@ class List(object):
         {"type": 'label', "class": "mdc-list-item__text", 'css': False, 'args': {"text": d}},
       ]})
     html_l = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_l)
-    html_l.style.mdc.list()
+    dom_obj = JsMdcComponents.List(html_l, html_l.style.varName)
+    html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
+    # Add the specific dom features
+    html_l.dom = dom_obj
     return html_l
 
   def checkbox(self, data, group_name=None):
@@ -123,6 +132,8 @@ class List(object):
         {"type": 'label', "class": "mdc-list-item__text", 'css': False, 'args': {"text": d}},
       ]})
     html_l = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_l)
-    html_l.style.mdc.list()
+    dom_obj = JsMdcComponents.List(html_l, html_l.style.varName)
+    html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
+    # Add the specific dom features
+    html_l.dom = dom_obj
     return html_l

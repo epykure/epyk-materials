@@ -1,4 +1,6 @@
 
+from epyk_materials.core.js.html import JsMdcComponents
+
 
 class Text(object):
   """
@@ -14,8 +16,10 @@ class Text(object):
     """
     label = self.context.rptObj.ui.texts.label(htmlCode=htmlCode)
     label.set_attrs({"class": None, 'css': None})
-    self.context.add_cls(label)
-    label.style.mdc.line_ripple()
+    dom_obj = JsMdcComponents.Line(label, label.style.varName)
+    label.style.builder(label.style.varName, dom_obj.instantiate("#%s" % label.htmlId))
+    # Add the specific dom features
+    label.dom = dom_obj
     return label
 
   def icon(self, value):
@@ -35,8 +39,11 @@ class Text(object):
               ]
     }
     html_t = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_t)
-    html_t.style.mdc.text_icon()
+
+    dom_obj = JsMdcComponents.Icon(html_t, html_t.style.varName)
+    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
+    # Add the specific dom features
+    html_t.dom = dom_obj
     return html_t
 
   def line(self, label=""):
@@ -50,10 +57,13 @@ class Text(object):
 
     :param label:
     """
-    span = self.context.rptObj.ui.div(label)
-    span.set_attrs({"class": None, 'css': None})
-    self.context.add_cls(span)
-    span.style.mdc.text_line()
+    schema = {"type": 'div', 'class': None, 'css': None}
+    span = self.context.rptObj.materials.composite(schema)
+
+    dom_obj = JsMdcComponents.TextRipple(span, span.style.varName)
+    span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
+    # Add the specific dom features
+    span.dom = dom_obj
     return span
 
   def floating(self, label):
@@ -67,10 +77,13 @@ class Text(object):
 
     :param label:
     """
-    span = self.context.rptObj.ui.texts.span(label)
-    span.set_attrs({"class": None, 'css': None})
-    self.context.add_cls(span)
-    span.style.mdc.text_floating()
+    schema = {"type": 'span', "class": "mdc-checkbox__background", 'css': False}
+    span = self.context.rptObj.materials.composite(schema)
+
+    dom_obj = JsMdcComponents.TextFloating(span, span.style.varName)
+    span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
+    # Add the specific dom features
+    span.dom = dom_obj
     return span
 
   def chip(self, text, choice=False):
@@ -104,6 +117,10 @@ class Text(object):
       ]})
 
     html_c = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_c)
-    html_c.style.mdc.chip()
+
+    dom_obj = JsMdcComponents.Chip(html_c, html_c.style.varName)
+    html_c.style.builder(html_c.style.varName, dom_obj.instantiate("#%s" % html_c.htmlId))
+    # Add the specific dom features
+    html_c.dom = dom_obj
+
     return html_c

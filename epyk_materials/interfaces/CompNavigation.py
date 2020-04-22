@@ -1,4 +1,6 @@
 
+from epyk_materials.core.js.html import JsMdcComponents
+
 
 class Navigation(object):
   def __init__(self, context):
@@ -15,24 +17,12 @@ class Navigation(object):
 
     """
     schema = {"type": 'div', 'css': False, 'attrs': {'role': 'tablist'},
-        'children': [
-          {"type": 'div', 'css': False, 'class': 'mdc-tab-scroller', 'children': [
-            {"type": 'div', 'css': False, 'class': "mdc-tab-scroller__scroll-area", 'children': [
-              {"type": 'div', 'css': False, 'class': "mdc-tab-scroller__scroll-content", 'children': [
-                #{"type": 'button', 'css': False, 'class': 'dc-tab mdc-tab--active', 'attrs': {"role": 'tab'}, 'arias': {"selected": False}, 'children': [
-                  # {"type": 'div', 'css': False, 'class': 'mdc-tab__content', 'children': [
-                  #   {"type": 'span', 'css': False, 'class': 'mdc-tab__icon material-icons', 'arias': {"hidden": True}},
-                  #   {"type": 'span', 'css': False, 'class': 'mdc-tab__text-label', 'args': {"text": "Test"}},
-                  # ]},
-                  # {"type": 'div', 'css': False, 'class': 'mdc-tab-indicator mdc-tab-indicator--active', 'children': [
-                  #   {"type": 'span', 'css': False, 'class': 'mdc-tab-indicator__content mdc-tab-indicator__content--underline'}]},
-                  # {"type": 'span', 'css': False, 'class': 'mdc-tab__ripple'}
-                #]
-               #},
-              ]}
-            ]}
-          ]},
-        ]
+      'children': [
+        {"type": 'div', 'css': False, 'class': 'mdc-tab-scroller', 'children': [
+          {"type": 'div', 'css': False, 'class': "mdc-tab-scroller__scroll-area", 'children': [
+            {"type": 'div', 'css': False, 'class': "mdc-tab-scroller__scroll-content", 'children': []}
+          ]}
+      ]}]
     }
 
     for text in data:
@@ -49,8 +39,12 @@ class Navigation(object):
          })
 
     html_t = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_t)
-    html_t.style.mdc.tab_bar()
+
+    #
+    dom_obj = JsMdcComponents.TabBar(html_t, html_t.style.varName)
+    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
+    # Add the specific dom features
+    html_t.dom = dom_obj
     return html_t
 
   def bar(self):

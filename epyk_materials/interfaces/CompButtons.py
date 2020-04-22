@@ -1,4 +1,6 @@
 
+from epyk_materials.core.js.html import JsMdcComponents
+
 
 class Buttons(object):
 
@@ -33,8 +35,12 @@ class Buttons(object):
         {"type": 'span', 'class': 'mdc-fab__icon material-icons', 'css': None, 'args': {"text": icon}}
       ]}
     button = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(button)
-    button.style.mdc.button_floating()
+
+    #
+    dom_obj = JsMdcComponents.ButtonFloating(button, button.style.varName)
+    button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
+    # Add the specific dom features
+    button.dom = dom_obj
     return button
 
   def icon(self, icon, width=(None, "%"), height=(None, "px"), htmlCode=None, tooltip=None,
@@ -74,8 +80,11 @@ class Buttons(object):
     i_border = self.context.rptObj.materials.icon("%s_border" % icon)
     i_border.attr['class'].add('mdc-icon-button__icon')
     html_button += i_border
-    self.context.add_cls(html_button)
-    html_button.style.mdc.button_icon_toggle()
+
+    dom_obj = JsMdcComponents.ButtonToggle(html_button, html_button.style.varName)
+    html_button.style.builder(html_button.style.varName, dom_obj.instantiate("#%s" % html_button.htmlId))
+    # Add the specific dom features
+    html_button.dom = dom_obj
     return html_button
 
   def toggle(self, flag, htmlCode=None, profile=None):
@@ -105,6 +114,8 @@ class Buttons(object):
       ]
     }
     html_b = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_b)
-    html_b.style.mdc.switch()
+    dom_obj = JsMdcComponents.Icon(html_b, html_b.style.varName)
+    html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
+    # Add the specific dom features
+    html_b.dom = dom_obj
     return html_b

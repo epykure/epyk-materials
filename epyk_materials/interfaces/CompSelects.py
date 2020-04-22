@@ -1,4 +1,6 @@
 
+from epyk_materials.core.js.html import JsMdcComponents
+
 
 class Select(object):
 
@@ -28,8 +30,10 @@ class Select(object):
             ]},
     ]}]}
     html_b = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_b)
-    html_b.style.mdc.select()
+    dom_obj = JsMdcComponents.Select(html_b, html_b.style.varName)
+    html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
+    # Add the specific dom features
+    html_b.dom = dom_obj
     return html_b
 
   def outlined(self, placeholder=""):
@@ -62,8 +66,10 @@ class Select(object):
                  ]}]}
     html_b = self.context.rptObj.materials.composite(schema)
     html_b.style.css.margin = 2
-    self.context.add_cls(html_b)
-    html_b.style.mdc.select()
+    dom_obj = JsMdcComponents.Select(html_b, html_b.style.varName)
+    html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
+    # Add the specific dom features
+    html_b.dom = dom_obj
     return html_b
 
   def shaped_filled(self):
