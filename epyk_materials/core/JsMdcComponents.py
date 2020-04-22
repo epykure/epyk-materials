@@ -81,6 +81,14 @@ class TabBar(JsMdcHtml):
     return "new mdc.tabBar.MDCTabBar(document.querySelector('%s'))" % html_id
 
 
+class TopBar(JsMdcHtml):
+  css_class = "mdc-top-app-bar"
+
+  def instantiate(self, html_id=None):
+    return "new mdc.topAppBar.MDCTopAppBar(document.querySelector('%s'))" % html_id
+
+
+
 class LinearProgress(JsMdcHtml):
 
   def instantiate(self, html_id=None):

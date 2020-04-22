@@ -47,9 +47,31 @@ class Navigation(object):
     html_t.dom = dom_obj
     return html_t
 
-  def bar(self):
+  def bar(self, title, icon="menu", buttons=None):
     """
-
+    MDC Top App Bar acts as a container for items such as application title, navigation icon, and action items.
+    
     https://material.io/develop/web/components/tabs/tab-bar/
     """
-    pass
+    schema = {"type": 'header', 'css': False, 'children': [
+                {"type": 'div', 'css': False, 'class': 'mdc-top-app-bar__row', 'children': [
+                  {"type": 'section', 'css': False, 'class': "mdc-top-app-bar__section mdc-top-app-bar__section--align-start", 'children': [
+                    {"type": 'icon', 'class-keep': True, 'css': False, 'args': {'text': icon}, 'class': "mdc-top-app-bar__navigation-icon mdc-icon-button"},
+                    {"type": 'span', 'css': False, 'class': 'mdc-top-app-bar__title', 'args': {"text": title}},
+                  ]},
+                  {"type": 'div', 'css': False, 'class': 'mdc-top-app-bar__section mdc-top-app-bar__section--align-end', 'attrs': {"role": 'toolbar'}, 'children': []}
+                ]}
+    ]}
+
+    if buttons is not None:
+      for b in buttons:
+        schema['children'][1]['children'].append(
+          {"type": 'icon', 'class-keep': True, 'css': False, 'arias': {'label': b}, 'args': {'text': b}, 'class': "mdc-top-app-bar__navigation-icon mdc-icon-button"})
+    html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+
+    #
+    dom_obj = JsMdcComponents.TopBar(html_t)
+    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
+    # Add the specific dom features
+    html_t.dom = dom_obj
+    return html_t
