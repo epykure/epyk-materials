@@ -31,7 +31,7 @@ class Select(object):
               {"type": 'item', "class": "mdc-list-item", 'css': False, 'args': {"text": "Data"}, 'attrs': {"data-value": "Data"}}
             ]},
     ]}]}
-    html_b = self.context.rptObj.materials.composite(schema)
+    html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.Select(html_b)
     html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
     # Add the specific dom features
@@ -71,7 +71,7 @@ class Select(object):
                       'attrs': {"data-value": "Data"}}
                    ]},
                  ]}]}
-    html_b = self.context.rptObj.materials.composite(schema)
+    html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     html_b.style.css.margin = 2
     dom_obj = JsMdcComponents.Select(html_b)
     html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))

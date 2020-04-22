@@ -38,7 +38,7 @@ class Navigation(object):
              {"type": 'span', 'css': False, 'class': 'mdc-tab__ripple'}]
          })
 
-    html_t = self.context.rptObj.materials.composite(schema)
+    html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     #
     dom_obj = JsMdcComponents.TabBar(html_t)

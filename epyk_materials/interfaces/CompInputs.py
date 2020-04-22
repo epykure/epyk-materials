@@ -63,7 +63,7 @@ class Inputs(object):
       schema['children'] = [{"type": 'icon', 'args': {'text': leading_icon, 'in_text_field': True}}] + schema['children']
     if trailing_icon is not None:
       schema['children'] = [{"type": 'icon', 'args': {'text': trailing_icon, 'in_text_field': True}}] + schema['children']
-    html_b = self.context.rptObj.materials.composite(schema)
+    html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     if leading_icon is not None:
       html_b.attr['class'].add("mdc-text-field--with-leading-icon")
     if trailing_icon is not None:
@@ -103,7 +103,7 @@ class Inputs(object):
     if trailing_icon is not None:
       schema['children'] = [{"type": 'icon', 'args': {'text': trailing_icon, 'in_text_field': True}}] + schema['children']
 
-    html_b = self.context.rptObj.materials.composite(schema)
+    html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     html_b.style.mdc.line_ripple()
     html_b.style.mdc.text_notched_outline()
     if leading_icon is not None:
@@ -168,7 +168,7 @@ class Inputs(object):
       ]},
       {"type": 'div', "class": "mdc-radio__ripple", 'css': False},
     ]}
-    html_r = self.context.rptObj.materials.composite(schema)
+    html_r = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj = JsMdcComponents.Radio(html_r)
     html_r.style.builder(html_r.style.varName, dom_obj.instantiate("#%s" % html_r.htmlId))
@@ -195,7 +195,7 @@ class Inputs(object):
     schema = {"type": 'div', 'class': None, 'css': None, 'children': [
       {"type": 'mdc_radio', 'class': None, 'css': None}]}
 
-    div = self.context.rptObj.materials.composite(schema)
+    div = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     div.set_attrs({"class": None, 'css': None})
 
     dom_obj = JsMdcComponents.Field(div)
@@ -232,7 +232,7 @@ class Inputs(object):
         ]},
       ]})
 
-    html_c = self.context.rptObj.materials.composite(schema)
+    html_c = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj = JsMdcComponents.Chip(html_c)
     html_c.style.builder(html_c.style.varName, dom_obj.instantiate("#%s" % html_c.htmlId))
@@ -263,7 +263,7 @@ class Inputs(object):
       ]},
       {"type": 'div', "class": "mdc-radio__ripple", 'css': False},
     ]}
-    html_chk = self.context.rptObj.materials.composite(schema)
+    html_chk = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     self.context.add_cls(html_chk)
     html_chk.style.mdc.radio()
     html_chk.css({"margin": '5px'})

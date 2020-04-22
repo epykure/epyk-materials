@@ -36,7 +36,7 @@ class List(object):
       schema[ 'children'].append({'type': 'item', 'class': "mdc-list-item", 'css': False, 'attrs': {"tabindex": i}, 'children': [
         {"type": 'span', 'class': "mdc-list-item__text", 'css': False, 'args': {"text": d}}
       ]})
-    html_l = self.context.rptObj.materials.composite(schema)
+    html_l = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.List(html_l)
     html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
     # Add the specific dom features
@@ -61,7 +61,7 @@ class List(object):
       schema[ 'children'].append({'type': 'item', 'class': "mdc-list-item", 'css': False, 'attrs': {"tabindex": i, 'role': 'option'}, 'children': [
         {"type": 'span', 'class': "mdc-list-item__text", 'css': False, 'args': {"text": d}}
       ]})
-    html_l = self.context.rptObj.materials.composite(schema)
+    html_l = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj = JsMdcComponents.List(html_l)
     html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
@@ -98,7 +98,7 @@ class List(object):
         ]},
         {"type": 'label', "class": "mdc-list-item__text", 'css': False, 'args': {"text": d}},
       ]})
-    html_l = self.context.rptObj.materials.composite(schema)
+    html_l = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.List(html_l)
     html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
     # Add the specific dom features
@@ -131,7 +131,7 @@ class List(object):
         ]},
         {"type": 'label', "class": "mdc-list-item__text", 'css': False, 'args': {"text": d}},
       ]})
-    html_l = self.context.rptObj.materials.composite(schema)
+    html_l = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.List(html_l)
     html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
     # Add the specific dom features

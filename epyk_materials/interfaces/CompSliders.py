@@ -43,7 +43,7 @@ class Slider(object):
           {"type": 'span', 'class': 'mdc-linear-progress__bar-inner', 'css': None}
         ]},
     ]}
-    html_pr = self.context.rptObj.materials.composite(schema)
+    html_pr = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj = JsMdcComponents.LinearProgress(html_pr)
     html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
@@ -82,7 +82,7 @@ class Slider(object):
       ]
 
     }
-    html_pr = self.context.rptObj.materials.composite(schema)
+    html_pr = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.Slider(html_pr)
     html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
     # Add the specific dom features
@@ -122,7 +122,7 @@ class Slider(object):
               ]
 
               }
-    html_pr = self.context.rptObj.materials.composite(schema)
+    html_pr = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.Slider(html_pr)
     html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
     # Add the specific dom features
@@ -164,7 +164,7 @@ class Slider(object):
               ]
 
               }
-    html_pr = self.context.rptObj.materials.composite(schema)
+    html_pr = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.Slider(html_pr)
     html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
     # Add the specific dom features

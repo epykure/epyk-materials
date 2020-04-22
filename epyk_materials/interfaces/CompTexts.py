@@ -35,7 +35,7 @@ class Text(object):
                 {"type": 'div', 'class': 'mdc-line-ripple'},
               ]
     }
-    html_t = self.context.rptObj.materials.composite(schema)
+    html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj = JsMdcComponents.Icon(html_t)
     html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
@@ -75,7 +75,7 @@ class Text(object):
     :param label:
     """
     schema = {"type": 'span', 'class': None, 'css': False, 'args': {"text": label}}
-    span = self.context.rptObj.materials.composite(schema)
+    span = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj = JsMdcComponents.TextFloating(span)
     span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
@@ -113,7 +113,7 @@ class Text(object):
         ]},
       ]})
 
-    html_c = self.context.rptObj.materials.composite(schema)
+    html_c = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj = JsMdcComponents.Chip(html_c, html_c.style.varName)
     html_c.style.builder(html_c.style.varName, dom_obj.instantiate("#%s" % html_c.htmlId))

@@ -9,6 +9,19 @@ class Icon(object):
     context.rptObj.cssImport.add("material-icons")
     self.context = context
 
+  def field(self, icon=""):
+    """
+
+    :param icon:
+    """
+    schema = {"type": 'span', 'class': "material-icons", 'css': None, 'attrs': {"role": 'button'}, 'args': {"text": icon}}
+    span = self.context.rptObj.materials.composite(schema)
+    dom_obj = JsMdcComponents.Icon(span)
+    span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
+    # Add the specific dom features
+    span.dom = dom_obj
+    return span
+
   def icon(self, text="", in_text_field=False):
     """
 
@@ -17,11 +30,39 @@ class Icon(object):
     Attributes:
     ----------
     """
-    span = self.context.rptObj.ui.texts.span(text)
-    span.style.clear_all()
-    span.attr["class"].add("material-icons")
+    schema = {"type": 'span', 'class': "material-icons", 'css': None, 'attrs': {"role": 'button'}, 'args': {"text": text}}
+    span = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     if in_text_field:
-      span.attr["class"].add("mdc-text-field__icon")
+      dom_obj = JsMdcComponents.Icon(span)
+      span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
+      # Add the specific dom features
+      span.dom = dom_obj
+    return span
+
+  def text(self, icon, value, htmlCode=None):
+    """
+
+    https://material.io/develop/web/components/input-controls/text-field/icon/
+
+    :param icon:
+    :param value:
+    """
+    schema = {"type": 'label', 'class': "mdc-text-field--outlined mdc-text-field--with-trailing-icon", 'css': None, 'children': [
+      {"type": 'input', 'class': "mdc-text-field__input", 'css': None, 'arias': {"labelledby": htmlCode or ''}},
+      {"type": 'mdc_icon', 'class': "material-icons mdc-text-field__icon--trailing", 'css': None, 'attrs': {"role": 'button'}, 'args': {"text": icon, 'in_text_field': True}},
+      {"type": 'div', 'class': "mdc-notched-outline", 'css': None, 'children': [
+        {"type": 'div', 'class': "mdc-notched-outline__leading", 'css': None},
+        {"type": 'div', 'class': "mdc-notched-outline__notch", 'css': None, 'children': [
+          {"type": 'mdc_floating', 'css': None, 'args': {"label": value}},
+        ]},
+        {"type": 'div', 'class': "mdc-notched-outline__trailing", 'css': None},
+      ]},
+    ]}
+    span = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+    dom_obj = JsMdcComponents.TextRipple(span)
+    span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
+    # Add the specific dom features
+    span.dom = dom_obj
     return span
 
   def button(self, text=""):
@@ -36,7 +77,7 @@ class Icon(object):
     ----------
     """
     schema = {"type": 'button', 'class': "material-icons", 'css': None}
-    button = self.context.rptObj.materials.composite(schema)
+    button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.ButtonFloating(button)
     button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
     # Add the specific dom features
@@ -60,7 +101,7 @@ class Icon(object):
       {"type": 'icon', 'css': None, 'class': 'material-icons mdc-icon-button__icon mdc-icon-button__icon--on', 'args': {"text": text}},
       {"type": 'icon', 'css': None, 'class': 'material-icons mdc-icon-button__icon"', 'args': {"text": "%s_border" % text}},
     ]}
-    button = self.context.rptObj.materials.composite(schema)
+    button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.ButtonFloating(button)
     button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
     # Add the specific dom features
