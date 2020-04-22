@@ -20,21 +20,17 @@ class Inputs(object):
 
     :param text:
     """
-    schema = {"type": 'ripple',
+    schema = {"type": 'mdc_field', 'class-keep': True, 'css': False,
               'children': [
-                  {"type": 'div', "class": "mdc-text-field__ripple", 'css': False},
+                  {"type": 'div', 'class-keep': True, "class": "mdc-text-field__ripple", 'css': False},
                   {"type": 'input', "class": "mdc-text-field__input", 'css': False, 'args': {'text': value}},
-                  {"type": 'div', "class": "mdc-line-ripple", 'css': False},
+                  {"type": 'mdc_line', 'class-keep': True, 'css': False},
+                  {"type": 'mdc_floating', 'class-keep': True, 'css': False, 'args': {'label': label}},
       ]
     }
 
-    ripple = self.context.rptObj.ui.div().set_attrs({"class": "mdc-text-field__ripple", 'css': None})
-    text = self.context.rptObj.ui.inputs.d_text(value).set_attrs({"class": "mdc-text-field__input", 'css': None, "aria-labelledby": "my-label-id"})
-    val = self.context.rptObj.ui.texts.label(label).set_attrs({"class": "mdc-floating-label", 'css': None, 'for': text.htmlId})
-    line = self.context.rptObj.ui.div().set_attrs({"class": "mdc-line-ripple", 'css': None})
-
-    cont = self.context.rptObj.ui.texts.label([ripple, text, val, line]).set_attrs({"class": "mdc-text-field", 'css': None})
-    return cont
+    html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+    return html_b
 
   def filled(self, value="", label="", leading_icon=None, trailing_icon=None):
     """
@@ -52,17 +48,17 @@ class Inputs(object):
 
     :param text:
     """
-    schema = {"type": 'ripple', 'css': False,
+    schema = {"type": 'mdc_field', 'class-keep': True, 'css': False,
               'children': [
                   {"type": 'input', "class": "mdc-text-field__input", 'css': False, 'args': {'text': value}},
-                  {"type": 'div', "class": "mdc-line-ripple", 'css': False},
+                  {"type": 'mdc_line', 'class-keep': True, 'css': False},
                   {"type": 'mdc_floating', 'class-keep': True, 'css': False, 'args': {'label': label}},
       ]
     }
     if leading_icon is not None:
-      schema['children'] = [{"type": 'icon', 'args': {'text': leading_icon, 'in_text_field': True}}] + schema['children']
+      schema['children'] = [{"type": 'icon', 'class-keep': True, 'css': False, 'args': {'text': leading_icon, 'in_text_field': True}}] + schema['children']
     if trailing_icon is not None:
-      schema['children'] = [{"type": 'icon', 'args': {'text': trailing_icon, 'in_text_field': True}}] + schema['children']
+      schema['children'] = [{"type": 'icon', 'class-keep': True, 'css': False, 'args': {'text': trailing_icon, 'in_text_field': True}}] + schema['children']
     html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     if leading_icon is not None:
       html_b.attr['class'].add("mdc-text-field--with-leading-icon")
@@ -99,13 +95,21 @@ class Inputs(object):
     ]}
 
     if leading_icon is not None:
-      schema['children'] = [{"type": 'icon', 'class-keep': True, 'args': {'text': leading_icon, 'in_text_field': True}}] + schema['children']
+      schema['children'] = [{"type": 'mdc_icon', 'class-keep': True, 'css': False, 'args': {'text': leading_icon, 'in_text_field': True}}] + schema['children']
     if trailing_icon is not None:
-      schema['children'] = [{"type": 'icon', 'class-keep': True, 'args': {'text': trailing_icon, 'in_text_field': True}}] + schema['children']
+      schema['children'] = [{"type": 'mdc_icon', 'class-keep': True, 'css': False, 'args': {'text': trailing_icon, 'in_text_field': True}}] + schema['children']
 
     html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-    html_b.style.mdc.line_ripple()
-    html_b.style.mdc.text_notched_outline()
+
+    dom_obj = JsMdcComponents.TextRipple(html_b)
+    html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
+
+    dom_obj = JsMdcComponents.TextNothedOutline(html_b)
+    html_b.style.builder("%s_notch" % html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
+
+    # Add the specific dom features
+    html_b.dom = dom_obj
+
     if leading_icon is not None:
       html_b.attr['class'].add("mdc-text-field--with-leading-icon")
     if trailing_icon is not None:
@@ -123,6 +127,8 @@ class Inputs(object):
 
       const lineRipple = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
 
+    https://material.io/develop/web/components/input-controls/text-field/
+    
     :param text:
     :param width:
     :param rows:
@@ -132,18 +138,18 @@ class Inputs(object):
     :param options:
     :param profile:
     """
-    text = self.context.rptObj.ui.inputs.textarea(value).set_attrs({"class": "mdc-text-field__input", 'css': None, "aria-labelledby": "my-label-id"})
-    div = self.context.rptObj.ui.div().set_attrs({"class": "mdc-notched-outline", 'css': None})
-
-    div += self.context.rptObj.ui.div().set_attrs({"class": "mdc-notched-outline__leading", 'css': None})
-    notch = self.context.rptObj.ui.div().set_attrs({"class": "mdc-notched-outline__notch", 'css': None})
-    notch += self.context.rptObj.ui.texts.label(label).set_attrs({"class": "mdc-floating-label", 'css': None, 'for': text.htmlId})
-
-    div += notch
-    div += self.context.rptObj.ui.div().set_attrs({"class": "mdc-notched-outline__trailing", 'css': None})
-
-    cont = self.context.rptObj.ui.texts.label([text, div]).set_attrs({"class": "mdc-text-field mdc-text-field--outlined", 'css': None})
-    return cont
+    schema = {"type": 'mdc_field', 'class': 'mdc-text-field--textarea', 'css': False, 'children': [
+      {"type": 'div', "class": "mdc-text-field-character-counter", 'css': False},
+      {"type": 'textarea', "class": "mdc-text-field__input", 'css': False, 'attrs': {"maxlength": 140, 'rows': 8, 'cols': 10}, 'args': {'text': value}},
+      {"type": 'div', "class": "mdc-notched-outline", 'css': False, 'children': [
+        {"type": 'div', "class": "mdc-notched-outline__leading", 'css': False},
+        {"type": 'div', "class": "mdc-notched-outline__notch", 'css': False, 'children': [
+          {"type": 'mdc_floating', 'class-keep': True, 'css': False, 'args': {'label': label}},
+        ]},
+        {"type": 'div', "class": "mdc-notched-outline__trailing", 'css': False},
+    ]}]}
+    html_r = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+    return html_r
 
   def mdc_radio(self, flag=False, value="", group_name=None):
     """

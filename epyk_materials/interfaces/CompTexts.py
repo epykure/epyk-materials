@@ -11,8 +11,9 @@ class Text(object):
   def field(self, htmlCode=None):
     """
     """
-    label = self.context.rptObj.ui.texts.label(htmlCode=htmlCode)
-    label.set_attrs({"class": None, 'css': None})
+    schema = {"type": 'label', 'css': None}
+    label = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+
     dom_obj = JsMdcComponents.TextRipple(label)
     label.style.builder(label.style.varName, dom_obj.instantiate("#%s" % label.htmlId))
     # Add the specific dom features
