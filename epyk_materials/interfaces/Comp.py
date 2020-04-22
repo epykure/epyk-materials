@@ -20,6 +20,7 @@ class Materials(object):
 
     # Shortcut for the main components
     self.icon = self.icons.icon
+    self.fab = self.fabs.button
     self.button = self.buttons.button
     self.select = self.selects.filled
     self.list = self.lists.list
@@ -95,6 +96,19 @@ class Materials(object):
       https://material.io/develop/web/components/linear-progress/
     """
     return CompNavigation.Navigation(self)
+
+  @property
+  def fabs(self):
+    """
+    Description:
+    ------------
+    A floating action button represents the primary action in an application.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/buttons/floating-action-buttons/
+    """
+    return CompButtons.FloatingButton(self)
 
   @property
   def buttons(self):

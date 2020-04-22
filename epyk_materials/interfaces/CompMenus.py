@@ -16,7 +16,7 @@ class Menu(object):
       https://material.io/develop/web/components/menu-surface/
     """
     schema = {"type": 'div', 'class': None, 'css': None}
-    menu = self.context.rptObj.materials.composite(schema)
+    menu = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj = JsMdcComponents.MenuSurface(menu)
     menu.style.builder(menu.style.varName, dom_obj.instantiate("#%s" % menu.htmlId))
