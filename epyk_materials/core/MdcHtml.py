@@ -18,8 +18,8 @@ class MdcComposite(HtmlTextComp.Composite):
 
     """
     if self.extended_map is None:
-      extended_map = dict(super(MdcComposite, self)._get_comp_map)
-      extended_map.update({
+      self.extended_map = dict(super(MdcComposite, self)._get_comp_map)
+      self.extended_map.update({
         'list': self._report.ui.list,
         'item': self._report.ui.lists.item,
         'icon': self._report.materials.icon,
@@ -31,4 +31,4 @@ class MdcComposite(HtmlTextComp.Composite):
         'mdc_line': self._report.materials.texts.line,
         'mdc_radio': self._report.materials.inputs.mdc_radio,
       })
-    return extended_map
+    return self.extended_map
