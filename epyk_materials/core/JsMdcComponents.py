@@ -8,30 +8,26 @@ from epyk.core.js.objects import JsNodeDom
 
 
 class JsMdcHtml(JsNodeDom.JsDoms):
+  css_class = None
 
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-fab")
+  def __init__(self, htmlObj, varName=None):
+    self.htmlObj, self.varName = htmlObj, varName or htmlObj.style.varName # because driven from the CSS
+    if self.css_class is not None:
+      self.htmlObj.attr["class"].add(self.css_class)
 
   def instantiate(self, html_id=None):
-    raise Exception("")
+    raise Exception("This should be defined in the sub classes")
 
 
-class FAB(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-fab")
+class FAB(JsMdcHtml):
+  css_class = "mdc-fab"
 
   def instantiate(self, html_id=None):
     return "new mdc.ripple.MDCRipple(document.querySelector('%s'))" % html_id
 
 
-class ButtonFloating(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-icon-button")
+class ButtonFloating(JsMdcHtml):
+  css_class = "mdc-icon-button"
 
   def instantiate(self, html_id=None):
     return "new mdc.ripple.MDCRipple(document.querySelector('%s'))" % html_id
@@ -47,53 +43,38 @@ class ButtonFloating(JsNodeDom.JsDoms):
     return "%s.unbounded = %s" % (self.varName, bool)
 
 
-class ButtonToggle(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-icon-button")
+class ButtonToggle(JsMdcHtml):
+  css_class = "mdc-icon-button"
 
   def instantiate(self, html_id=None):
     return "new mdc.iconButton.MDCIconButtonToggle(document.querySelector('%s'))" % html_id
 
   def setAttr(self):
-    return "console.log(%s.foundation_)" % self._selector #.setContent('RRRRR')" % self._selector
+    return "console.log(%s.foundation_)" % self.varName #.setContent('RRRRR')" % self._selector
 
 
-class ButtonSwitch(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-switch")
+class ButtonSwitch(JsMdcHtml):
+  css_class = "mdc-switch"
 
   def instantiate(self, html_id=None):
     return "new mdc.switchControl.MDCSwitch(document.querySelector('%s'))" % html_id
 
 
-class MenuSurface(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-menu-surface")
+class MenuSurface(JsMdcHtml):
+  css_class = "mdc-menu-surface"
 
   def instantiate(self, html_id=None):
     return "new mdc.menuSurface.MDCMenuSurface(document.querySelector('%s'))" % html_id
 
 
-class TabBar(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    htmlObj.attr['class'].add("mdc-tab-bar") # Attach the CSS class used to build this class
+class TabBar(JsMdcHtml):
+  css_class = "mdc-tab-bar"
 
   def instantiate(self, html_id=None):
     return "new mdc.tabBar.MDCTabBar(document.querySelector('%s'))" % html_id
 
 
-class LinearProgress(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
+class LinearProgress(JsMdcHtml):
 
   def instantiate(self, html_id=None):
     return "new mdc.linearProgress.MDCLinearProgress(document.querySelector('%s'))" % html_id
@@ -167,15 +148,12 @@ class LinearProgress(JsNodeDom.JsDoms):
     return "%s.reverse = %s" % (self.varName, bool)
 
 
-class Select(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-select")
+class Select(JsMdcHtml):
+  css_class = "mdc-select"
 
   @property
   def content(self):
-    return JsHtml.ContentFormatters(self.htmlObj._report, "%s.value" % self.htmlObj.style.varName)
+    return JsHtml.ContentFormatters(self.htmlObj._report, "%s.value" % self.varName)
 
   def instantiate(self, html_id=None):
     return "new mdc.select.MDCSelect(document.querySelector('%s'))" % html_id
@@ -187,7 +165,7 @@ class Select(JsNodeDom.JsDoms):
     https://material.io/develop/web/components/input-controls/select-menus/
     """
     bool = JsUtils.jsConvertData(bool, None)
-    return "%s.disabled = %s" % (self.htmlObj.style.varName, bool)
+    return "%s.disabled = %s" % (self.varName, bool)
 
   def setValue(self, value):
     """
@@ -197,7 +175,7 @@ class Select(JsNodeDom.JsDoms):
     :param value:
     """
     value = JsUtils.jsConvertData(value, None)
-    return "%s.value = %s" % (self.htmlObj.style.varName, value)
+    return "%s.value = %s" % (self.varName, value)
 
   def getValue(self):
     """
@@ -212,14 +190,11 @@ class Select(JsNodeDom.JsDoms):
 
     https://material.io/develop/web/components/input-controls/select-menus/
     """
-    return JsObjects.JsNumber.JsNumber("%s.selectedIndex" % self.htmlObj.style.varName)
+    return JsObjects.JsNumber.JsNumber("%s.selectedIndex" % self.varName)
 
 
-class List(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-list")
+class List(JsMdcHtml):
+  css_class = "mdc-list"
 
   def instantiate(self, html_id=None):
     return "new mdc.list.MDCList(document.querySelector('%s'))" % html_id
@@ -233,31 +208,22 @@ class List(JsNodeDom.JsDoms):
     return "%s.singleSelection = %s" % (self.varName, bool)
 
 
-class Line(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-line-ripple")
+class Line(JsMdcHtml):
+  css_class = "mdc-line-ripple"
 
   def instantiate(self, html_id=None):
     return "new mdc.lineRipple.MDCLineRipple(document.querySelector('%s'))" % html_id
 
 
-class Chip(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-chip-set")
+class Chip(JsMdcHtml):
+  css_class = "mdc-chip-set"
 
   def instantiate(self, html_id=None):
     return "new mdc.chips.MDCChipSet(document.querySelector('%s'))" % html_id
 
 
-class Field(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-form-field")
+class Field(JsMdcHtml):
+  css_class = "mdc-form-field"
 
   def instantiate(self, html_id=None):
     return "new mdc.formField.MDCFormField(document.querySelector('%s'))" % html_id
@@ -271,11 +237,8 @@ class Field(JsNodeDom.JsDoms):
     return "%s.input = %s" % (self.varName, value)
 
 
-class Icon(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-text-field-icon")
+class Icon(JsMdcHtml):
+  css_class = "mdc-text-field-icon"
 
   def instantiate(self, html_id=None):
     return "new mdc.textField.MDCTextFieldIcon(document.querySelector('%s'))" % html_id
@@ -332,31 +295,22 @@ class Icon(JsNodeDom.JsDoms):
     return "%s.foundation.setContent(%s)" % (self.varName, content)
 
 
-class TextNothedOutline(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-text-field--outlined")
+class TextNothedOutline(JsMdcHtml):
+  css_class = "mdc-text-field--outlined"
 
   def instantiate(self, html_id=None):
     return "new mdc.notchedOutline.MDCNotchedOutline(document.querySelector('%s'))" % html_id
 
 
-class TextRipple(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-text-field")
+class TextRipple(JsMdcHtml):
+  css_class = "mdc-text-field"
 
   def instantiate(self, html_id=None):
     return "new mdc.textField.MDCTextField(document.querySelector('%s'))" % html_id
 
 
-class TextFloating(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-floating-label")
+class TextFloating(JsMdcHtml):
+  css_class = "mdc-floating-label"
 
   def instantiate(self, html_id=None):
     return "new mdc.floatingLabel.MDCFloatingLabel(document.querySelector('%s'))" % html_id
@@ -408,11 +362,8 @@ class TextFloating(JsNodeDom.JsDoms):
     return JsObjects.JsNumber.JsNumber("%s.foundation_.getWidth()" % self.varName)
 
 
-class Radio(JsNodeDom.JsDoms):
-
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-radio")
+class Radio(JsMdcHtml):
+  css_class = "mdc-radio"
 
   def instantiate(self, html_id=None):
     return "new mdc.radio.MDCRadio(document.querySelector('%s'))" % html_id
@@ -435,14 +386,25 @@ class Radio(JsNodeDom.JsDoms):
     return "%s.disabled = %s" % (self.varName, bool)
 
 
-class Slider(JsNodeDom.JsDoms):
+class Slider(JsMdcHtml):
+  css_class = "mdc-slider"
 
-  def __init__(self, htmlObj, varName):
-    self.htmlObj, self.varName = htmlObj, varName
-    self.htmlObj.attr["class"].add("mdc-slider")
+  @property
+  def content(self):
+    return JsHtml.ContentFormatters(self.htmlObj._report, "%s.foundation_.getValue()" % self.varName)
 
   def instantiate(self, html_id=None):
     return "new mdc.slider.MDCSlider(document.querySelector('%s'))" % html_id
+
+  def getValue(self):
+    """
+    Returns the current value of the slider
+
+    https://material.io/develop/web/components/input-controls/sliders/
+
+    :return:
+    """
+    return self.content
 
   def setValue(self, num):
     """
@@ -460,4 +422,120 @@ class Slider(JsNodeDom.JsDoms):
     """
     num = JsUtils.jsConvertData(num, None)
     return "%s.foundation_.setValue(%s)" % (self.varName, num)
+
+  def getMax(self):
+    """
+    Description:
+    ------------
+    Returns the max value the slider can have
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/sliders/
+    """
+    return JsObjects.JsNumber.JsNumber("%s.foundation_.getMax()" % self.varName)
+
+  def setMax(self, num):
+    """
+    Description:
+    ------------
+    Returns the max value the slider can have
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/sliders/
+
+    Attributes:
+    ----------
+    :param num: String.
+    """
+    num = JsUtils.jsConvertData(num, None)
+    return "%s.foundation_.setMax(%s)" % (self.varName, num)
+
+  def getMin(self):
+    """
+    Description:
+    ------------
+    Returns the min value the slider can have
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/sliders/
+    """
+    return JsObjects.JsNumber.JsNumber("%s.foundation_.getMin()" % self.varName)
+
+  def setMin(self, num):
+    """
+    Description:
+    ------------
+    Sets the min value the slider can have
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/sliders/
+
+    Attributes:
+    ----------
+    :param num: String.
+    """
+    num = JsUtils.jsConvertData(num, None)
+    return "%s.foundation_.setMin(%s)" % (self.varName, num)
+
+  def getStep(self):
+    """
+    Description:
+    ------------
+    Returns the step value of the slider
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/sliders/
+    """
+    return JsObjects.JsNumber.JsNumber("%s.foundation_.getStep()" % self.varName)
+
+  def setStep(self, num):
+    """
+    Description:
+    ------------
+    Sets the step value of the slider
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/sliders/
+
+    Attributes:
+    ----------
+    :param num: String.
+    """
+    num = JsUtils.jsConvertData(num, None)
+    return "%s.foundation_.setStep(%s)" % (self.varName, num)
+
+  def isDisabled(self):
+    """
+    Description:
+    ------------
+    Returns whether or not the slider is disabled
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/sliders/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.foundation_.isDisabled()" % self.varName)
+
+  def setDisabled(self, bool):
+    """
+    Description:
+    ------------
+    Sets the step value of the slider
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/sliders/
+
+    Attributes:
+    ----------
+    :param num: String.
+    """
+    bool = JsUtils.setDisabled(bool, None)
+    return "%s.foundation_.setDisabled(%s)" % (self.varName, bool)
 

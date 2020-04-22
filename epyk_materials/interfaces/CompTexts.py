@@ -2,8 +2,6 @@ from epyk_materials.core import JsMdcComponents
 
 
 class Text(object):
-  """
-  """
 
   def __init__(self, context):
     context.rptObj.jsImports.add("material-components-web")
@@ -15,7 +13,7 @@ class Text(object):
     """
     label = self.context.rptObj.ui.texts.label(htmlCode=htmlCode)
     label.set_attrs({"class": None, 'css': None})
-    dom_obj = JsMdcComponents.TextRipple(label, label.style.varName)
+    dom_obj = JsMdcComponents.TextRipple(label)
     label.style.builder(label.style.varName, dom_obj.instantiate("#%s" % label.htmlId))
     # Add the specific dom features
     label.dom = dom_obj
@@ -39,7 +37,7 @@ class Text(object):
     }
     html_t = self.context.rptObj.materials.composite(schema)
 
-    dom_obj = JsMdcComponents.Icon(html_t, html_t.style.varName)
+    dom_obj = JsMdcComponents.Icon(html_t)
     html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
     # Add the specific dom features
     html_t.dom = dom_obj
@@ -59,7 +57,7 @@ class Text(object):
     schema = {"type": 'div', 'class': None, 'css': None, 'args': {"htmlObjs": label}}
     span = self.context.rptObj.materials.composite(schema)
 
-    dom_obj = JsMdcComponents.Line(span, span.style.varName)
+    dom_obj = JsMdcComponents.Line(span)
     span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
     # Add the specific dom features
     span.dom = dom_obj
@@ -79,7 +77,7 @@ class Text(object):
     schema = {"type": 'span', 'class': None, 'css': False, 'args': {"text": label}}
     span = self.context.rptObj.materials.composite(schema)
 
-    dom_obj = JsMdcComponents.TextFloating(span, span.style.varName)
+    dom_obj = JsMdcComponents.TextFloating(span)
     span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
     # Add the specific dom features
     span.dom = dom_obj

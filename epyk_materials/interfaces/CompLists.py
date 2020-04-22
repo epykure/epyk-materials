@@ -2,6 +2,7 @@ from epyk_materials.core import JsMdcComponents
 
 
 class List(object):
+
   def __init__(self, context):
     context.rptObj.jsImports.add("material-components-web")
     context.rptObj.cssImport.add("material-components-web")
@@ -36,7 +37,7 @@ class List(object):
         {"type": 'span', 'class': "mdc-list-item__text", 'css': False, 'args': {"text": d}}
       ]})
     html_l = self.context.rptObj.materials.composite(schema)
-    dom_obj = JsMdcComponents.List(html_l, html_l.style.varName)
+    dom_obj = JsMdcComponents.List(html_l)
     html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
     # Add the specific dom features
     html_l.dom = dom_obj
@@ -62,7 +63,7 @@ class List(object):
       ]})
     html_l = self.context.rptObj.materials.composite(schema)
 
-    dom_obj = JsMdcComponents.List(html_l, html_l.style.varName)
+    dom_obj = JsMdcComponents.List(html_l)
     html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
     # Add the specific dom features
     html_l.dom = dom_obj
@@ -98,7 +99,7 @@ class List(object):
         {"type": 'label', "class": "mdc-list-item__text", 'css': False, 'args': {"text": d}},
       ]})
     html_l = self.context.rptObj.materials.composite(schema)
-    dom_obj = JsMdcComponents.List(html_l, html_l.style.varName)
+    dom_obj = JsMdcComponents.List(html_l)
     html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
     # Add the specific dom features
     html_l.dom = dom_obj
@@ -131,7 +132,7 @@ class List(object):
         {"type": 'label', "class": "mdc-list-item__text", 'css': False, 'args': {"text": d}},
       ]})
     html_l = self.context.rptObj.materials.composite(schema)
-    dom_obj = JsMdcComponents.List(html_l, html_l.style.varName)
+    dom_obj = JsMdcComponents.List(html_l)
     html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
     # Add the specific dom features
     html_l.dom = dom_obj

@@ -32,7 +32,7 @@ class Select(object):
             ]},
     ]}]}
     html_b = self.context.rptObj.materials.composite(schema)
-    dom_obj = JsMdcComponents.Select(html_b, html_b.style.varName)
+    dom_obj = JsMdcComponents.Select(html_b)
     html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
     # Add the specific dom features
     html_b.dom = dom_obj
@@ -73,7 +73,7 @@ class Select(object):
                  ]}]}
     html_b = self.context.rptObj.materials.composite(schema)
     html_b.style.css.margin = 2
-    dom_obj = JsMdcComponents.Select(html_b, html_b.style.varName)
+    dom_obj = JsMdcComponents.Select(html_b)
     html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
     # Add the specific dom features
     html_b.dom = dom_obj

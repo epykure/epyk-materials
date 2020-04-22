@@ -170,7 +170,7 @@ class Inputs(object):
     ]}
     html_r = self.context.rptObj.materials.composite(schema)
 
-    dom_obj = JsMdcComponents.Radio(html_r, html_r.style.varName)
+    dom_obj = JsMdcComponents.Radio(html_r)
     html_r.style.builder(html_r.style.varName, dom_obj.instantiate("#%s" % html_r.htmlId))
     # Add the specific dom features
     html_r.dom = dom_obj
@@ -198,7 +198,7 @@ class Inputs(object):
     div = self.context.rptObj.materials.composite(schema)
     div.set_attrs({"class": None, 'css': None})
 
-    dom_obj = JsMdcComponents.Field(div, div.style.varName)
+    dom_obj = JsMdcComponents.Field(div)
     div.style.builder(div.style.varName, dom_obj.instantiate("#%s" % div.htmlId))
     # Add the specific dom features
     div.dom = dom_obj
@@ -234,7 +234,7 @@ class Inputs(object):
 
     html_c = self.context.rptObj.materials.composite(schema)
 
-    dom_obj = JsMdcComponents.Chip(html_c, html_c.style.varName)
+    dom_obj = JsMdcComponents.Chip(html_c)
     html_c.style.builder(html_c.style.varName, dom_obj.instantiate("#%s" % html_c.htmlId))
     # Add the specific dom features
     html_c.dom = dom_obj

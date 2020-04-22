@@ -2,6 +2,7 @@ from epyk_materials.core import JsMdcComponents
 
 
 class Navigation(object):
+
   def __init__(self, context):
     context.rptObj.jsImports.add("material-components-web")
     context.rptObj.cssImport.add("material-components-web")
@@ -40,7 +41,7 @@ class Navigation(object):
     html_t = self.context.rptObj.materials.composite(schema)
 
     #
-    dom_obj = JsMdcComponents.TabBar(html_t, html_t.style.varName)
+    dom_obj = JsMdcComponents.TabBar(html_t)
     html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
     # Add the specific dom features
     html_t.dom = dom_obj

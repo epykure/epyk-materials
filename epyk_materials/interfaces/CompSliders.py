@@ -16,6 +16,7 @@ class Slider(object):
 
   As this module will return those object, all the properties and changes defined in the documentation can be done.
   """
+
   def __init__(self, context):
     context.rptObj.jsImports.add("material-components-web")
     context.rptObj.cssImport.add("material-components-web")
@@ -44,7 +45,7 @@ class Slider(object):
     ]}
     html_pr = self.context.rptObj.materials.composite(schema)
 
-    dom_obj = JsMdcComponents.LinearProgress(html_pr, html_pr.style.varName)
+    dom_obj = JsMdcComponents.LinearProgress(html_pr)
     html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
     # Add the specific dom features
     html_pr.dom = dom_obj
@@ -82,7 +83,7 @@ class Slider(object):
 
     }
     html_pr = self.context.rptObj.materials.composite(schema)
-    dom_obj = JsMdcComponents.Slider(html_pr, html_pr.style.varName)
+    dom_obj = JsMdcComponents.Slider(html_pr)
     html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
     # Add the specific dom features
     html_pr.dom = dom_obj
@@ -122,7 +123,7 @@ class Slider(object):
 
               }
     html_pr = self.context.rptObj.materials.composite(schema)
-    dom_obj = JsMdcComponents.Slider(html_pr, html_pr.style.varName)
+    dom_obj = JsMdcComponents.Slider(html_pr)
     html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
     # Add the specific dom features
     html_pr.dom = dom_obj
@@ -164,7 +165,7 @@ class Slider(object):
 
               }
     html_pr = self.context.rptObj.materials.composite(schema)
-    dom_obj = JsMdcComponents.Slider(html_pr, html_pr.style.varName)
+    dom_obj = JsMdcComponents.Slider(html_pr)
     html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
     # Add the specific dom features
     html_pr.dom = dom_obj

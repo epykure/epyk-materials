@@ -36,7 +36,7 @@ class Buttons(object):
     button = self.context.rptObj.materials.composite(schema)
 
     #
-    dom_obj = JsMdcComponents.ButtonFloating(button, button.style.varName)
+    dom_obj = JsMdcComponents.ButtonFloating(button)
     button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
     # Add the specific dom features
     button.dom = dom_obj
@@ -80,7 +80,7 @@ class Buttons(object):
     i_border.attr['class'].add('mdc-icon-button__icon')
     html_button += i_border
 
-    dom_obj = JsMdcComponents.ButtonToggle(html_button, html_button.style.varName)
+    dom_obj = JsMdcComponents.ButtonToggle(html_button)
     html_button.style.builder(html_button.style.varName, dom_obj.instantiate("#%s" % html_button.htmlId))
     # Add the specific dom features
     html_button.dom = dom_obj
@@ -113,7 +113,7 @@ class Buttons(object):
       ]
     }
     html_b = self.context.rptObj.materials.composite(schema)
-    dom_obj = JsMdcComponents.Icon(html_b, html_b.style.varName)
+    dom_obj = JsMdcComponents.Icon(html_b)
     html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
     # Add the specific dom features
     html_b.dom = dom_obj

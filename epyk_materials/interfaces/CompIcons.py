@@ -37,7 +37,7 @@ class Icon(object):
     """
     schema = {"type": 'button', 'class': "material-icons", 'css': None}
     button = self.context.rptObj.materials.composite(schema)
-    dom_obj = JsMdcComponents.ButtonFloating(button, button.style.varName)
+    dom_obj = JsMdcComponents.ButtonFloating(button)
     button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
     # Add the specific dom features
     button.dom = dom_obj
@@ -61,7 +61,7 @@ class Icon(object):
       {"type": 'icon', 'css': None, 'class': 'material-icons mdc-icon-button__icon"', 'args': {"text": "%s_border" % text}},
     ]}
     button = self.context.rptObj.materials.composite(schema)
-    dom_obj = JsMdcComponents.ButtonFloating(button, button.style.varName)
+    dom_obj = JsMdcComponents.ButtonFloating(button)
     button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
     # Add the specific dom features
     button.dom = dom_obj
