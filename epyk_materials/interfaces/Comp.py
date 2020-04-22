@@ -16,7 +16,7 @@ class Materials(object):
 
   def __init__(self, rptObj):
     self.rptObj = rptObj
-    self.navbar = self.navigation.bar #: shortcut for bar :func:`epyk.interfaces.components.CompNavigation.Navigation.bar`
+    self.navbar = self.navigation.top_bar #: shortcut for bar :func:`epyk.interfaces.components.CompNavigation.Navigation.bar`
 
     # Shortcut for the main components
     self.icon = self.icons.icon
@@ -28,6 +28,7 @@ class Materials(object):
     self.radio = self.inputs.radio
     self.slider = self.sliders.slider
     self.tabs = self.navigation.tabs
+    self.drawers = self.navigation.drawers
 
   @property
   def selects(self):

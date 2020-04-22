@@ -80,13 +80,99 @@ class TabBar(JsMdcHtml):
   def instantiate(self, html_id=None):
     return "new mdc.tabBar.MDCTabBar(document.querySelector('%s'))" % html_id
 
+  def getScrollPosition(self):
+    """
+    Description:
+    ------------
+    Returns the scroll position of the Tab Scroller
+
+    Related Pages:
+
+      https://material.io/develop/web/components/tabs/tab-bar/
+    """
+    return JsObjects.JsNumber.JsNumber("%s.foundation_.adapter_.getScrollPosition()" % self.varName)
+
+  def getFocusedTabIndex(self):
+    """
+    Description:
+    ------------
+    Returns the index of the focused Tab.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/tabs/tab-bar/
+    """
+    return JsObjects.JsNumber.JsNumber("%s.foundation_.adapter_.getFocusedTabIndex()" % self.varName)
+
+  def getTabListLength(self):
+    """
+    Description:
+    ------------
+    Returns the number of child Tab components.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/tabs/tab-bar/
+    """
+    return JsObjects.JsNumber.JsNumber("%s.foundation_.adapter_.getTabListLength()" % self.varName)
+
+  def setActiveTab(self, num):
+    """
+    Description:
+    ------------
+    Sets the tab at the given index to be activated.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/tabs/tab-bar/
+
+    Attributes:
+    ----------
+    :param num: index.
+    """
+    num = JsUtils.jsConvertData(num, None)
+    return JsObjects.JsNumber.JsNumber("%s.foundation_.adapter_.setActiveTab(%s)" % (self.varName, num))
+
+  def activateTabAtIndex(self, num):
+    """
+    Description:
+    ------------
+    Activates the Tab at the given index with the given clientRect.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/tabs/tab-bar/
+
+    Attributes:
+    ----------
+    :param num: index.
+    """
+    num = JsUtils.jsConvertData(num, None)
+    return JsObjects.JsNumber.JsNumber("%s.foundation_.adapter_.activateTabAtIndex(%s)" % (self.varName, num))
+
+  def deactivateTabAtIndex(self, num):
+    """
+    Description:
+    ------------
+    Deactivates the Tab at the given index.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/tabs/tab-bar/
+
+    Attributes:
+    ----------
+    :param num: index.
+    """
+    num = JsUtils.jsConvertData(num, None)
+    return JsObjects.JsNumber.JsNumber("%s.foundation_.adapter_.deactivateTabAtIndex(%s)" % (self.varName, num))
+
 
 class TopBar(JsMdcHtml):
   css_class = "mdc-top-app-bar"
 
   def instantiate(self, html_id=None):
     return "new mdc.topAppBar.MDCTopAppBar(document.querySelector('%s'))" % html_id
-
 
 
 class LinearProgress(JsMdcHtml):
@@ -550,6 +636,7 @@ class Radio(JsMdcHtml):
     className = JsUtils.jsConvertData(className, None)
     return "%s.foundation_.adapter_.removeClass(%s)" % (self.varName, className)
 
+
 class Slider(JsMdcHtml):
   css_class = "mdc-slider"
 
@@ -703,3 +790,9 @@ class Slider(JsMdcHtml):
     bool = JsUtils.setDisabled(bool, None)
     return "%s.foundation_.setDisabled(%s)" % (self.varName, bool)
 
+
+class Drawers(JsMdcHtml):
+  css_class = "mdc-drawer"
+
+  def instantiate(self, html_id=None):
+    return "new mdc.drawer.MDCDrawer.attachTo(document.querySelector('%s'))" % html_id

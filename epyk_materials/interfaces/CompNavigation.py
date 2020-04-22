@@ -47,10 +47,10 @@ class Navigation(object):
     html_t.dom = dom_obj
     return html_t
 
-  def bar(self, title, icon="menu", buttons=None):
+  def top_bar(self, title, icon="menu", buttons=None):
     """
     MDC Top App Bar acts as a container for items such as application title, navigation icon, and action items.
-    
+
     https://material.io/develop/web/components/tabs/tab-bar/
     """
     schema = {"type": 'header', 'css': False, 'children': [
@@ -74,4 +74,72 @@ class Navigation(object):
     html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
     # Add the specific dom features
     html_t.dom = dom_obj
+    return html_t
+
+  def app_bar(self, title, icon="menu", buttons=None):
+    """
+    MDC Top App Bar acts as a container for items such as application title, navigation icon, and action items.
+
+    https://material.io/develop/web/components/drawers/
+    """
+    schema = {"type": 'header', 'class-keep': True, 'class': 'app-bar', 'css': False, 'children': [
+                {"type": 'div', 'css': False, 'class': 'mdc-top-app-bar__row', 'children': [
+                  {"type": 'section', 'css': False, 'class': "mdc-top-app-bar__section mdc-top-app-bar__section--align-start", 'children': [
+                    {"type": 'icon', 'class-keep': True, 'css': False, 'args': {'text': icon}, 'class': "mdc-top-app-bar__navigation-icon mdc-icon-button"},
+                    {"type": 'span', 'css': False, 'class': 'mdc-top-app-bar__title', 'args': {"text": title}},
+                  ]},
+                  {"type": 'div', 'css': False, 'class': 'mdc-top-app-bar__section mdc-top-app-bar__section--align-end', 'attrs': {"role": 'toolbar'}, 'children': []}
+                ]}
+    ]}
+
+    if buttons is not None:
+      for b in buttons:
+        schema['children'][1]['children'].append(
+          {"type": 'icon', 'class-keep': True, 'css': False, 'arias': {'label': b}, 'args': {'text': b}, 'class': "mdc-top-app-bar__navigation-icon mdc-icon-button"})
+    html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+
+    #
+    dom_obj = JsMdcComponents.TopBar(html_t)
+    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
+    # Add the specific dom features
+    html_t.dom = dom_obj
+    return html_t
+
+  def drawers(self, sections):
+    """
+    The MDC Navigation Drawer is used to organize access to destinations and other functionality on an app.
+
+    https://material.io/develop/web/components/drawers/
+    """
+    schema = {"type": 'aside', 'class-keep': True, 'class': 'mdc-drawer--modal', 'css': False, 'children': [
+      {"type": 'div', 'css': False, 'class': 'mdc-drawer__content', 'children': [
+        {"type": 'nav', 'class': 'mdc-list', 'css': False, 'children': []}]}
+    ]}
+
+    for s in sections:
+      schema['children'][0]['children'][0]['children'].append(
+        {"type": 'link', 'class': 'mdc-list-item', 'args': {"text": '', 'url': '#'}, 'css': False, 'children': [
+          {"type": 'icon', 'class': 'material-icons mdc-list-item__graphic', 'css': False, 'arias': {'hidden': True}, 'args': {'text': 'inbox'}},
+          {"type": 'span', 'css': False, 'class': 'mdc-list-item__text', 'args': {"text": s}}
+        ]}
+      )
+
+    html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+
+    #
+    dom_obj = JsMdcComponents.Drawers(html_t)
+    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
+    # Add the specific dom features
+    html_t.dom = dom_obj
+    return html_t
+
+  def drawer_app(self, text):
+    """
+    Apply the mdc-drawer-app-content class to the sibling element after the drawer for the open/close animations to work.
+
+    https://material.io/develop/web/components/drawers/
+    """
+    schema = {"type": 'div', 'class': 'mdc-drawer-scrim', 'args': {"htmlObjs": text}}
+    html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+    #html_t.dom = dom_obj
     return html_t
