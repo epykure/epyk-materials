@@ -377,6 +377,23 @@ class Radio(JsNodeDom.JsDoms):
   def instantiate(self, html_id=None):
     return "new mdc.radio.MDCRadio(document.querySelector('%s'))" % html_id
 
+  def setDisabled(self, bool):
+    """
+    Description:
+    ------------
+    Updates the icon’s disabled state.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+
+    Attributes:
+    ----------
+    :param label: String.
+    """
+    bool = JsUtils.jsConvertData(bool, None)
+    return "%s.disabled = %s" % (self.varName, bool)
+
 
 class Slider(JsNodeDom.JsDoms):
 

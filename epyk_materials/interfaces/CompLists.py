@@ -1,5 +1,4 @@
-
-from epyk_materials.core.js.html import JsMdcComponents
+from epyk_materials.core import JsMdcComponents
 
 
 class List(object):

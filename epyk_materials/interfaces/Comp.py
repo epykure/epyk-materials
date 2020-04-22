@@ -9,7 +9,7 @@ from epyk_materials.interfaces import CompLists
 from epyk_materials.interfaces import CompMenus
 from epyk_materials.interfaces import CompSelects
 
-from epyk_materials.core.html import MdcHtml
+from epyk_materials.core import MdcHtml
 
 
 class Materials(object):

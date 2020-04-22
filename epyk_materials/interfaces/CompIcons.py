@@ -1,5 +1,4 @@
-
-from epyk_materials.core.js.html import JsMdcComponents
+from epyk_materials.core import JsMdcComponents
 
 
 class Icon(object):
@@ -62,9 +61,11 @@ class Icon(object):
       {"type": 'icon', 'css': None, 'class': 'material-icons mdc-icon-button__icon"', 'args': {"text": "%s_border" % text}},
     ]}
     button = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(button)
-    button.style.mdc.button_icon()
-    button.onReady([button.js.button.unbounded(True)])
+    dom_obj = JsMdcComponents.ButtonFloating(button, button.style.varName)
+    button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
+    # Add the specific dom features
+    button.dom = dom_obj
+    button.onReady([button.dom.unbounded(True)])
     return button
 
   def clock(self, position=None, tooltip="Last Updated Time", width=(None, 'px'), height=(None, 'px'),

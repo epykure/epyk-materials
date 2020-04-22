@@ -35,4 +35,5 @@ class MdcComposite(HtmlTextComp.Composite):
       'floating': self._report.materials.texts.floating,
       'ripple': self._report.materials.texts.ripple,
       'mdc_line': self._report.materials.texts.line,
+      'mdc_radio': self._report.materials.inputs.mdc_radio,
     }

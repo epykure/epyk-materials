@@ -1,5 +1,4 @@
-
-from epyk_materials.core.js.html import JsMdcComponents
+from epyk_materials.core import JsMdcComponents
 
 
 class Menu(object):
@@ -38,5 +37,4 @@ class Menu(object):
     button.set_attrs({"class": "menu-surface-button", 'css': None})
     menu = self.context.rptObj.ui.div([button, surface])
     menu.set_attrs({"class": "mdc-menu-surface--anchor", 'css': None})
-    self.context.add_cls(menu)
     return menu

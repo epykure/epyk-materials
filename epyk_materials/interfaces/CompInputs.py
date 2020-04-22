@@ -1,5 +1,5 @@
 
-from epyk_materials.core.js.html import JsMdcComponents
+from epyk_materials.core import JsMdcComponents
 
 
 class Inputs(object):
@@ -64,7 +64,6 @@ class Inputs(object):
     if trailing_icon is not None:
       schema['children'] = [{"type": 'icon', 'args': {'text': trailing_icon, 'in_text_field': True}}] + schema['children']
     html_b = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_b)
     if leading_icon is not None:
       html_b.attr['class'].add("mdc-text-field--with-leading-icon")
     if trailing_icon is not None:
@@ -105,7 +104,6 @@ class Inputs(object):
       schema['children'] = [{"type": 'icon', 'args': {'text': trailing_icon, 'in_text_field': True}}] + schema['children']
 
     html_b = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_b)
     html_b.style.mdc.line_ripple()
     html_b.style.mdc.text_notched_outline()
     if leading_icon is not None:
@@ -171,8 +169,12 @@ class Inputs(object):
       {"type": 'div', "class": "mdc-radio__ripple", 'css': False},
     ]}
     html_r = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_r)
-    html_r.style.mdc.radio()
+
+    dom_obj = JsMdcComponents.Radio(html_r, html_r.style.varName)
+    html_r.style.builder(html_r.style.varName, dom_obj.instantiate("#%s" % html_r.htmlId))
+    # Add the specific dom features
+    html_r.dom = dom_obj
+
     html_r.css({"margin": '5px'})
     return html_r
 
@@ -190,12 +192,17 @@ class Inputs(object):
     :param label:
     :param group_name:
     """
-    div = self.context.rptObj.ui.div()
+    schema = {"type": 'div', 'class': None, 'css': None, 'children': [
+      {"type": 'mdc_radio', 'class': None, 'css': None}]}
+
+    div = self.context.rptObj.materials.composite(schema)
     div.set_attrs({"class": None, 'css': None})
-    self.context.add_cls(div)
-    div += self.mdc_radio(flag=flag, group_name=group_name)
-    div.style.mdc.text_field()
-    div.onReady([div.js.field.input("radio")])
+
+    dom_obj = JsMdcComponents.Field(div, div.style.varName)
+    div.style.builder(div.style.varName, dom_obj.instantiate("#%s" % div.htmlId))
+    # Add the specific dom features
+    div.dom = dom_obj
+    div.onReady([div.dom.input("radio")])
     return div
 
   def chip(self, text):
@@ -226,8 +233,11 @@ class Inputs(object):
       ]})
 
     html_c = self.context.rptObj.materials.composite(schema)
-    self.context.add_cls(html_c)
-    html_c.style.mdc.chip()
+
+    dom_obj = JsMdcComponents.Chip(html_c, html_c.style.varName)
+    html_c.style.builder(html_c.style.varName, dom_obj.instantiate("#%s" % html_c.htmlId))
+    # Add the specific dom features
+    html_c.dom = dom_obj
     return html_c
 
   def checkbox(self, text):
