@@ -49,11 +49,11 @@ class Icon(object):
     """
     schema = {"type": 'label', 'class': "mdc-text-field--outlined mdc-text-field--with-trailing-icon", 'css': None, 'children': [
       {"type": 'input', 'class': "mdc-text-field__input", 'css': None, 'arias': {"labelledby": htmlCode or ''}},
-      {"type": 'mdc_icon', 'class': "material-icons mdc-text-field__icon--trailing", 'css': None, 'attrs': {"role": 'button'}, 'args': {"text": icon, 'in_text_field': True}},
+      {"type": 'mdc_icon', 'class-keep': True, 'class': "mdc-text-field__icon--trailing", 'css': None, 'attrs': {"role": 'button'}, 'args': {"text": icon, 'in_text_field': True}},
       {"type": 'div', 'class': "mdc-notched-outline", 'css': None, 'children': [
         {"type": 'div', 'class': "mdc-notched-outline__leading", 'css': None},
         {"type": 'div', 'class': "mdc-notched-outline__notch", 'css': None, 'children': [
-          {"type": 'mdc_floating', 'css': None, 'args': {"label": value}},
+          {"type": 'mdc_floating', 'class-keep': True, 'css': None, 'args': {"label": value}},
         ]},
         {"type": 'div', 'class': "mdc-notched-outline__trailing", 'css': None},
       ]},

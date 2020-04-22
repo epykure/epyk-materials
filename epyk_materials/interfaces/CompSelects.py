@@ -8,7 +8,7 @@ class Select(object):
     context.rptObj.cssImport.add("material-components-web")
     self.context = context
 
-  def filled(self, placeholder=""):
+  def filled(self, data, label=""):
     """
     Description:
     ------------
@@ -23,14 +23,16 @@ class Select(object):
           {"type": 'div', "class": "mdc-select__anchor demo-width-class", 'css': False, 'children': [
             {"type": 'icon', "class": "mdc-select__dropdown-icon", 'css': False},
             {"type": 'div', "class": "mdc-select__selected-text", 'css': False},
-            {"type": 'mdc_floating', 'css': False, 'args': {"label": placeholder}},
-            {"type": 'mdc_line'}]},
+            {"type": 'mdc_floating', 'class-keep': True, 'css': False, 'args': {"label": label}},
+            {"type": 'mdc_line', 'class-keep': True}]},
           {"type": 'div', "class": "mdc-select__menu mdc-menu mdc-menu-surface demo-width-class", 'css': False, 'children': [
             {"type": 'list', "class": "mdc-list", 'css': False, 'children': [
-              {"type": 'item', "class": "mdc-list-item", 'css': False, 'args': {"text": "Ok"}, 'attrs': {"data-value": "Ok"}},
-              {"type": 'item', "class": "mdc-list-item", 'css': False, 'args': {"text": "Data"}, 'attrs': {"data-value": "Data"}}
             ]},
     ]}]}
+
+    for d in data:
+      schema['children'][1]['children'][0]['children'].append(
+        {"type": 'item', "class": "mdc-list-item", 'css': False, 'args': {"text": d}, 'attrs': {"data-value": d}})
     html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.Select(html_b)
     html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
@@ -38,7 +40,7 @@ class Select(object):
     html_b.dom = dom_obj
     return html_b
 
-  def outlined(self, placeholder=""):
+  def outlined(self, data, label=""):
     """
     Description:
     ------------
@@ -48,29 +50,22 @@ class Select(object):
 
       https://material.io/develop/web/components/input-controls/select-menus/
     """
-    schema = {"type": 'div', 'class': 'mdc-select--outlined', 'css': False,
-              'children': [
+    schema = {"type": 'div', 'class': 'mdc-select--outlined', 'css': False, 'children': [
                 {"type": 'div', "class": "mdc-select__anchor demo-width-class", 'css': False, 'children': [
                   {"type": 'icon', "class": "mdc-select__dropdown-icon", 'css': False},
                   {"type": 'div', "class": "mdc-select__selected-text", 'css': False},
                   {"type": 'div', "class": "mdc-notched-outline", 'css': False, 'children': [
                     {"type": 'div', "class": "mdc-notched-outline__leading", 'css': False},
                     {"type": 'div', "class": "mdc-notched-outline__notch", 'css': False, 'children': [
-                      {"type": 'mdc_floating', 'args': {"label": placeholder}}
-                    ]},
-                    {"type": 'div', "class": "mdc-notched-outline__trailing", 'css': False},
-                  ]},
+                      {"type": 'mdc_floating', 'class-keep': True, 'args': {"label": label}}]},
+                    {"type": 'div', "class": "mdc-notched-outline__trailing", 'css': False}]},
                 ]},
 
                 {"type": 'div', "class": "mdc-select__menu mdc-menu mdc-menu-surface demo-width-class", 'css': False,
-                 'children': [
-                   {"type": 'list', "class": "mdc-list", 'css': False, 'children': [
-                     {"type": 'item', "class": "mdc-list-item", 'css': False, 'args': {"text": "Ok"},
-                      'attrs': {"data-value": "Ok"}},
-                     {"type": 'item', "class": "mdc-list-item", 'css': False, 'args': {"text": "Data"},
-                      'attrs': {"data-value": "Data"}}
-                   ]},
-                 ]}]}
+                 'children': [{"type": 'list', "class": "mdc-list", 'css': False, 'children': []}]}]}
+    for d in data:
+      schema['children'][1]['children'][0]['children'].append(
+        {"type": 'item', "class": "mdc-list-item", 'css': False, 'args': {"text": d}, 'attrs': {"data-value": d}})
     html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     html_b.style.css.margin = 2
     dom_obj = JsMdcComponents.Select(html_b)
