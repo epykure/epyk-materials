@@ -33,7 +33,7 @@ class Buttons(object):
         {"type": 'div', 'class': 'mdc-fab__ripple', 'css': None},
         {"type": 'span', 'class': 'mdc-fab__icon material-icons', 'css': None, 'args': {"text": icon}}
       ]}
-    button = self.context.rptObj.materials.composite(schema)
+    button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     #
     dom_obj = JsMdcComponents.Button(button)
@@ -41,49 +41,6 @@ class Buttons(object):
     # Add the specific dom features
     button.dom = dom_obj
     return button
-
-  def icon(self, icon, label=""):
-    html_button = self.button(icon, label)
-    self.context.rptObj.cssImport.add("material-icons")
-    ripple = self.context.rptObj.ui.div()
-    ripple.style.clear_all()
-    ripple.attr["class"].add("mdc-fab__ripple")
-    ripple += self.context.rptObj.materials.icons.icon(icon)
-    html_button += ripple
-    return html_button
-
-  def toggle_icon(self, icon, width=(None, "%"), height=(None, "px"), htmlCode=None, tooltip=None,
-                  profile=None, options=None):
-    """
-    Description:
-    ------------
-    The icon button can be used to toggle between an on and off icon.
-
-    Attributes:
-    ----------
-    :param icon:
-    :param width:
-    :param height:
-    :param htmlCode:
-    :param tooltip:
-    :param profile:
-    :param options:
-    """
-    html_button = self.context.rptObj.ui.button(width=width, height=height, htmlCode=htmlCode, tooltip=tooltip, profile=profile, options=options)
-    html_button.style.clear_all()
-    i = self.context.rptObj.materials.icon(icon)
-    i.attr['class'].add("mdc-icon-button__icon")
-    i.attr['class'].add("mdc-icon-button__icon--on")
-    html_button += i
-    i_border = self.context.rptObj.materials.icon("%s_border" % icon)
-    i_border.attr['class'].add('mdc-icon-button__icon')
-    html_button += i_border
-
-    dom_obj = JsMdcComponents.ButtonToggle(html_button)
-    html_button.style.builder(html_button.style.varName, dom_obj.instantiate("#%s" % html_button.htmlId))
-    # Add the specific dom features
-    html_button.dom = dom_obj
-    return html_button
 
   def toggle(self, flag, htmlCode=None, profile=None):
     """
@@ -109,11 +66,12 @@ class Buttons(object):
           {"type": 'checkbox', "class": "mdc-switch__native-control", 'args': {'flag': flag}, 'aria': {'role': 'switch', 'checked': flag}}
     ]}]}
 
-    html_b = self.context.rptObj.materials.composite(schema)
-    dom_obj = JsMdcComponents.Icon(html_b)
+    html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+    dom_obj = JsMdcComponents.ButtonSwitch(html_b)
     html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
     # Add the specific dom features
     html_b.dom = dom_obj
+    html_b.style.css.margin = 5
     return html_b
 
 
@@ -129,6 +87,8 @@ class FloatingButton(object):
 
     :param icon:
     """
+    self.context.rptObj.cssImport.add("material-icons")
+
     schema = {"type": 'button', 'class': None, 'css': None, 'arias': {"pressed": False}, 'children': [
       {"type": 'div', 'class': 'mdc-fab__ripple', 'css': None},
       {"type": 'mdc_icon', 'class-keep': True, 'class': 'mdc-fab__icon', 'css': None, 'args': {"text": icon}},
@@ -161,6 +121,7 @@ class FloatingButton(object):
     if mini:
       schema['class'] += " mdc-fab--mini"
     if icon is not None:
+      self.context.rptObj.cssImport.add("material-icons")
       schema['children'].insert(1, {"type": 'mdc_icon', 'class-keep': True, 'class': 'mdc-fab__icon', 'css': None, 'args': {"text": icon}})
 
     button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})

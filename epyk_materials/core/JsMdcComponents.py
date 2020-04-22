@@ -66,6 +66,53 @@ class ButtonSwitch(JsMdcHtml):
   def instantiate(self, html_id=None):
     return "new mdc.switchControl.MDCSwitch(document.querySelector('%s'))" % html_id
 
+  @property
+  def content(self):
+    return JsHtml.ContentFormatters(self.htmlObj._report, "%s.checked" % self.varName)
+
+  @property
+  def checked(self):
+    """
+    Description:
+    ------------
+    Setter/getter for the switch’s checked state
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.checked" % self.varName, isPyData=False)
+
+  @property
+  def disabled(self):
+    """
+    Description:
+    ------------
+    Setter/getter for the switch’s disabled state
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/switches/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.disabled" % self.varName, isPyData=False)
+
+  def check(self, bool=True):
+    """
+    Description:
+    ------------
+    Updates the icon’s disabled state.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+
+    Attributes:
+    ----------
+    :param bool: String.
+    """
+    bool = JsUtils.jsConvertData(bool, None)
+    return "%s.checked = %s" % (self.varName, bool)
+
 
 class MenuSurface(JsMdcHtml):
   css_class = "mdc-menu-surface"

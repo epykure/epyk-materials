@@ -22,7 +22,35 @@ class Icon(object):
     span.dom = dom_obj
     return span
 
-  def icon(self, text="", in_text_field=False):
+  def toggle(self, icon, htmlCode=None, tooltip=None, profile=None, options=None):
+    """
+    Description:
+    ------------
+    The icon button can be used to toggle between an on and off icon.
+
+    https://material-components.github.io/material-components-web-catalog/#/component/icon-button
+
+    Attributes:
+    ----------
+    :param icon:
+    :param htmlCode:
+    :param tooltip:
+    :param profile:
+    :param options:
+    """
+    schema = {"type": 'button', 'css': None, 'arias': {"label": ""}, 'children': [
+      {"type": 'mdc_icon', 'class-keep': True, 'css': None, 'class': 'mdc-icon-button__icon mdc-icon-button__icon--on', 'args': {"text": icon}},
+      {"type": 'mdc_icon', 'class-keep': True, 'css': None, 'class': 'mdc-icon-button__icon', 'args': {"text": "%s_border" % icon}},
+    ]}
+    html_button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+
+    dom_obj = JsMdcComponents.ButtonToggle(html_button)
+    html_button.style.builder(html_button.style.varName, dom_obj.instantiate("#%s" % html_button.htmlId))
+    # Add the specific dom features
+    html_button.dom = dom_obj
+    return html_button
+
+  def icon(self, text="", in_text_field=False, tooltip=""):
     """
 
     https://material.io/develop/web/components/buttons/icon-buttons/
@@ -37,6 +65,7 @@ class Icon(object):
       span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
       # Add the specific dom features
       span.dom = dom_obj
+    span.tooltip(tooltip)
     return span
 
   def text(self, icon, value, htmlCode=None):
@@ -85,32 +114,7 @@ class Icon(object):
     button.onReady([button.dom.unbounded(True)])
     return button
 
-  def toggle(self, text="", label=""):
-    """
-    Description:
-    ------------
-    The icon button can be used to toggle between an on and off icon.
-    To style an icon button as an icon button toggle, add both icons as child elements and place the mdc-icon-button__icon--on class on the icon that represents the on element.
-
-    https://material.io/develop/web/components/buttons/icon-buttons/
-
-    Attributes:
-    ----------
-    """
-    schema = {"type": 'button', 'class': None, 'css': None, 'arias': {"pressed": False, 'label': label}, 'children': [
-      {"type": 'icon', 'css': None, 'class': 'material-icons mdc-icon-button__icon mdc-icon-button__icon--on', 'args': {"text": text}},
-      {"type": 'icon', 'css': None, 'class': 'material-icons mdc-icon-button__icon"', 'args': {"text": "%s_border" % text}},
-    ]}
-    button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-    dom_obj = JsMdcComponents.ButtonFloating(button)
-    button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
-    # Add the specific dom features
-    button.dom = dom_obj
-    button.onReady([button.dom.unbounded(True)])
-    return button
-
-  def clock(self, position=None, tooltip="Last Updated Time", width=(None, 'px'), height=(None, 'px'),
-            htmlCode=None, profile=None):
+  def clock(self, tooltip=""):
     """
     Description:
     ------------
@@ -124,8 +128,6 @@ class Icon(object):
     :param htmlCode: Optional. An identifier for this component (on both Python and Javascript side)
     :param profile: Optional. A flag to set the component performance storage
     """
-    return self.icon('alarm', tooltip, position, width, height, htmlCode, profile)
+    return self.icon('alarm', tooltip=tooltip)
 
-  def refresh(self, position=None, tooltip="Last Updated Time", width=(None, 'px'), height=(None, 'px'),
-            htmlCode=None, profile=None):
-    return self.icon('refresh', tooltip, position, width, height, htmlCode, profile)
+  def refresh(self, tooltip=""): return self.icon('refresh', tooltip=tooltip)
