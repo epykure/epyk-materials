@@ -20,8 +20,6 @@ class MdcComposite(HtmlTextComp.Composite):
     if self.extended_map is None:
       self.extended_map = dict(super(MdcComposite, self)._get_comp_map)
       self.extended_map.update({
-        'list': self._report.ui.list,
-        'item': self._report.ui.lists.item,
         'icon': self._report.materials.icon,
 
         # Specific material shortcuts are prefixed with mdc_
