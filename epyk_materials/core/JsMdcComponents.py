@@ -497,8 +497,62 @@ class TextNothedOutline(JsMdcHtml):
 class TextRipple(JsMdcHtml):
   css_class = "mdc-text-field"
 
+  @property
+  def content(self):
+    return JsHtml.ContentFormatters(self.htmlObj._report, "%s.value" % self.varName)
+
   def instantiate(self, html_id=None):
     return "new mdc.textField.MDCTextField(document.querySelector('%s'))" % html_id
+
+  def setDisabled(self, bool=True):
+    """
+    Description:
+    ------------
+    Updates the input’s disabled state.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/
+
+    Attributes:
+    ----------
+    :param bool: Boolean.
+    """
+    bool = JsUtils.jsConvertData(bool, None)
+    return "%s.input_.disabled = %s" % (self.varName, bool)
+
+  def isValid(self):
+    """
+    Description:
+    ------------
+    Returns the component’s current validity state (either native or custom, depending on how setUseNativeValidation() was configured).
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/floating-label/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.foundation_.adapter_.isValid_" % self.varName, isPyData=False)
+
+  def getValue(self):
+    """
+    Returns the input’s value.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.value" % self.varName, isPyData=False)
+
+  def setValue(self, value):
+    """
+    Sets the input’s value.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/
+    """
+    value = JsUtils.jsConvertData(value, None)
+    return JsObjects.JsBoolean.JsBoolean("%s.value = %s" % (self.varName, value), isPyData=False)
 
 
 class TextFloating(JsMdcHtml):

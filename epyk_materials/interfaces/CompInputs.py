@@ -101,14 +101,14 @@ class Inputs(object):
 
     html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
-    dom_obj = JsMdcComponents.TextRipple(html_b)
-    html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
+    dom_obj_ripple = JsMdcComponents.TextRipple(html_b)
+    html_b.style.builder(html_b.style.varName, dom_obj_ripple.instantiate("#%s" % html_b.htmlId))
 
     dom_obj = JsMdcComponents.TextNothedOutline(html_b)
     html_b.style.builder("%s_notch" % html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
 
     # Add the specific dom features
-    html_b.dom = dom_obj
+    html_b.dom = dom_obj_ripple
 
     if leading_icon is not None:
       html_b.attr['class'].add("mdc-text-field--with-leading-icon")
@@ -128,7 +128,7 @@ class Inputs(object):
       const lineRipple = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
 
     https://material.io/develop/web/components/input-controls/text-field/
-    
+
     :param text:
     :param width:
     :param rows:
@@ -140,7 +140,7 @@ class Inputs(object):
     """
     schema = {"type": 'mdc_field', 'class': 'mdc-text-field--textarea', 'css': False, 'children': [
       {"type": 'div', "class": "mdc-text-field-character-counter", 'css': False},
-      {"type": 'textarea', "class": "mdc-text-field__input", 'css': False, 'attrs': {"maxlength": 140, 'rows': 8, 'cols': 10}, 'args': {'text': value}},
+      {"type": 'textarea', "class": "mdc-text-field__input", 'css': False, 'attrs': {"maxlength": 140, 'rows': 8, 'cols': 5}, 'args': {'text': value}},
       {"type": 'div', "class": "mdc-notched-outline", 'css': False, 'children': [
         {"type": 'div', "class": "mdc-notched-outline__leading", 'css': False},
         {"type": 'div', "class": "mdc-notched-outline__notch", 'css': False, 'children': [
@@ -148,6 +148,38 @@ class Inputs(object):
         ]},
         {"type": 'div', "class": "mdc-notched-outline__trailing", 'css': False},
     ]}]}
+    html_r = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+    return html_r
+
+  def password(self, value="", label=""):
+    """
+
+    :param value:
+    :param label:
+    """
+    schema = {"type": 'mdc_field', 'class-keep': True, 'class': 'mdc-text-field--textarea', 'css': False, 'children': [
+      {"type": 'div', "class": "mdc-text-field__ripple", 'css': False},
+      {"type": 'input', "class": "mdc-text-field__input", 'attrs': {'type': 'password'}, 'css': False},
+      {"type": 'span', "class": "mdc-floating-label", 'css': False},
+      {"type": 'mdc_line', 'class-keep': True, 'css': False, 'args': {'label': label}},
+    ]}
+
+    html_r = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+    return html_r
+
+  def prefilled(self, value="", label=""):
+    """
+
+    :param value:
+    :param label:
+    """
+    schema = {"type": 'mdc_field', 'class-keep': True, 'class': 'mdc-text-field--textarea', 'css': False, 'children': [
+      {"type": 'div', "class": "mdc-text-field__ripple", 'css': False},
+      {"type": 'input', "class": "mdc-text-field__input", 'attrs': {'type': 'text', 'value': value}, 'css': False},
+      {"type": 'span', "class": "mdc-floating-label", 'css': False},
+      {"type": 'mdc_line', 'class-keep': True, 'css': False, 'args': {'label': label}},
+    ]}
+
     html_r = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     return html_r
 
