@@ -53,6 +53,8 @@ class Text(object):
 
       https://material.io/develop/web/components/input-controls/floating-label/
 
+    Attributes:
+    ----------
     :param label:
     """
     schema = {"type": 'div', 'class': None, 'css': None, 'args': {"htmlObjs": label}}
@@ -73,6 +75,8 @@ class Text(object):
 
       https://material.io/develop/web/components/input-controls/floating-label/
 
+    Attributes:
+    ----------
     :param label:
     """
     schema = {"type": 'span', 'class': None, 'css': False, 'args': {"text": label}}
@@ -94,6 +98,8 @@ class Text(object):
 
       https://material.io/develop/web/components/chips/
 
+    Attributes:
+    ----------
     :param text:
     """
     if choice:

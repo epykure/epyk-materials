@@ -117,8 +117,7 @@ class Inputs(object):
     html_b.css({"margin-top": '5px'})
     return html_b
 
-  def textarea(self, value="", label="", width=(100, '%'), rows=5, placeholder=None, background_color=None, htmlCode=None,
-               options=None, profile=None):
+  def textarea(self, value="", label=""):
     """
     Description:
     ------------
@@ -127,16 +126,14 @@ class Inputs(object):
 
       const lineRipple = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
 
-    https://material.io/develop/web/components/input-controls/text-field/
+    Related Pages:
 
-    :param text:
-    :param width:
-    :param rows:
-    :param placeholder:
-    :param background_color:
-    :param htmlCode:
-    :param options:
-    :param profile:
+      https://material.io/develop/web/components/input-controls/text-field/
+
+    Attributes:
+    ----------
+    :param value:
+    :param label:
     """
     schema = {"type": 'mdc_field', 'class-keep': True, 'class': 'mdc-text-field--textarea', 'css': False, 'children': [
       {"type": 'div', "class": "mdc-text-field-character-counter", 'css': False},
@@ -153,7 +150,16 @@ class Inputs(object):
 
   def password(self, value="", label="", required=False, rules=None):
     """
+    Description:
+    ------------
+    MDCTextFieldFoundation provides validity styling by using the :invalid and :required attributes provided by HTML5’s form validation API.
 
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/
+
+    Attributes:
+    ----------
     :param value:
     :param label:
     """
@@ -172,7 +178,16 @@ class Inputs(object):
 
   def html5(self, value="", label="", required=False, rules=None):
     """
+    Description:
+    ------------
+    MDCTextFieldFoundation provides validity styling by using the :invalid and :required attributes provided by HTML5’s form validation API.
 
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/
+
+    Attributes:
+    ----------
     :param value:
     :param label:
     """
@@ -191,7 +206,17 @@ class Inputs(object):
 
   def prefilled(self, value="", label=""):
     """
+    Description:
+    ------------
+    When dealing with JS-driven text fields that already have values, you’ll want to ensure that you render mdc-floating-label with the mdc-floating-label--float-above modifier class.
+    This will ensure that the label moves out of the way of the text field’s value and prevents a Flash Of Un-styled Content (FOUC).
 
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/
+
+    Attributes:
+    ----------
     :param value:
     :param label:
     """
@@ -248,6 +273,8 @@ class Inputs(object):
 
       https://material.io/develop/web/components/input-controls/radio-buttons/
 
+    Attributes:
+    ----------
     :param flag:
     :param group_name:
     """
