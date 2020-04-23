@@ -39,7 +39,8 @@ class Report(Page.Report):
     """
     Description:
     ------------
-
+    Set the material components entry point.
+    This will be available in the same way than ui is available for anything else in the core framework.
 
     Related Pages:
 
@@ -52,3 +53,17 @@ class Report(Page.Report):
     if self._mt is None:
       self._mt = Comp.Materials(self)
     return self._mt
+
+  @property
+  def outs(self):
+    """
+    Description:
+    ------------
+    Change the styles before rendering the page
+    Override the predefined colors with the ones from the theme
+    """
+    self.css.customText('''
+:root {--mdc-theme-primary: %(color)s; --mdc-theme--on-primary: %(color)s; --mdc-theme--primary-bg: %(color)s;}
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {color: var(--mdc-theme-primary);}
+    ''' % {"color": self.theme.success[1]})
+    return super(Report, self).outs
