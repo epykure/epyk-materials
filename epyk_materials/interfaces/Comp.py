@@ -30,6 +30,7 @@ class Materials(object):
     self.slider = self.sliders.slider
     self.tabs = self.navigation.tabs
     self.drawers = self.navigation.drawers
+    self.new_line = self.rptObj.ui.layouts.new_line
 
   @property
   def selects(self):
