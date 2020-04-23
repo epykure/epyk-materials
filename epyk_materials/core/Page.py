@@ -33,6 +33,7 @@ class Report(Page.Report):
   def __init__(self):
     super(Report, self).__init__()
     self._mt = None
+    self.headers._favicon_url = "https://material.io/favicon.ico"
 
   @property
   def materials(self):
