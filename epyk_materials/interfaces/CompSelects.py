@@ -8,7 +8,7 @@ class Select(object):
     context.rptObj.cssImport.add("material-components-web")
     self.context = context
 
-  def filled(self, data, label=""):
+  def filled(self, data, label="", htmlCode=None):
     """
     Description:
     ------------
@@ -17,6 +17,12 @@ class Select(object):
     Related Pages:
 
       https://material.io/develop/web/components/input-controls/select-menus/
+
+    Attributes:
+    ----------
+    :param data: Array. The list of data
+    :param label: Optional. String. The component label
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'div', 'css': False,
       'children': [
@@ -40,7 +46,7 @@ class Select(object):
     html_b.dom = dom_obj
     return html_b
 
-  def outlined(self, data, label=""):
+  def outlined(self, data, label="", htmlCode=None):
     """
     Description:
     ------------
@@ -49,6 +55,12 @@ class Select(object):
     Related Pages:
 
       https://material.io/develop/web/components/input-controls/select-menus/
+
+    Attributes:
+    ----------
+    :param data: Array. The list of data
+    :param label: Optional. String. The component label
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'div', 'class': 'mdc-select--outlined', 'css': False, 'children': [
                 {"type": 'div', "class": "mdc-select__anchor demo-width-class", 'css': False, 'children': [

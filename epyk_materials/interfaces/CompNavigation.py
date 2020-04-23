@@ -8,13 +8,21 @@ class Navigation(object):
     context.rptObj.cssImport.add("material-components-web")
     self.context = context
 
-  def tabs(self, data):
+  def tabs(self, data, htmlCode=None):
     """
+    Description:
+    ------------
     Tabs organize and allow navigation between groups of content that are related and at the same level of hierarchy.
     The Tab Bar contains the Tab Scroller and Tab components.
 
-    https://material.io/develop/web/components/tabs/tab-bar/
+    Related Pages:
 
+      https://material.io/develop/web/components/tabs/tab-bar/
+
+    Attributes:
+    ----------
+    :param data:
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'div', 'css': False, 'attrs': {'role': 'tablist'},
       'children': [
@@ -47,11 +55,22 @@ class Navigation(object):
     html_t.dom = dom_obj
     return html_t
 
-  def top_bar(self, title, icon="menu", buttons=None):
+  def top_bar(self, title, icon="menu", buttons=None, htmlCode=None):
     """
+    Description:
+    ------------
     MDC Top App Bar acts as a container for items such as application title, navigation icon, and action items.
 
-    https://material.io/develop/web/components/tabs/tab-bar/
+    Related Pages:
+
+      https://material.io/develop/web/components/tabs/tab-bar/
+
+    Attributes:
+    ----------
+    :param title:
+    :param icon:
+    :param buttons:
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'header', 'css': False, 'children': [
                 {"type": 'div', 'css': False, 'class': 'mdc-top-app-bar__row', 'children': [
@@ -68,19 +87,28 @@ class Navigation(object):
         schema['children'][1]['children'].append(
           {"type": 'icon', 'class-keep': True, 'css': False, 'arias': {'label': b}, 'args': {'text': b}, 'class': "mdc-top-app-bar__navigation-icon mdc-icon-button"})
     html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-
-    #
     dom_obj = JsMdcComponents.TopBar(html_t)
     html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
     # Add the specific dom features
     html_t.dom = dom_obj
     return html_t
 
-  def app_bar(self, title, icon="menu", buttons=None):
+  def app_bar(self, title, icon="menu", buttons=None, htmlCode=None):
     """
+    Description:
+    ------------
     MDC Top App Bar acts as a container for items such as application title, navigation icon, and action items.
 
-    https://material.io/develop/web/components/drawers/
+    Related Pages:
+
+      https://material.io/develop/web/components/drawers/
+
+    Attributes:
+    ----------
+    :param title:
+    :param icon:
+    :param buttons:
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'header', 'class-keep': True, 'class': 'app-bar', 'css': False, 'children': [
                 {"type": 'div', 'css': False, 'class': 'mdc-top-app-bar__row', 'children': [
@@ -97,19 +125,26 @@ class Navigation(object):
         schema['children'][1]['children'].append(
           {"type": 'icon', 'class-keep': True, 'css': False, 'arias': {'label': b}, 'args': {'text': b}, 'class': "mdc-top-app-bar__navigation-icon mdc-icon-button"})
     html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-
-    #
     dom_obj = JsMdcComponents.TopBar(html_t)
     html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
     # Add the specific dom features
     html_t.dom = dom_obj
     return html_t
 
-  def drawers(self, sections):
+  def drawers(self, sections, htmlCode=None):
     """
+    Description:
+    ------------
     The MDC Navigation Drawer is used to organize access to destinations and other functionality on an app.
 
-    https://material.io/develop/web/components/drawers/
+    Related Pages:
+
+      https://material.io/develop/web/components/drawers/
+
+    Attributes:
+    ----------
+    :param sections:
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'aside', 'class-keep': True, 'class': 'mdc-drawer--modal', 'css': False, 'children': [
       {"type": 'div', 'css': False, 'class': 'mdc-drawer__content', 'children': [
@@ -125,19 +160,26 @@ class Navigation(object):
       )
 
     html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-
-    #
     dom_obj = JsMdcComponents.Drawers(html_t)
     html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
     # Add the specific dom features
     html_t.dom = dom_obj
     return html_t
 
-  def drawer_app(self, text):
+  def drawer_app(self, text, htmlCode=None):
     """
+    Description:
+    ------------
     Apply the mdc-drawer-app-content class to the sibling element after the drawer for the open/close animations to work.
 
-    https://material.io/develop/web/components/drawers/
+    Related Pages:
+
+      https://material.io/develop/web/components/drawers/
+
+    Attributes:
+    ----------
+    :param text:
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'div', 'class': 'mdc-drawer-scrim', 'args': {"htmlObjs": text}}
     html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})

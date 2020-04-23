@@ -11,8 +11,12 @@ class Icon(object):
 
   def field(self, icon=""):
     """
+    Description:
+    ------------
 
-    :param icon:
+    Attributes:
+    ----------
+    :param icon: String. The icon from Materials Icons
     """
     schema = {"type": 'span', 'class': "material-icons", 'css': None, 'attrs': {"role": 'button'}, 'args': {"text": icon}}
     span = self.context.rptObj.materials.composite(schema)
@@ -32,11 +36,11 @@ class Icon(object):
 
     Attributes:
     ----------
-    :param icon:
-    :param htmlCode:
+    :param icon: String. The icon from Materials Icons
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     :param tooltip:
-    :param profile:
-    :param options:
+    :param profile: Optional. Not yet available
+    :param options: Optional. Dictionary. the component specific items
     """
     schema = {"type": 'button', 'css': None, 'arias': {"label": ""}, 'children': [
       {"type": 'mdc_icon', 'class-keep': True, 'css': None, 'class': 'mdc-icon-button__icon mdc-icon-button__icon--on', 'args': {"text": icon}},
@@ -52,11 +56,18 @@ class Icon(object):
 
   def icon(self, text="", in_text_field=False, tooltip=""):
     """
+    Description:
+    ------------
 
-    https://material.io/develop/web/components/buttons/icon-buttons/
+    Related Pages:
+
+      https://material.io/develop/web/components/buttons/icon-buttons/
 
     Attributes:
     ----------
+    :param text:
+    :param in_text_field:
+    :param tooltip:
     """
     schema = {"type": 'span', 'class': "material-icons", 'css': None, 'attrs': {"role": 'button'}, 'args': {"text": text}}
     span = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
@@ -70,11 +81,18 @@ class Icon(object):
 
   def text(self, icon, value, htmlCode=None):
     """
+    Description:
+    ------------
 
-    https://material.io/develop/web/components/input-controls/text-field/icon/
+    Related Pages:
 
-    :param icon:
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+
+    Attributes:
+    ----------
+    :param icon: Optional.
     :param value:
+    :param htmlCode:
     """
     schema = {"type": 'label', 'class': "mdc-text-field--outlined mdc-text-field--with-trailing-icon", 'css': None, 'children': [
       {"type": 'input', 'class': "mdc-text-field__input", 'css': None, 'arias': {"labelledby": htmlCode or ''}},
@@ -100,10 +118,13 @@ class Icon(object):
     ------------
     The icon button will work without JavaScript, but you can enhance it to have a ripple effect by instantiating MDCRipple on the root element. See MDC Ripple for details.
 
-    https://material.io/develop/web/components/buttons/icon-buttons/
+    Related Pages:
+
+      https://material.io/develop/web/components/buttons/icon-buttons/
 
     Attributes:
     ----------
+    :param text:
     """
     schema = {"type": 'button', 'class': "material-icons", 'css': None}
     button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
@@ -121,12 +142,7 @@ class Icon(object):
 
     Attributes:
     ----------
-    :param position: Optional. The position of the icon in the line (left, right, center)
     :param tooltip: Optional. A string with the value of the tooltip
-    :param width: Optional. A tuple with the integer for the component width and its unit
-    :param height: Optional. A tuple with the integer for the component height and its unit
-    :param htmlCode: Optional. An identifier for this component (on both Python and Javascript side)
-    :param profile: Optional. A flag to set the component performance storage
     """
     return self.icon('alarm', tooltip=tooltip)
 

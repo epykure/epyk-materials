@@ -18,7 +18,10 @@ class Inputs(object):
 
       https://material-components.github.io/material-components-web-catalog/#/component/text-field?icons=leadingIcon&type=outlined
 
+    Attributes:
+    ----------
     :param text:
+    :param label:
     """
     schema = {"type": 'mdc_field', 'class-keep': True, 'css': False,
               'children': [
@@ -46,7 +49,12 @@ class Inputs(object):
 
       https://material-components.github.io/material-components-web-catalog/#/component/text-field
 
-    :param text:
+    Attributes:
+    ----------
+    :param value:
+    :param label:
+    :param leading_icon:
+    :param trailing_icon:
     """
     schema = {"type": 'mdc_field', 'class-keep': True, 'css': False,
               'children': [
@@ -80,7 +88,12 @@ class Inputs(object):
 
       https://material.io/develop/web/components/input-controls/text-field/
 
-    :param text:
+    Attributes:
+    ----------
+    :param value:
+    :param label:
+    :param leading_icon:
+    :param trailing_icon:
     """
     schema = {"type": 'div', 'css': False, 'children': [
         {"type": 'input', "class": "mdc-text-field__input", 'css': False, 'args': {'text': value}},
@@ -162,6 +175,8 @@ class Inputs(object):
     ----------
     :param value:
     :param label:
+    :param required:
+    :param rules:
     """
     schema = {"type": 'mdc_field', 'class-keep': True, 'class': 'mdc-text-field--textarea', 'css': False, 'children': [
       {"type": 'div', "class": "mdc-text-field__ripple", 'css': False},
@@ -190,6 +205,8 @@ class Inputs(object):
     ----------
     :param value:
     :param label:
+    :param required:
+    :param rules:
     """
     schema = {"type": 'mdc_field', 'class-keep': True, 'class': 'mdc-text-field--textarea', 'css': False, 'children': [
       {"type": 'div', "class": "mdc-text-field__ripple", 'css': False},
@@ -244,6 +261,12 @@ class Inputs(object):
     Related Pages:
 
       https://material.io/develop/web/components/input-controls/radio-buttons/
+
+    Attributes:
+    ----------
+    :param flag:
+    :param value:
+    :param group_name:
     """
     schema = {"type": 'div', 'css': False, 'children': [
       {"type": 'radio', "class": "mdc-radio__native-control", 'attrs': {"value": value}, 'css': False, 'args': {'flag': flag, 'group_name': group_name}},
@@ -276,6 +299,7 @@ class Inputs(object):
     Attributes:
     ----------
     :param flag:
+    :param flag:
     :param group_name:
     """
     schema = {"type": 'div', 'class': None, 'css': None, 'children': [
@@ -301,6 +325,8 @@ class Inputs(object):
 
       https://material.io/develop/web/components/chips/
 
+    Attributes:
+    ----------
     :param text:
     """
     schema = {"type": 'div', 'class': 'mdc-chip-set mdc-chip-set--input', 'attrs': {'role': 'grid'}, 'children': []}
@@ -328,12 +354,17 @@ class Inputs(object):
 
   def checkbox(self, text):
     """
+    Description:
+    ------------
     Checkboxes allow the user to select one or more items from a set.
+
     Related Pages:
 
         https://material.io/develop/web/components/input-controls/checkboxes/
 
-      :param text:
+    Attributes:
+    ----------
+    :param text:
     """
 
     schema = {"type": 'div', 'css': 'mdc-form-field', 'children': [

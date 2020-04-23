@@ -10,22 +10,34 @@ class Text(object):
 
   def field(self, htmlCode=None):
     """
+    Description:
+    ------------
+
+    Attributes:
+    ----------
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'label', 'css': None}
     label = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-
     dom_obj = JsMdcComponents.TextRipple(label)
     label.style.builder(label.style.varName, dom_obj.instantiate("#%s" % label.htmlId))
     # Add the specific dom features
     label.dom = dom_obj
     return label
 
-  def icon(self, value):
+  def icon(self, value, htmlCode=None):
     """
+    Description:
+    ------------
 
     Related Pages:
 
       https://material.io/develop/web/components/input-controls/text-field/icon/
+
+    Attributes:
+    ----------
+    :param value:
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'label', 'class': 'mdc-text-field mdc-text-field--with-leading-icon',
               'children': [
@@ -37,15 +49,16 @@ class Text(object):
               ]
     }
     html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-
     dom_obj = JsMdcComponents.Icon(html_t)
     html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
     # Add the specific dom features
     html_t.dom = dom_obj
     return html_t
 
-  def line(self, label=""):
+  def line(self, label="", htmlCode=None):
     """
+    Description:
+    ------------
     Floating labels display the type of input a field requires.
     Every Text Field and Select should have a label, except for full-width text fields, which use the input’s placeholder attribute instead.
 
@@ -56,18 +69,20 @@ class Text(object):
     Attributes:
     ----------
     :param label:
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'div', 'class': None, 'css': None, 'args': {"htmlObjs": label}}
     span = self.context.rptObj.materials.composite(schema)
-
     dom_obj = JsMdcComponents.Line(span)
     span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
     # Add the specific dom features
     span.dom = dom_obj
     return span
 
-  def floating(self, label):
+  def floating(self, label, htmlCode=None):
     """
+    Description:
+    ------------
     Floating labels display the type of input a field requires.
     Every Text Field and Select should have a label, except for full-width text fields, which use the input’s placeholder attribute instead.
 
@@ -78,17 +93,17 @@ class Text(object):
     Attributes:
     ----------
     :param label:
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'span', 'class': None, 'css': False, 'args': {"text": label}}
     span = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-
     dom_obj = JsMdcComponents.TextFloating(span)
     span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
     # Add the specific dom features
     span.dom = dom_obj
     return span
 
-  def chip(self, text, choice=False):
+  def chip(self, text, choice=False, htmlCode=None):
     """
     Description:
     ------------
@@ -101,6 +116,8 @@ class Text(object):
     Attributes:
     ----------
     :param text:
+    :param choice:
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     if choice:
       schema = {"type": 'div', 'class': 'mdc-chip-set--choice', 'attrs': {'role': 'grid'}, 'children': []}
@@ -121,10 +138,8 @@ class Text(object):
       ]})
 
     html_c = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-
     dom_obj = JsMdcComponents.Chip(html_c, html_c.style.varName)
     html_c.style.builder(html_c.style.varName, dom_obj.instantiate("#%s" % html_c.htmlId))
     # Add the specific dom features
     html_c.dom = dom_obj
-
     return html_c

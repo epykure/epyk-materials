@@ -29,7 +29,9 @@ class List(object):
 
       https://material.io/develop/web/components/lists/
 
-    :return:
+    Attributes:
+    ----------
+    :param data:
     """
     schema = {"type": 'div', 'css': False, 'children': []}
     for i, d in enumerate(data):
@@ -54,7 +56,9 @@ class List(object):
 
       https://material.io/develop/web/components/lists/
 
-    :return:
+    Attributes:
+    ----------
+    :param data:
     """
     schema = {"type": 'div', 'css': False, 'attrs': {'role': 'listbox'}, 'children': []}
     for i, d in enumerate(data):
@@ -74,13 +78,17 @@ class List(object):
     """
     Description:
     ------------
-    When rendering list radio group with pre-selected radio button the selected list item should contain aria-checked set to true and the native radio input element contains checked attribute, all other list items should have aria-checked set to false. The list root contains role="radiogroup" whereas each list item within radio group contains role="radio".
+    When rendering list radio group with pre-selected radio button the selected list item should contain aria-checked set to true and the native radio input element contains checked attribute, all other list items should have aria-checked set to false.
+    The list root contains role="radiogroup" whereas each list item within radio group contains role="radio".
 
     Related Pages:
 
       https://material.io/develop/web/components/lists/
 
-    :return:
+    Attributes:
+    ----------
+    :param data:
+    :param group_name:
     """
     if group_name is None:
       group_name = "radios_%s" % id(data)
@@ -116,7 +124,10 @@ class List(object):
 
       https://material.io/develop/web/components/lists/
 
-    :return:
+    Attributes:
+    ----------
+    :param data:
+    :param group_name:
     """
     if group_name is None:
       group_name = "radios_%s" % id(data)

@@ -12,6 +12,7 @@ class Buttons(object):
     """
     Description:
     ------------
+    The icon button from Materials
 
     Related Pages:
 
@@ -19,9 +20,10 @@ class Buttons(object):
 
     Attributes:
     ----------
-    :param icon:
-    :param label:
+    :param icon: String. The icon from Materials Icons
+    :param label: String. The label
     """
+    self.context.rptObj.cssImport.add("material-icons")
     if not label:
       schema = {"type": 'button', 'class': None, 'css': None, 'arias': {"pressed": False}, 'children': [
         {"type": 'div', 'class': 'mdc-button__ripple', 'css': None},
@@ -34,8 +36,6 @@ class Buttons(object):
         {"type": 'span', 'class': 'mdc-fab__icon material-icons', 'css': None, 'args': {"text": icon}}
       ]}
     button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-
-    #
     dom_obj = JsMdcComponents.Button(button)
     button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
     # Add the specific dom features
@@ -55,9 +55,9 @@ class Buttons(object):
 
     Attributes:
     ----------
-    :param flag:
-    :param htmlCode:
-    :param profile:
+    :param flag: Boolean. The init state of the toggle component.
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
+    :param profile: Optional. Not yet available
     """
     schema = {"type": 'div', 'css': False, 'children': [
         {"type": 'div', "class": "mdc-switch__track", 'css': False},
@@ -84,11 +84,14 @@ class FloatingButton(object):
 
   def button(self, icon, mini=False):
     """
+    Description:
+    ------------
 
-    :param icon:
+    Attributes:
+    ----------
+    :param icon: String. The icon from Materials Icons
     """
     self.context.rptObj.cssImport.add("material-icons")
-
     schema = {"type": 'button', 'class': None, 'css': None, 'arias': {"pressed": False}, 'children': [
       {"type": 'div', 'class': 'mdc-fab__ripple', 'css': None},
       {"type": 'mdc_icon', 'class-keep': True, 'class': 'mdc-fab__icon', 'css': None, 'args': {"text": icon}},
@@ -98,8 +101,6 @@ class FloatingButton(object):
       schema['class'] = "mdc-fab--mini"
 
     button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-
-    #
     dom_obj = JsMdcComponents.FAB(button)
     button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
     # Add the specific dom features
@@ -108,11 +109,14 @@ class FloatingButton(object):
 
   def extended(self, label, icon=None, mini=False):
     """
-
+    Description:
+    ------------
     NOTE: The extended FAB must contain label where as the icon is optional.
     The icon and label may be specified in whichever order is appropriate based on context.
 
-    :param icon:
+    Attributes:
+    ----------
+    :param icon: String. The icon from Materials Icons
     """
     schema = {"type": 'button', 'class': "mdc-fab--extended", 'css': None, 'children': [
       {"type": 'div', 'class': 'mdc-fab__ripple', 'css': None},
@@ -125,8 +129,6 @@ class FloatingButton(object):
       schema['children'].insert(1, {"type": 'mdc_icon', 'class-keep': True, 'class': 'mdc-fab__icon', 'css': None, 'args': {"text": icon}})
 
     button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-
-    #
     dom_obj = JsMdcComponents.FAB(button)
     button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
     # Add the specific dom features

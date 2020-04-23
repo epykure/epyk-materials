@@ -10,6 +10,8 @@ class Menu(object):
 
   def surface(self):
     """
+    Description:
+    ------------
 
     Related Pages:
 
@@ -26,12 +28,15 @@ class Menu(object):
 
   def anchor(self, text, surface):
     """
+    Description:
+    ------------
 
     https://material.io/develop/web/components/menu-surface/
 
+    Attributes:
+    ----------
     :param text:
     :param surface:
-    :return:
     """
     button = self.context.rptObj.ui.button(text)
     button.set_attrs({"class": "menu-surface-button", 'css': None})

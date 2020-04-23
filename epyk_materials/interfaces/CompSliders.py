@@ -22,7 +22,7 @@ class Slider(object):
     context.rptObj.cssImport.add("material-components-web")
     self.context = context
 
-  def progressbar(self, number=0, total=100, label=""):
+  def progressbar(self, number=0, total=100, label="", htmlCode=None):
     """
     The MDC Linear Progress component is a spec-aligned linear progress indicator component adhering to the Material Design progress & activity requirements.
 
@@ -30,6 +30,12 @@ class Slider(object):
 
       https://material.io/develop/web/components/linear-progress/
 
+    Attributes:
+    ----------
+    :param number:
+    :param total:
+    :param label:
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'div', 'css': None,
       'arias': {'role': 'progressbar', 'valuemin': 0, 'valuemax': 1, 'valuenow': number/total, 'label': label},
@@ -52,7 +58,7 @@ class Slider(object):
     html_pr.onReady([html_pr.dom.setProgress(number)])
     return html_pr
 
-  def slider(self, value=0, total=100, label=""):
+  def slider(self, value=0, total=100, label="", htmlCode=None):
     """
     Description:
     ------------
@@ -68,6 +74,7 @@ class Slider(object):
     :param value:
     :param total:
     :param label:
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'div', 'css': None, 'attrs': {"tabindex": 0},
               'arias': {"role": 'slider', 'label': label, 'valuenow': value, 'valuemax': total, 'valuemin': 0}, 'children': [
@@ -89,7 +96,7 @@ class Slider(object):
     html_pr.dom = dom_obj
     return html_pr
 
-  def discrete(self, value=0, total=100, label=""):
+  def discrete(self, value=0, total=100, label="", htmlCode=None):
     """
     Description:
     ------------
@@ -103,6 +110,7 @@ class Slider(object):
     :param value:
     :param total:
     :param label:
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'div', 'class': 'mdc-slider mdc-slider--discrete', 'css': None, 'attrs': {"tabindex": 0},
               'arias': {"role": 'slider', 'label': label, 'valuenow': value, 'valuemax': total, 'valuemin': 0},
@@ -129,7 +137,7 @@ class Slider(object):
     html_pr.dom = dom_obj
     return html_pr
 
-  def tracker(self, value=0, total=100, label=""):
+  def tracker(self, value=0, total=100, label="", htmlCode=None):
     """
     Description:
     ------------
@@ -144,6 +152,7 @@ class Slider(object):
     :param value:
     :param total:
     :param label:
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
     """
     schema = {"type": 'div', 'class': 'mdc-slider mdc-slider--discrete mdc-slider--display-markers', 'css': None, 'attrs': {"tabindex": 0},
               'arias': {"role": 'slider', 'label': label, 'valuenow': value, 'valuemax': total, 'valuemin': 0},

@@ -178,13 +178,13 @@ class Materials(object):
 
     Attributes:
     ----------
-    :param schema:
-    :param width:
-    :param height:
-    :param htmlCode:
-    :param helper:
-    :param options:
-    :param profile:
+    :param schema: Dictionary. The schema of the composite item with the different sub items
+    :param width: Optional. Tuple. The component width in pixel or percentage
+    :param height: Optional. Tuple. The component height in pixel or percentage
+    :param htmlCode: Optional. String. The component identifier code (for both Python and Javascript)
+    :param helper: Optional. String. Optional. The helper message
+    :param options: Optional. Dictionary. the component specific items
+    :param profile: Optional. Not yet available
     """
     html_help = MdcHtml.MdcComposite(self.rptObj, schema, width=width, height=height, htmlCode=htmlCode, profile=profile, options=options or {}, helper=helper)
     self.register(html_help)
