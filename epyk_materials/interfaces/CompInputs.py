@@ -138,9 +138,9 @@ class Inputs(object):
     :param options:
     :param profile:
     """
-    schema = {"type": 'mdc_field', 'class': 'mdc-text-field--textarea', 'css': False, 'children': [
+    schema = {"type": 'mdc_field', 'class-keep': True, 'class': 'mdc-text-field--textarea', 'css': False, 'children': [
       {"type": 'div', "class": "mdc-text-field-character-counter", 'css': False},
-      {"type": 'textarea', "class": "mdc-text-field__input", 'css': False, 'attrs': {"maxlength": 140, 'rows': 8, 'cols': 5}, 'args': {'text': value}},
+      {"type": 'textarea', "class": "mdc-text-field__input", 'css': False, 'attrs': {"maxlength": 140, 'rows': 8, 'cols': 40}, 'args': {'text': value}},
       {"type": 'div', "class": "mdc-notched-outline", 'css': False, 'children': [
         {"type": 'div', "class": "mdc-notched-outline__leading", 'css': False},
         {"type": 'div', "class": "mdc-notched-outline__notch", 'css': False, 'children': [
@@ -151,7 +151,7 @@ class Inputs(object):
     html_r = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     return html_r
 
-  def password(self, value="", label=""):
+  def password(self, value="", label="", required=False, rules=None):
     """
 
     :param value:
@@ -159,11 +159,33 @@ class Inputs(object):
     """
     schema = {"type": 'mdc_field', 'class-keep': True, 'class': 'mdc-text-field--textarea', 'css': False, 'children': [
       {"type": 'div', "class": "mdc-text-field__ripple", 'css': False},
-      {"type": 'input', "class": "mdc-text-field__input", 'attrs': {'type': 'password'}, 'css': False},
+      {"type": 'input', "class": "mdc-text-field__input", 'attrs': {'type': 'password', 'value': value}, 'css': False},
       {"type": 'span', "class": "mdc-floating-label", 'css': False},
       {"type": 'mdc_line', 'class-keep': True, 'css': False, 'args': {'label': label}},
     ]}
+    if required is not None:
+      schema['children'][1]['attrs']["required"] = ""
+    if rules is not None:
+      schema['children'][1]['attrs'].update(rules)
+    html_r = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+    return html_r
 
+  def html5(self, value="", label="", required=False, rules=None):
+    """
+
+    :param value:
+    :param label:
+    """
+    schema = {"type": 'mdc_field', 'class-keep': True, 'class': 'mdc-text-field--textarea', 'css': False, 'children': [
+      {"type": 'div', "class": "mdc-text-field__ripple", 'css': False},
+      {"type": 'input', "class": "mdc-text-field__input", 'attrs': {'type': 'text', 'value': value}, 'css': False},
+      {"type": 'span', "class": "mdc-floating-label", 'css': False},
+      {"type": 'mdc_line', 'class-keep': True, 'css': False, 'args': {'label': label}},
+    ]}
+    if required:
+      schema['children'][1]['attrs']["required"] = ""
+    if rules is not None:
+      schema['children'][1]['attrs'].update(rules)
     html_r = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     return html_r
 
