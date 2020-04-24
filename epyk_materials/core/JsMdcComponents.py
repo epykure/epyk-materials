@@ -903,7 +903,7 @@ class CheckBox(JsMdcHtml):
   css_class = 'mdc-form-field'
 
   def instantiate(self, html_id=None):
-    return "new MDCCheckbox(document.querySelector('%s'));" % html_id
+    return "new mdc.checkbox.MDCCheckbox(document.querySelector('%s'));" % html_id
 
   @property
   def checked(self):
@@ -956,3 +956,20 @@ class CheckBox(JsMdcHtml):
       https://material.io/develop/web/components/input-controls/text-field/icon/
     """
     return JsObjects.JsObjects.get("%s.value" % self.varName)
+
+  def setStatus(self, status, bool=True):
+    """
+    Description:
+    ------------
+    Updates the icon’s disabled state.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+
+    Attributes:
+    ----------
+    :param label: String.
+    """
+    bool = JsUtils.jsConvertData(bool, None)
+    return "%s.%s = %s" % (self.varName, status, bool)
