@@ -904,3 +904,55 @@ class CheckBox(JsMdcHtml):
 
   def instantiate(self, html_id=None):
     return "new MDCCheckbox(document.querySelector('%s'));" % html_id
+
+  @property
+  def checked(self):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s checked state
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.checked" % self.varName, isPyData=False)
+
+  @property
+  def disabled(self):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s checked state
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.disabled" % self.varName, isPyData=False)
+
+  @property
+  def indeterminate(self):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s checked state
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.indeterminate" % self.varName, isPyData=False)
+
+  @property
+  def value(self):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s value
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    return JsObjects.JsObjects.get("%s.value" % self.varName)

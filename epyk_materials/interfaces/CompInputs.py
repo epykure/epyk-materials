@@ -372,7 +372,7 @@ class Inputs(object):
 
     schema = {"type": 'div', 'class': 'mdc-form-field', 'css': False, 'children': [
         {"type": 'div', "class": "mdc-checkbox", 'css': False, 'children': [
-          {'type': 'checkbox', 'class': 'mdc-checkbox__native-control', 'css': False, 'args': {'flag': flag}},
+          {'type': 'checkbox', 'class': 'mdc-checkbox__native-control', 'alias': 'checkbox', 'css': False, 'args': {'flag': flag}},
           {'type': 'div', 'class': 'mdc-checkbox__background', 'css': False, 'children': [
             {'type': 'svg', 'class': 'mdc-checkbox__checkmark', 'css': False, 'attrs': {'viewBox': '0 0 %s %s' % (width, height)}, 'children': [
               {'type': 'path', 'class': 'mdc-checkbox__checkmark-path', 'css': False, 'args': {'bespoke_path': ["M1.73,12.91 8.1,19.28 22.79,4.59"]}}
@@ -381,7 +381,7 @@ class Inputs(object):
           ]},
           {'type': 'div', 'class': 'checkbox__ripple', 'css': False}
         ]},
-      {'type': 'label', 'attrs': {'for': 'checkbox-1'}, 'css': False, 'args': {'text': text}}
+      {'type': 'label', 'attrs': {'for': '<checkbox>'}, 'css': False, 'args': {'text': text}}
       ]}
     html_chk = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.CheckBox(html_chk)
