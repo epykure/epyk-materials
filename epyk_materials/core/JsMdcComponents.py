@@ -897,3 +897,10 @@ class Drawers(JsMdcHtml):
 
   def instantiate(self, html_id=None):
     return "new mdc.drawer.MDCDrawer.attachTo(document.querySelector('%s'))" % html_id
+
+
+class CheckBox(JsMdcHtml):
+  css_class = 'mdc-form-field'
+
+  def instantiate(self, html_id=None):
+    return "new MDCCheckbox(document.querySelector('%s'));" % html_id
