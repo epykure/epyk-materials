@@ -361,6 +361,13 @@ class Inputs(object):
     ------------
     Checkboxes allow the user to select one or more items from a set.
 
+    Usage::
+
+      rptObj.materials.inputs.checkbox(True, "test")
+      rptObj.materials.inputs.checkbox(False, "test2")
+      chk3 = rptObj.materials.inputs.checkbox(False, "test3")
+      rptObj.js.addOnReady([chk3.dom.setStatus('indeterminate')])
+
     Related Pages:
 
         https://material.io/develop/web/components/input-controls/checkboxes/
@@ -381,10 +388,12 @@ class Inputs(object):
           ]},
           {'type': 'div', 'class': 'checkbox__ripple', 'css': False}
         ]},
-      {'type': 'label', 'attrs': {'for': '<checkbox>'}, 'css': False, 'args': {'text': text}}
+      {'type': 'label', 'css': False, 'args': {'text': text}}
       ]}
     html_chk = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.CheckBox(html_chk)
+    if flag:
+      self.context.rptObj.js.addOnReady([dom_obj.setStatus('checked')])
     html_chk.style.builder(html_chk.style.varName, dom_obj.instantiate("#%s" % html_chk.htmlId))
     html_chk.dom = dom_obj
     return html_chk
