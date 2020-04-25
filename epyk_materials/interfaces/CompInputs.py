@@ -321,6 +321,10 @@ class Inputs(object):
     ------------
     Chips are compact elements that allow users to enter information, select a choice, filter content, or trigger an action.
 
+    Usage::
+
+      rptObj.materials.inputs.chip(["test %s" % i for i in range(5)])
+
     Related Pages:
 
       https://material.io/develop/web/components/chips/
@@ -345,18 +349,24 @@ class Inputs(object):
       ]})
 
     html_c = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-
     dom_obj = JsMdcComponents.Chip(html_c)
     html_c.style.builder(html_c.style.varName, dom_obj.instantiate("#%s" % html_c.htmlId))
     # Add the specific dom features
     html_c.dom = dom_obj
     return html_c
 
-  def checkbox(self, text):
+  def checkbox(self, flag, text, width=24, height=24):
     """
     Description:
     ------------
     Checkboxes allow the user to select one or more items from a set.
+
+    Usage::
+
+      rptObj.materials.inputs.checkbox(True, "test")
+      rptObj.materials.inputs.checkbox(False, "test2")
+      chk3 = rptObj.materials.inputs.checkbox(False, "test3")
+      rptObj.js.addOnReady([chk3.dom.setStatus('indeterminate')])
 
     Related Pages:
 
@@ -367,21 +377,23 @@ class Inputs(object):
     :param text:
     """
 
-    schema = {"type": 'div', 'css': 'mdc-form-field', 'children': [
-      {"type": 'div', "class": "mdc-checkbox", 'children': [
-        {'type': 'checkbox', 'class': 'mdc-checkbox__native-control'},
-        {'type': 'div', 'class': 'mdc-checkbox__background', 'children': [
-          {'type': 'svg', 'class': 'mdc-checkbox__checkmark', 'attrs': {'viewBox': '0 0 24 24'}}
+    schema = {"type": 'div', 'class': 'mdc-form-field', 'css': False, 'children': [
+        {"type": 'div', "class": "mdc-checkbox", 'css': False, 'children': [
+          {'type': 'checkbox', 'class': 'mdc-checkbox__native-control', 'alias': 'checkbox', 'css': False, 'args': {'flag': flag}},
+          {'type': 'div', 'class': 'mdc-checkbox__background', 'css': False, 'children': [
+            {'type': 'svg', 'class': 'mdc-checkbox__checkmark', 'css': False, 'attrs': {'viewBox': '0 0 %s %s' % (width, height)}, 'children': [
+              {'type': 'path', 'class': 'mdc-checkbox__checkmark-path', 'css': False, 'args': {'bespoke_path': ["M1.73,12.91 8.1,19.28 22.79,4.59"]}}
+            ]},
+            {'type': 'div', 'class': 'mdc-checkbox__mixedmark', 'css': False}
+          ]},
+          {'type': 'div', 'class': 'checkbox__ripple', 'css': False}
         ]},
-      ]},
-      {"type": 'div', "class": "mdc-radio__background", 'css': False, 'children': [
-        {"type": 'div', "class": "mdc-radio__outer-circle", 'css': False},
-        {"type": 'div', "class": "mdc-radio__inner-circle", 'css': False},
-      ]},
-      {"type": 'div', "class": "mdc-radio__ripple", 'css': False},
-    ]}
+      {'type': 'label', 'css': False, 'args': {'text': text}}
+      ]}
     html_chk = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-    self.context.add_cls(html_chk)
-    html_chk.style.mdc.radio()
-    html_chk.css({"margin": '5px'})
+    dom_obj = JsMdcComponents.CheckBox(html_chk)
+    if flag:
+      self.context.rptObj.js.addOnReady([dom_obj.setStatus('checked')])
+    html_chk.style.builder(html_chk.style.varName, dom_obj.instantiate("#%s" % html_chk.htmlId))
+    html_chk.dom = dom_obj
     return html_chk

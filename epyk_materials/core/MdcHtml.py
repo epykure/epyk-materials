@@ -6,6 +6,7 @@ class MdcComposite(HtmlTextComp.Composite):
 
   extended_map = None
 
+
   @property
   def _get_comp_map(self):
     """
@@ -17,6 +18,7 @@ class MdcComposite(HtmlTextComp.Composite):
     I believe this component should remain a base one.
 
     """
+
     if self.extended_map is None:
       self.extended_map = dict(super(MdcComposite, self)._get_comp_map)
       self.extended_map.update({

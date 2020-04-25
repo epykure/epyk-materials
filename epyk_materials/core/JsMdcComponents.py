@@ -897,3 +897,79 @@ class Drawers(JsMdcHtml):
 
   def instantiate(self, html_id=None):
     return "new mdc.drawer.MDCDrawer.attachTo(document.querySelector('%s'))" % html_id
+
+
+class CheckBox(JsMdcHtml):
+  css_class = 'mdc-form-field'
+
+  def instantiate(self, html_id=None):
+    return "new mdc.checkbox.MDCCheckbox(document.querySelector('%s'));" % html_id
+
+  @property
+  def checked(self):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s checked state
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.checked" % self.varName, isPyData=False)
+
+  @property
+  def disabled(self):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s checked state
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.disabled" % self.varName, isPyData=False)
+
+  @property
+  def indeterminate(self):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s checked state
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.indeterminate" % self.varName, isPyData=False)
+
+  @property
+  def value(self):
+    """
+    Description:
+    ------------
+    Setter/getter for the radio’s value
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+    """
+    return JsObjects.JsObjects.get("%s.value" % self.varName)
+
+  def setStatus(self, status, bool=True):
+    """
+    Description:
+    ------------
+    Updates the icon’s disabled state.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/input-controls/text-field/icon/
+
+    Attributes:
+    ----------
+    :param label: String.
+    """
+    bool = JsUtils.jsConvertData(bool, None)
+    return "%s.%s = %s" % (self.varName, status, bool)
