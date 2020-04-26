@@ -973,3 +973,33 @@ class CheckBox(JsMdcHtml):
     """
     bool = JsUtils.jsConvertData(bool, None)
     return "%s.%s = %s" % (self.varName, status, bool)
+
+class SnackBar(JsMdcHtml):
+  css_class = "mdc-snackbar"
+
+  def instantiate(self, html_id=None):
+    return "new mdc.snackbar.MDCSnackbar(document.querySelector('%s'));" % html_id
+
+  def open(self):
+    """
+    Opens the snackbar.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/snackbars/
+
+    :return:
+    """
+
+    return "%s.open();" % self.varName
+
+  def close(self, reason=''):
+    """
+    Closes the snackbar, optionally with the specified reason indicating why it was closed.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/snackbars/
+    """
+
+    return "%s.close(%s);" % (self.varName, reason)
