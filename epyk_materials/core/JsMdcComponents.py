@@ -910,11 +910,11 @@ class CheckBox(JsMdcHtml):
     """
     Description:
     ------------
-    Setter/getter for the radio’s checked state
+    Setter/getter for the checkbox’s checked state
 
     Related Pages:
 
-      https://material.io/develop/web/components/input-controls/text-field/icon/
+      https://material.io/develop/web/components/input-controls/checkboxes/
     """
     return JsObjects.JsBoolean.JsBoolean("%s.checked" % self.varName, isPyData=False)
 
@@ -923,11 +923,11 @@ class CheckBox(JsMdcHtml):
     """
     Description:
     ------------
-    Setter/getter for the radio’s checked state
+    Setter/getter for the checkbox’s disabled state
 
     Related Pages:
 
-      https://material.io/develop/web/components/input-controls/text-field/icon/
+      https://material.io/develop/web/components/input-controls/checkboxes/
     """
     return JsObjects.JsBoolean.JsBoolean("%s.disabled" % self.varName, isPyData=False)
 
@@ -936,11 +936,11 @@ class CheckBox(JsMdcHtml):
     """
     Description:
     ------------
-    Setter/getter for the radio’s checked state
+    Setter/getter for the checkbox’s checked state
 
     Related Pages:
 
-      https://material.io/develop/web/components/input-controls/text-field/icon/
+      https://material.io/develop/web/components/input-controls/checkboxes/
     """
     return JsObjects.JsBoolean.JsBoolean("%s.indeterminate" % self.varName, isPyData=False)
 
@@ -949,13 +949,23 @@ class CheckBox(JsMdcHtml):
     """
     Description:
     ------------
-    Setter/getter for the radio’s value
+    getter for the checkbox’s value
 
     Related Pages:
 
-      https://material.io/develop/web/components/input-controls/text-field/icon/
+      https://material.io/develop/web/components/input-controls/checkboxes/
     """
     return JsObjects.JsObjects.get("%s.value" % self.varName)
+
+  def setValue(self, value):
+    """
+    Sets the checkbox’s value.
+
+    :param value:
+    :return:
+    """
+    value = JsUtils.jsConvertData(value, None)
+    return JsObjects.JsBoolean.JsBoolean("%s.value = %s" % (self.varName, value), isPyData=False)
 
   def setStatus(self, status, bool=True):
     """
@@ -965,7 +975,7 @@ class CheckBox(JsMdcHtml):
 
     Related Pages:
 
-      https://material.io/develop/web/components/input-controls/text-field/icon/
+      https://material.io/develop/web/components/input-controls/checkboxes/
 
     Attributes:
     ----------
@@ -979,6 +989,54 @@ class SnackBar(JsMdcHtml):
 
   def instantiate(self, html_id=None):
     return "new mdc.snackbar.MDCSnackbar(document.querySelector('%s'));" % html_id
+
+
+  @property
+  def isOpen(self):
+    """
+    Gets whether the snackbar is currently open.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/snackbars/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.isOpen" % self.varName, isPyData=False)
+
+  @property
+  def isOpen(self):
+    """
+    Gets/sets the automatic dismiss timeout in milliseconds.
+    Value must be between 4000 and 10000 (or -1 to disable the timeout completely) or an error will be thrown.
+    Defaults to 5000 (5 seconds).
+
+    Related Pages:
+
+      https://material.io/develop/web/components/snackbars/
+    """
+    return JsObjects.JsNumber.JsNumber("%s.timeoutMs" % self.varName, isPyData=False)
+
+
+  @property
+  def closeOnEscape(self):
+    """
+    Gets/sets whether the snackbar closes when it is focused and the user presses the ESC key. Defaults to true.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/snackbars/
+    """
+    return JsObjects.JsBoolean.JsBoolean("%s.closeOnEscape" % self.varName, isPyData=False)
+
+  @property
+  def labelText(self):
+    """
+    Gets/sets whether the snackbar closes when it is focused and the user presses the ESC key. Defaults to true.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/snackbars/
+    """
+    return JsObjects.JsObjects.JsBoolean("%s.closeOnEscape" % self.varName, isPyData=False)
 
   def open(self):
     """
