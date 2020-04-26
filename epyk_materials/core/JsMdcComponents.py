@@ -1003,7 +1003,7 @@ class SnackBar(JsMdcHtml):
     return JsObjects.JsBoolean.JsBoolean("%s.isOpen" % self.varName, isPyData=False)
 
   @property
-  def isOpen(self):
+  def timeoutMs(self):
     """
     Gets/sets the automatic dismiss timeout in milliseconds.
     Value must be between 4000 and 10000 (or -1 to disable the timeout completely) or an error will be thrown.
