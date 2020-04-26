@@ -143,3 +143,43 @@ class Text(object):
     # Add the specific dom features
     html_c.dom = dom_obj
     return html_c
+
+  def snackbar(self, text, btn_label='RETRY', btn_action=None, stacked=False):
+    """"""
+    """
+    Description:
+    ------------
+    Snackbars provide brief messages about app processes at the bottom of the screen.
+
+    Usage::
+
+      rptObj.materials.inputs.checkbox(True, "test")
+      rptObj.materials.inputs.checkbox(False, "test2")
+      chk3 = rptObj.materials.inputs.checkbox(False, "test3")
+      rptObj.js.addOnReady([chk3.dom.setStatus('indeterminate')])
+
+    Related Pages:
+
+        https://material.io/develop/web/components/snackbars/
+
+    Attributes:
+    ----------
+    :param text:
+    """
+
+    schema = {"type": 'div', 'class': "mdc-snackbar mdc-snackbar--stacked" if stacked else "mdc-snackbar", 'css': False, 'children': [
+      {"type": 'div', "class": "mdc-snackbar__surface", 'css': False, 'children': [
+        {'type': 'div', 'class': 'mdc-snackbar__label', 'css': False, 'attrs': {'role': 'status'}, 'arias': {'live': 'polite'}, 'args': {'htmlObjs': text}},
+        {'type': 'div', 'class': 'mdc-snackbar__actions', 'css': False, 'children': [
+          {'type': 'button', 'class': 'mdc-button mdc-snackbar__action', 'css': False, 'attrs': {'type': 'button'}, 'children': [
+            {'type': 'div', 'class': 'mdc-button__ripple', 'css': False},
+            {'type': 'span', 'class': 'mdc-button__label', 'css': False, 'args': {'text': btn_label}}
+          ]},
+        ]},
+      ]},
+    ]}
+    html_snackbar = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
+    dom_obj = JsMdcComponents.CheckBox(html_snackbar)
+    html_snackbar.style.builder(html_snackbar.style.varName, dom_obj.instantiate("#%s" % html_snackbar.htmlId))
+    html_snackbar.dom = dom_obj
+    return html_snackbar
