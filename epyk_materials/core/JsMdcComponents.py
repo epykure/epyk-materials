@@ -1030,13 +1030,44 @@ class SnackBar(JsMdcHtml):
   @property
   def labelText(self):
     """
-    Gets/sets whether the snackbar closes when it is focused and the user presses the ESC key. Defaults to true.
+    Gets the textContent of the label element
 
     Related Pages:
 
       https://material.io/develop/web/components/snackbars/
     """
-    return JsObjects.JsObjects.JsBoolean("%s.closeOnEscape" % self.varName, isPyData=False)
+    return JsObjects.JsObjects.get("%s.labelText" % self.varName)
+
+  def setLabelText(self, value):
+    """
+    Sets the textContent of the label element
+
+    Related Pages:
+
+      https://material.io/develop/web/components/snackbars/
+    """
+    return '%s.labelText = "%s"' % (self.varName, value)
+
+  @property
+  def actionButtonText(self):
+    """
+    Gets the textContent of the action button element.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/snackbars/
+    """
+    return JsObjects.JsObjects.get("%s.actionButtonText" % self.varName)
+
+  def setActionButtonText(self, value):
+    """
+    Sets the textContent of the action button element.
+
+    Related Pages:
+
+      https://material.io/develop/web/components/snackbars/
+    """
+    return '%s.actionButtonText = "%s"' % (self.varName, value)
 
   def open(self):
     """
