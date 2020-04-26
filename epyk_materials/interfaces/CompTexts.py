@@ -144,7 +144,7 @@ class Text(object):
     html_c.dom = dom_obj
     return html_c
 
-  def snackbar(self, text, btn_label='RETRY', btn_action=None, type=None):
+  def snackbar(self, text, btn_label='RETRY', btn_action=None, type='NORMAL'):
     """
     Description:
     ------------
@@ -168,8 +168,8 @@ class Text(object):
     :param btn_action: Action to trigger on click
     :param type: Normal, Leading or Stacked
     """
-
-    schema = {"type": 'div', 'class': "mdc-snackbar mdc-snackbar--stacked" if stacked else "mdc-snackbar", 'css': False, 'children': [
+    display_map = {'NORMAL': 'mdc-snackbar', 'STACKED': 'mdc-snackbar mdc-snackbar--stacked', 'LEADING': 'mdc-snackbar mdc-snackbar--leading'}
+    schema = {"type": 'div', 'class': display_map.get(type.upper(), 'mdc-snackbar'), 'css': False, 'children': [
       {"type": 'div', "class": "mdc-snackbar__surface", 'css': False, 'children': [
         {'type': 'div', 'class': 'mdc-snackbar__label', 'css': False, 'attrs': {'role': 'status'}, 'arias': {'live': 'polite'}, 'args': {'htmlObjs': text}},
         {'type': 'div', 'class': 'mdc-snackbar__actions', 'css': False, 'children': [
