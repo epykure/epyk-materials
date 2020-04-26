@@ -144,8 +144,7 @@ class Text(object):
     html_c.dom = dom_obj
     return html_c
 
-  def snackbar(self, text, btn_label='RETRY', btn_action=None, stacked=False):
-    """"""
+  def snackbar(self, text, btn_label='RETRY', btn_action=None, type=None):
     """
     Description:
     ------------
@@ -164,7 +163,10 @@ class Text(object):
 
     Attributes:
     ----------
-    :param text:
+    :param text: text to appear in the bar
+    :param btn_label: Label to be applied to the snackbar
+    :param btn_action: Action to trigger on click
+    :param type: Normal, Leading or Stacked
     """
 
     schema = {"type": 'div', 'class': "mdc-snackbar mdc-snackbar--stacked" if stacked else "mdc-snackbar", 'css': False, 'children': [
