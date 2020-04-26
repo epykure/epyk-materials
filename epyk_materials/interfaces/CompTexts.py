@@ -181,7 +181,8 @@ class Text(object):
       ]},
     ]}
     html_snackbar = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
-    dom_obj = JsMdcComponents.CheckBox(html_snackbar)
+    dom_obj = JsMdcComponents.SnackBar(html_snackbar)
+    # dom_obj.closeOnEscape
     html_snackbar.style.builder(html_snackbar.style.varName, dom_obj.instantiate("#%s" % html_snackbar.htmlId))
     html_snackbar.dom = dom_obj
     return html_snackbar
