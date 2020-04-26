@@ -19,6 +19,7 @@ MODULES_EXTS = {
   'material-components-web': {
     'version': '5.1.0',
     'website': 'https://material.io/components',
+    'register': {'alias': 'mdc', 'module': 'material-components-web.min', 'npm': 'mdc'},
     'modules': [
       {'script': 'material-components-web.min.js', 'path': 'material-components-web/%(version)s/'},
       {'script': 'material-components-web.min.css', 'path': 'material-components-web/%(version)s/'}
