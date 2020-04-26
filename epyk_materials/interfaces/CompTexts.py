@@ -30,6 +30,10 @@ class Text(object):
     Description:
     ------------
 
+    Usage::
+
+      rptObj.materials.texts.icon("favorite")
+
     Related Pages:
 
       https://material.io/develop/web/components/input-controls/text-field/icon/
@@ -85,6 +89,10 @@ class Text(object):
     ------------
     Floating labels display the type of input a field requires.
     Every Text Field and Select should have a label, except for full-width text fields, which use the input’s placeholder attribute instead.
+
+    Usage::
+
+      rptObj.materials.texts.floating("Hello")
 
     Related Pages:
 
@@ -152,7 +160,7 @@ class Text(object):
 
     Usage::
 
-      rptObj.materials.inputs.checkbox(True, "test")
+      rptObj.materials.text.checkbox(True, "test")
       rptObj.materials.inputs.checkbox(False, "test2")
       chk3 = rptObj.materials.inputs.checkbox(False, "test3")
       rptObj.js.addOnReady([chk3.dom.setStatus('indeterminate')])
@@ -182,7 +190,6 @@ class Text(object):
     ]}
     html_snackbar = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.SnackBar(html_snackbar)
-    # dom_obj.closeOnEscape
     html_snackbar.style.builder(html_snackbar.style.varName, dom_obj.instantiate("#%s" % html_snackbar.htmlId))
     html_snackbar.dom = dom_obj
     return html_snackbar
