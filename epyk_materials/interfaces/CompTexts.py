@@ -152,7 +152,7 @@ class Text(object):
     html_c.dom = dom_obj
     return html_c
 
-  def snackbar(self, text, btn_label='RETRY', btn_action=None, type='NORMAL'):
+  def snackbar(self, text, btn_label='RETRY', btn_action=None, type='NORMAL', dismiss=True):
     """
     Description:
     ------------
@@ -177,17 +177,31 @@ class Text(object):
     :param type: Normal, Leading or Stacked
     """
     display_map = {'NORMAL': 'mdc-snackbar', 'STACKED': 'mdc-snackbar mdc-snackbar--stacked', 'LEADING': 'mdc-snackbar mdc-snackbar--leading'}
-    schema = {"type": 'div', 'class': display_map.get(type.upper(), 'mdc-snackbar'), 'css': False, 'children': [
-      {"type": 'div', "class": "mdc-snackbar__surface", 'css': False, 'children': [
-        {'type': 'div', 'class': 'mdc-snackbar__label', 'css': False, 'attrs': {'role': 'status'}, 'arias': {'live': 'polite'}, 'args': {'htmlObjs': text}},
-        {'type': 'div', 'class': 'mdc-snackbar__actions', 'css': False, 'children': [
-          {'type': 'button', 'class': 'mdc-button mdc-snackbar__action', 'css': False, 'attrs': {'type': 'button'}, 'children': [
-            {'type': 'div', 'class': 'mdc-button__ripple', 'css': False},
-            {'type': 'span', 'class': 'mdc-button__label', 'css': False, 'args': {'text': btn_label}}
+    if dismiss:
+      schema = {"type": 'div', 'class': display_map.get(type.upper(), 'mdc-snackbar'), 'css': False, 'children': [
+        {"type": 'div', "class": "mdc-snackbar__surface", 'css': False, 'children': [
+          {'type': 'div', 'class': 'mdc-snackbar__label', 'css': False, 'attrs': {'role': 'status'}, 'arias': {'live': 'polite'}, 'args': {'htmlObjs': text}},
+          {'type': 'div', 'class': 'mdc-snackbar__actions', 'css': False, 'children': [
+            {'type': 'button', 'class': 'mdc-button mdc-snackbar__action', 'css': False, 'attrs': {'type': 'button'}, 'children': [
+              {'type': 'div', 'class': 'mdc-button__ripple', 'css': False},
+              {'type': 'span', 'class': 'mdc-button__label', 'css': False, 'args': {'text': btn_label}}
+            ]},
+            {'type': 'button', 'class': 'mdc-icon-button mdc-snackbar__dismiss material-icons', 'css': False, 'attrs': {'title': 'Dismiss'}, 'args': {'text': 'close'}},
           ]},
         ]},
-      ]},
-    ]}
+      ]}
+    else:
+      schema = {"type": 'div', 'class': display_map.get(type.upper(), 'mdc-snackbar'), 'css': False, 'children': [
+        {"type": 'div', "class": "mdc-snackbar__surface", 'css': False, 'children': [
+          {'type': 'div', 'class': 'mdc-snackbar__label', 'css': False, 'attrs': {'role': 'status'}, 'arias': {'live': 'polite'}, 'args': {'htmlObjs': text}},
+          {'type': 'div', 'class': 'mdc-snackbar__actions', 'css': False, 'children': [
+            {'type': 'button', 'class': 'mdc-button mdc-snackbar__action', 'css': False, 'attrs': {'type': 'button'}, 'children': [
+              {'type': 'div', 'class': 'mdc-button__ripple', 'css': False},
+              {'type': 'span', 'class': 'mdc-button__label', 'css': False, 'args': {'text': btn_label}}
+            ]},
+          ]},
+        ]},
+      ]}
     html_snackbar = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.SnackBar(html_snackbar)
     html_snackbar.style.builder(html_snackbar.style.varName, dom_obj.instantiate("#%s" % html_snackbar.htmlId))
