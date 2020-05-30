@@ -1,7 +1,7 @@
 
 ![](https://raw.githubusercontent.com/epykure/epyk-materials/master/epyk_materials/static/images/epyklogo_whole_big.png)
 
-### First Version out now!
+### Epyk MAterials!
 
 An easy way to use Epyk with the Material Components extension.
 

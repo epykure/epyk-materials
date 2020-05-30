@@ -202,6 +202,5 @@ class Materials(object):
 
     return the html component
     """
-    self.rptObj.htmlItems[id(html_comp)] = html_comp
-    self.rptObj.content.append(id(html_comp))
+    self.rptObj.components[id(html_comp)] = html_comp
     return html_comp
