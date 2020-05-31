@@ -37,7 +37,7 @@ class Buttons(object):
       ]}
     button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.Button(button)
-    button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
+    button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlCode))
     # Add the specific dom features
     button.dom = dom_obj
     return button
@@ -68,7 +68,7 @@ class Buttons(object):
 
     html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.ButtonSwitch(html_b)
-    html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
+    html_b.style.builder(html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlCode))
     # Add the specific dom features
     html_b.dom = dom_obj
     html_b.style.css.margin = 5
@@ -102,7 +102,7 @@ class FloatingButton(object):
 
     button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.FAB(button)
-    button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
+    button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlCode))
     # Add the specific dom features
     button.dom = dom_obj
     return button
@@ -130,7 +130,7 @@ class FloatingButton(object):
 
     button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.FAB(button)
-    button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
+    button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlCode))
     # Add the specific dom features
     button.dom = dom_obj
     return button

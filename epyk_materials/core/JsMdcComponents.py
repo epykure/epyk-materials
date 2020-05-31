@@ -624,7 +624,7 @@ class Radio(JsMdcHtml):
     """
     return JsObjects.JsObjects.get(
       "{%s: {value: %s, name: %s, timestamp: Date.now(), offset: new Date().getTimezoneOffset()}}" % (
-      self.htmlId, self.content.toStr(), self.value))
+      self.htmlCode, self.content.toStr(), self.value))
 
   @property
   def content(self):

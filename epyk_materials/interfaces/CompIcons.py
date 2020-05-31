@@ -21,7 +21,7 @@ class Icon(object):
     schema = {"type": 'span', 'class': "material-icons", 'css': None, 'attrs': {"role": 'button'}, 'args': {"text": icon}}
     span = self.context.rptObj.materials.composite(schema)
     dom_obj = JsMdcComponents.Icon(span)
-    span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
+    span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlCode))
     # Add the specific dom features
     span.dom = dom_obj
     return span
@@ -49,7 +49,7 @@ class Icon(object):
     html_button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj = JsMdcComponents.ButtonToggle(html_button)
-    html_button.style.builder(html_button.style.varName, dom_obj.instantiate("#%s" % html_button.htmlId))
+    html_button.style.builder(html_button.style.varName, dom_obj.instantiate("#%s" % html_button.htmlCode))
     # Add the specific dom features
     html_button.dom = dom_obj
     return html_button
@@ -73,7 +73,7 @@ class Icon(object):
     span = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     if in_text_field:
       dom_obj = JsMdcComponents.Icon(span)
-      span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
+      span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlCode))
       # Add the specific dom features
       span.dom = dom_obj
     span.tooltip(tooltip)
@@ -107,7 +107,7 @@ class Icon(object):
     ]}
     span = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.TextRipple(span)
-    span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
+    span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlCode))
     # Add the specific dom features
     span.dom = dom_obj
     return span
@@ -129,7 +129,7 @@ class Icon(object):
     schema = {"type": 'button', 'class': "material-icons", 'css': None}
     button = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.ButtonFloating(button)
-    button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlId))
+    button.style.builder(button.style.varName, dom_obj.instantiate("#%s" % button.htmlCode))
     # Add the specific dom features
     button.dom = dom_obj
     button.onReady([button.dom.unbounded(True)])

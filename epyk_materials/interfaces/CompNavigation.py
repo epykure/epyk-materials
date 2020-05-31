@@ -50,7 +50,7 @@ class Navigation(object):
 
     #
     dom_obj = JsMdcComponents.TabBar(html_t)
-    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
+    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlCode))
     # Add the specific dom features
     html_t.dom = dom_obj
     return html_t
@@ -88,7 +88,7 @@ class Navigation(object):
           {"type": 'icon', 'class-keep': True, 'css': False, 'arias': {'label': b}, 'args': {'text': b}, 'class': "mdc-top-app-bar__navigation-icon mdc-icon-button"})
     html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.TopBar(html_t)
-    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
+    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlCode))
     # Add the specific dom features
     html_t.dom = dom_obj
     return html_t
@@ -126,7 +126,7 @@ class Navigation(object):
           {"type": 'icon', 'class-keep': True, 'css': False, 'arias': {'label': b}, 'args': {'text': b}, 'class': "mdc-top-app-bar__navigation-icon mdc-icon-button"})
     html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.TopBar(html_t)
-    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
+    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlCode))
     # Add the specific dom features
     html_t.dom = dom_obj
     return html_t
@@ -161,7 +161,7 @@ class Navigation(object):
 
     html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.Drawers(html_t)
-    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
+    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlCode))
     # Add the specific dom features
     html_t.dom = dom_obj
     return html_t

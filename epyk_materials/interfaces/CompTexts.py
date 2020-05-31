@@ -20,7 +20,7 @@ class Text(object):
     schema = {"type": 'label', 'css': None}
     label = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.TextRipple(label)
-    label.style.builder(label.style.varName, dom_obj.instantiate("#%s" % label.htmlId))
+    label.style.builder(label.style.varName, dom_obj.instantiate("#%s" % label.htmlCode))
     # Add the specific dom features
     label.dom = dom_obj
     return label
@@ -54,7 +54,7 @@ class Text(object):
     }
     html_t = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.Icon(html_t)
-    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlId))
+    html_t.style.builder(html_t.style.varName, dom_obj.instantiate("#%s" % html_t.htmlCode))
     # Add the specific dom features
     html_t.dom = dom_obj
     return html_t
@@ -78,7 +78,7 @@ class Text(object):
     schema = {"type": 'div', 'class': None, 'css': None, 'args': {"htmlObjs": label}}
     span = self.context.rptObj.materials.composite(schema)
     dom_obj = JsMdcComponents.Line(span)
-    span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
+    span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlCode))
     # Add the specific dom features
     span.dom = dom_obj
     return span
@@ -106,7 +106,7 @@ class Text(object):
     schema = {"type": 'span', 'class': None, 'css': False, 'args': {"text": label}}
     span = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.TextFloating(span)
-    span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlId))
+    span.style.builder(span.style.varName, dom_obj.instantiate("#%s" % span.htmlCode))
     # Add the specific dom features
     span.dom = dom_obj
     return span
@@ -147,7 +147,7 @@ class Text(object):
 
     html_c = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.Chip(html_c, html_c.style.varName)
-    html_c.style.builder(html_c.style.varName, dom_obj.instantiate("#%s" % html_c.htmlId))
+    html_c.style.builder(html_c.style.varName, dom_obj.instantiate("#%s" % html_c.htmlCode))
     # Add the specific dom features
     html_c.dom = dom_obj
     return html_c
@@ -204,6 +204,6 @@ class Text(object):
       ]}
     html_snackbar = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.SnackBar(html_snackbar)
-    html_snackbar.style.builder(html_snackbar.style.varName, dom_obj.instantiate("#%s" % html_snackbar.htmlId))
+    html_snackbar.style.builder(html_snackbar.style.varName, dom_obj.instantiate("#%s" % html_snackbar.htmlCode))
     html_snackbar.dom = dom_obj
     return html_snackbar

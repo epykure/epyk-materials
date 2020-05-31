@@ -21,7 +21,7 @@ class Menu(object):
     menu = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj = JsMdcComponents.MenuSurface(menu)
-    menu.style.builder(menu.style.varName, dom_obj.instantiate("#%s" % menu.htmlId))
+    menu.style.builder(menu.style.varName, dom_obj.instantiate("#%s" % menu.htmlCode))
     # Add the specific dom features
     menu.dom = dom_obj
     return menu

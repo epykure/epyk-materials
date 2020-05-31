@@ -115,10 +115,10 @@ class Inputs(object):
     html_b = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj_ripple = JsMdcComponents.TextRipple(html_b)
-    html_b.style.builder(html_b.style.varName, dom_obj_ripple.instantiate("#%s" % html_b.htmlId))
+    html_b.style.builder(html_b.style.varName, dom_obj_ripple.instantiate("#%s" % html_b.htmlCode))
 
     dom_obj = JsMdcComponents.TextNothedOutline(html_b)
-    html_b.style.builder("%s_notch" % html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlId))
+    html_b.style.builder("%s_notch" % html_b.style.varName, dom_obj.instantiate("#%s" % html_b.htmlCode))
 
     # Add the specific dom features
     html_b.dom = dom_obj_ripple
@@ -279,7 +279,7 @@ class Inputs(object):
     html_r = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj = JsMdcComponents.Radio(html_r)
-    html_r.style.builder(html_r.style.varName, dom_obj.instantiate("#%s" % html_r.htmlId))
+    html_r.style.builder(html_r.style.varName, dom_obj.instantiate("#%s" % html_r.htmlCode))
     # Add the specific dom features
     html_r.dom = dom_obj
 
@@ -309,7 +309,7 @@ class Inputs(object):
     div.set_attrs({"class": None, 'css': None})
 
     dom_obj = JsMdcComponents.Field(div)
-    div.style.builder(div.style.varName, dom_obj.instantiate("#%s" % div.htmlId))
+    div.style.builder(div.style.varName, dom_obj.instantiate("#%s" % div.htmlCode))
     # Add the specific dom features
     div.dom = dom_obj
     div.onReady([div.dom.input("radio")])
@@ -350,7 +350,7 @@ class Inputs(object):
 
     html_c = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.Chip(html_c)
-    html_c.style.builder(html_c.style.varName, dom_obj.instantiate("#%s" % html_c.htmlId))
+    html_c.style.builder(html_c.style.varName, dom_obj.instantiate("#%s" % html_c.htmlCode))
     # Add the specific dom features
     html_c.dom = dom_obj
     return html_c
@@ -394,6 +394,6 @@ class Inputs(object):
     dom_obj = JsMdcComponents.CheckBox(html_chk)
     if flag:
       self.context.rptObj.js.addOnReady([dom_obj.setStatus('checked')])
-    html_chk.style.builder(html_chk.style.varName, dom_obj.instantiate("#%s" % html_chk.htmlId))
+    html_chk.style.builder(html_chk.style.varName, dom_obj.instantiate("#%s" % html_chk.htmlCode))
     html_chk.dom = dom_obj
     return html_chk

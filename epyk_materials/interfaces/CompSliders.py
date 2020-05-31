@@ -52,7 +52,7 @@ class Slider(object):
     html_pr = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj = JsMdcComponents.LinearProgress(html_pr)
-    html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
+    html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlCode))
     # Add the specific dom features
     html_pr.dom = dom_obj
     html_pr.onReady([html_pr.dom.setProgress(number)])
@@ -91,7 +91,7 @@ class Slider(object):
     }
     html_pr = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.Slider(html_pr)
-    html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
+    html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlCode))
     # Add the specific dom features
     html_pr.dom = dom_obj
     return html_pr
@@ -132,7 +132,7 @@ class Slider(object):
               }
     html_pr = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.Slider(html_pr)
-    html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
+    html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlCode))
     # Add the specific dom features
     html_pr.dom = dom_obj
     return html_pr
@@ -175,7 +175,7 @@ class Slider(object):
               }
     html_pr = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.Slider(html_pr)
-    html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlId))
+    html_pr.style.builder(html_pr.style.varName, dom_obj.instantiate("#%s" % html_pr.htmlCode))
     # Add the specific dom features
     html_pr.dom = dom_obj
     return html_pr

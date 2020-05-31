@@ -40,7 +40,7 @@ class List(object):
       ]})
     html_l = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.List(html_l)
-    html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
+    html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlCode))
     # Add the specific dom features
     html_l.dom = dom_obj
     return html_l
@@ -68,7 +68,7 @@ class List(object):
     html_l = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
 
     dom_obj = JsMdcComponents.List(html_l)
-    html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
+    html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlCode))
     # Add the specific dom features
     html_l.dom = dom_obj
     html_l.onReady([html_l.dom.singleSelection(True)])
@@ -108,7 +108,7 @@ class List(object):
       ]})
     html_l = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.List(html_l)
-    html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
+    html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlCode))
     # Add the specific dom features
     html_l.dom = dom_obj
     return html_l
@@ -144,7 +144,7 @@ class List(object):
       ]})
     html_l = self.context.rptObj.materials.composite(schema, options={"reset_class": True})
     dom_obj = JsMdcComponents.List(html_l)
-    html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlId))
+    html_l.style.builder(html_l.style.varName, dom_obj.instantiate("#%s" % html_l.htmlCode))
     # Add the specific dom features
     html_l.dom = dom_obj
     return html_l
