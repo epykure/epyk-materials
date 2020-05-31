@@ -187,20 +187,4 @@ class Materials(object):
     :param profile: Optional. Not yet available
     """
     html_help = MdcHtml.MdcComposite(self.rptObj, schema, width=width, height=height, htmlCode=htmlCode, profile=profile, options=options or {}, helper=helper)
-    self.register(html_help)
     return html_help
-
-  def register(self, html_comp):
-    """
-    Description:
-    ------------
-    Internal function to register a HTML component based on its memory id.
-
-    Related Pages:
-
-    :param html_comp: The html component
-
-    return the html component
-    """
-    self.rptObj.components[id(html_comp)] = html_comp
-    return html_comp
