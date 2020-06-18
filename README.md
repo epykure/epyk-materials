@@ -28,10 +28,19 @@ Also it is possible to mix the components and to use Epyk-UI ecosystem with Mate
 Concept
 =======
 
+Wrapper on top of the Epyk core module to add extra freatures and shortcuts on Material web components.
+
+Those componets are only wrapped on top of generic Epyk compnents (Epyk Composite component) and this will ensure
+interaction between those components.
+
 <div align="center" >
     <img src="https://github.com/epykure/epyk-materials/raw/master/epyk_materials/static/images/extension.PNG">
 </div>
 
+More details on those components are directly available on the []official website](https://material-ui.com/getting-started/installation/) 
+
+This will only provide easy wrappers and automated way to add standard actions from Python.
+More complex or bespoke logic might require improvements in this library.
 
 Usage
 =======
