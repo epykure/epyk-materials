@@ -25,7 +25,19 @@ the framework and all the underlying event, interactivities and styling features
 Also it is possible to mix the components and to use Epyk-UI ecosystem with Material UI.
 
 
-Usage
-=====
+Concept
+=======
 
-![](./epyk_materials/static/images/extension.PNG)
+<div align="center" >
+    <img src="https://github.com/epykure/epyk-materials/raw/master/epyk_materials/static/images/extension.PNG">
+</div>
+
+
+Usage
+=======
+
+To use this extra package, it is required to import it directly. it will use Epyk core module as underlying and this
+wrapper will add material entry point to the page object.
+
+This entry point will be the one to rely on the various components.
+
