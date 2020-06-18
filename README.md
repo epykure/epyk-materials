@@ -29,6 +29,18 @@ More details on those components are directly available on the [official website
 This will only provide easy wrappers and automated way to add standard actions from Python.
 More complex or bespoke logic might require improvements in this library.
 
+Architecture
+============
+
+Composite components are fast macro components composed by elementary bricks in the Epyk core framework.
+Those macro components can be configured based on Python dictionary and they will be created on the fly.
+
+![](./epyk_materials/static/images/composite.PNG)
+
+This feature is usefull when wrapping exiting new components without any specific logic to be added to.
+
+If more information are required it is better to use Pyk architecture
+
 Usage
 =======
 
