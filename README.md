@@ -1,7 +1,7 @@
 
 ![](https://raw.githubusercontent.com/epykure/epyk-materials/master/epyk_materials/static/images/epyklogo_whole_big.png)
 
-### Epyk MAterials!
+### Epyk with Materials UI!
 
 An easy way to use Epyk with the Material Components extension.
 
@@ -24,4 +24,8 @@ the framework and all the underlying event, interactivities and styling features
 
 Also it is possible to mix the components and to use Epyk-UI ecosystem with Material UI.
 
-  
+
+Usage
+=====
+
+![](./epyk_materials/static/images/extension.PNG)
