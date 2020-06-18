@@ -1,9 +1,10 @@
 
-![](https://raw.githubusercontent.com/epykure/epyk-materials/master/epyk_materials/static/images/epyklogo_whole_big.png)
+<img width=100 src="https://github.com/epykure/epyk-materials/blob/master/epyk_materials/static/images/logo.PNG?raw=true">
 
 ### Epyk with Materials UI!
 
 An easy way to use Epyk with the Material Components extension.
+![](https://raw.githubusercontent.com/epykure/epyk-materials/master/epyk_materials/static/images/epyklogo_whole_big.png)
 
 Presentation
 ================================
